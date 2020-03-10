@@ -5,15 +5,17 @@
     .header-content {
         .text {
             color: #17344F;
-            font-size: 27px;
-            line-height: 27px;
-            margin-left: 12px;
+            margin-left: 20px;
         }
         .header-left-side {
-            width: 200px;
+            width: 230px;
             .logo {
-                width: 55px;
-                height: 55px;
+                max-width: 55px;
+                max-height: 55px;
+            }
+            .logo-text{
+                font-weight: 400;
+                font-size: 27px;
             }
         }
         .header-right-side {
@@ -22,8 +24,12 @@
                 max-height: 36px;
                 cursor: pointer;
             }
+            .user-name{
+                font-size: 30px;
+                font-weight: 300;
+            }
             .card-icon {
-                margin-left: 140px;
+                margin-left: 125px;
             }
             .menu-icon {
                 margin-left: 65px;
