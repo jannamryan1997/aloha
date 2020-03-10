@@ -6,7 +6,8 @@ const profileRoutes: Routes = [
     {
         path: "", component: ProfileView, children: [
             { path: "", redirectTo: "user-account", pathMatch: "full" },
-            { path: "user-account", loadChildren: () => import('./user-account/user-account.module').then(m => m.UserAccountModule) }
+            { path: "user-account", loadChildren: () => import('./user-account/user-account.module').then(m => m.UserAccountModule) },
+            { path: "user-addresses", loadChildren: () => import('./user-addresses/user-addresses.module').then(m => m.UserAddressesModule) }
         ]
     },
 
