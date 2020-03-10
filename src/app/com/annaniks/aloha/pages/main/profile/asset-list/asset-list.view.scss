@@ -1,0 +1,51 @@
+.asset-list-content {
+    width: 100%;
+    max-width: 670px;
+
+    &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        border: 1px solid #B4B4B4;
+        opacity: 1;
+        margin: 38px auto;
+    }
+
+    .title {
+        font-size: 24px;
+        line-height: 24px;
+        color: #17344F;
+    }
+
+    .asset-list-descrpption {
+        .text {
+            word-break: break-all;
+            color: #17344F;
+            font-size: 18px;
+            line-height: 40px;
+        }
+
+        .left-content {
+
+            .add-btn {
+                margin-top: 23px !important;
+            }
+        }
+
+        .rigt-content {
+            margin-left: 130px;
+
+            .out-btn {
+                border-radius: 5px;
+                opacity: 1;
+                font-size: 14px;
+                margin-top: 23px;
+                background: #FFFFFF 0% 0% no-repeat padding-box;
+                border: 1px solid #F1412E;
+                color: #F1412E;
+                padding: 10px 24px;
+                font-weight: bold;
+            }
+        }
+    }
+}

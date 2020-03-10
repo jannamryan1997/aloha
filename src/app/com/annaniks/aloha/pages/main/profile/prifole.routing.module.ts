@@ -8,7 +8,8 @@ const profileRoutes: Routes = [
             { path: "", redirectTo: "user-account", pathMatch: "full" },
             { path: "user-account", loadChildren: () => import('./user-account/user-account.module').then(m => m.UserAccountModule) },
             { path: "user-addresses", loadChildren: () => import('./user-addresses/user-addresses.module').then(m => m.UserAddressesModule) },
-            { path: "payment-details", loadChildren: () => import('./payment-details/payment-details.module').then(m => m.PaymentDetailsModule) }
+            { path: "payment-details", loadChildren: () => import('./payment-details/payment-details.module').then(m => m.PaymentDetailsModule) },
+            { path: "asset-list", loadChildren: () => import('./asset-list/asset-list.module').then(m => m.AssetListModule) }
         ]
     },
 
