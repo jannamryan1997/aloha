@@ -1,0 +1,34 @@
+.login-form-content {
+    .login-form-header {
+        background: #F2F3F5;
+        padding: 66px 0;
+        .text {
+            color: #17344F;
+            font-size: 30px;
+            margin-left: 200px;
+        }
+    }
+    .login-form {
+        width: 100%;
+        max-width: 500px;
+        margin: 66px auto;
+        .form-group {
+            width: 100%;
+            .input {
+                width: calc(100% - 100px) !important;
+            }
+
+            .label-wrapper {
+                width: 100px;
+
+                .label {
+                    color: #17344F;
+                    font-size: 21px;
+                }
+            }
+        }
+        .save-btn {
+            margin-left: 100px !important;
+        }
+    }
+}
