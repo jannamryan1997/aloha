@@ -1,0 +1,70 @@
+.payment-content {
+    .payment-item-content {
+        width: 100%;
+        max-width: 670px;
+
+        &::after {
+            content: "";
+            display: block;
+            width: 100%;
+            border: 1px solid #B4B4B4;
+            opacity: 1;
+            margin: 20px 0 48px;
+        }
+
+        .payment-item {
+
+            .text,
+            .value {
+                color: #17344F;
+                font-size: 30px;
+                line-height: 40px;
+                word-break: break-all;
+            }
+
+            .image-content {
+                width: 70px;
+
+                .icon {
+                    padding: 10px 0;
+                }
+            }
+
+            .amount-description {
+                width: 450px;
+                margin-left: 35px;
+
+            }
+        }
+
+        .asset-list {
+            background: #F2F3F5 0% 0% no-repeat padding-box;
+            opacity: 1;
+            margin-top: -20px;
+            padding: 45px 100px;
+
+            .title {
+                font-weight: bold;
+                line-height: 40px !important;
+            }
+
+            .text,
+            .title {
+                word-break: break-all;
+                color: #17344F;
+                font-size: 18px;
+                line-height: 24px;
+            }
+
+            .asset-list-description {
+                .rigt-content {
+                    margin-left: 130px;
+                }
+            }
+        }
+    }
+    .save-btn{
+        margin-top: 0 !important;
+    }
+
+}

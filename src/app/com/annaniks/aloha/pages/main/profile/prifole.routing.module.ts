@@ -9,7 +9,8 @@ const profileRoutes: Routes = [
             { path: "user-account", loadChildren: () => import('./user-account/user-account.module').then(m => m.UserAccountModule) },
             { path: "user-addresses", loadChildren: () => import('./user-addresses/user-addresses.module').then(m => m.UserAddressesModule) },
             { path: "payment-details", loadChildren: () => import('./payment-details/payment-details.module').then(m => m.PaymentDetailsModule) },
-            { path: "asset-list", loadChildren: () => import('./asset-list/asset-list.module').then(m => m.AssetListModule) }
+            { path: "asset-list", loadChildren: () => import('./asset-list/asset-list.module').then(m => m.AssetListModule) },
+            { path: "payment", loadChildren: () => import('./payment/payment.module').then(m => m.PaymentModule) }
         ]
     },
 
