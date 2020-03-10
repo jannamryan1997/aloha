@@ -5,7 +5,6 @@ import { Component, OnInit } from "@angular/core";
     templateUrl: "auth-view.html",
     styleUrls: ["auth-view.scss"]
 })
-
 export class AuthView implements OnInit {
 
     constructor() { }
