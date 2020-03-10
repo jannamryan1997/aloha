@@ -1,9 +1,8 @@
 import { NgModule } from "@angular/core";
 import { HomeRoutingModule } from './home.routing.module';
-import { HomeView } from './home.view';
 
 @NgModule({
-    declarations: [HomeView],
+    declarations: [],
     imports: [HomeRoutingModule],
     providers: []
 })
