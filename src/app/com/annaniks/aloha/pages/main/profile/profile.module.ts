@@ -1,9 +1,10 @@
 import { NgModule } from "@angular/core";
 import { ProfileRoutingModule } from './prifole.routing.module';
+import { ProfileView } from './profile.view';
 
 
 @NgModule({
-    declarations: [],
+    declarations: [ProfileView],
     imports: [ProfileRoutingModule],
     providers: []
 })

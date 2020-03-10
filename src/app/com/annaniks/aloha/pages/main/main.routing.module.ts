@@ -5,10 +5,10 @@ import { MainView } from './main.view';
 const mainRoutes: Routes = [
     {
         path: "", component: MainView, children: [
-            { path: "", redirectTo: "home", pathMatch: "full" },
+            { path: "", redirectTo: "profile", pathMatch: "full" },
             {
-                path: "home",
-                loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+                path: "profile",
+                loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
             }
         ]
     }
