@@ -3,6 +3,7 @@ import { ProfileRoutingModule } from './profile.routing.module';
 import { ProfileView } from './profile.view';
 import { FooterComponent } from '../../../layout/footer/footer.component';
 import { LoadingComponent } from '../../../layout';
+import { SharedModule } from '../../../shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -11,7 +12,8 @@ import { LoadingComponent } from '../../../layout';
         LoadingComponent
     ],
     imports: [
-        ProfileRoutingModule
+        ProfileRoutingModule,
+        SharedModule
     ],
     providers: []
 })

@@ -9,6 +9,42 @@
             <p class="text">{{title}}</p>
         </div>
     </div>
+    <div class="beehives-content">
+        <div class="beehives-header d-flex align-items-center">
+            <div class=" d-flex m-auto">
+                <p class="text">Buy beehives</p>
+                <img src="assets/icons/beehives-icon.svg" class="rounded d-block icon ml-3" alt="..."
+                    (click)="onclick()" *ngIf="beehives">
+                <img src="assets/icons/behaves-open.svg" class="rounded d-block icon ml-3" alt="..." (click)="onclick()"
+                    *ngIf="!beehives">
+            </div>
+        </div>
+        <div class="beehives-main" *ngIf="beehives">
+            <div class="main-content d-flex  pg-container justify-content-between">
+                <div class="laft-content">
+                    <p class="title">Standart hive</p>
+                    <p class="text">hive dimensions 90*60*90</p>
+                    <p class="text">price for one: <b>$200</b></p>
+                    <div class="add d-flex justify-content-between">
+                        <button class="btn  add-button cursor-pointer" type="submit">-</button>
+                        <div class="value-content d-flex">
+                            <p class="value m-auto">2</p>
+                        </div>
+                        <button class="btn  add-button cursor-pointer" type="submit">+</button>
+                    </div>
+                </div>
+                <div class="right-content">
+                    <p class="title">Order cost</p>
+                    <p class="text">FREE SHIPPING 2-3 DAYS</p>
+                    <p class="text">Total price: <b>$400</b></p>
+                    <button class="btn  save-btn cursor-pointer" type="submit">BUY</button>
+                </div>
+                <div>
+                    <img src="assets/icons/close-beehives.svg" class="rounded d-block icon" alt="...">
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="profile-main">
         <div class="main-container pg-container d-flex">
             <div class="menu-content d-flex flex-column">

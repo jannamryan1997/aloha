@@ -11,6 +11,7 @@ import { takeUntil, filter } from 'rxjs/operators';
 export class ProfileView implements OnInit, OnDestroy {
     private _unsubscribe$: Subject<void> = new Subject<void>();
     public title: string;
+    public beehives: boolean = false;
 
     constructor(
         private _router: Router,
@@ -36,6 +37,13 @@ export class ProfileView implements OnInit, OnDestroy {
     private _setTitle(): void {
         const title: string = this._activatedRoute.firstChild.snapshot.data.title || '';
         this.title = title;
+    }
+    private _openbeehives(): void {
+        this.beehives = !this.beehives;
+    }
+
+    public onclick(): void {
+        this._openbeehives();
     }
 
     ngOnDestroy() {
