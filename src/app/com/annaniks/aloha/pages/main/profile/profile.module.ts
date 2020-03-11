@@ -9,7 +9,7 @@ import { SharedModule } from '../../../shared/shared.module';
     declarations: [
         ProfileView,
         FooterComponent,
-        LoadingComponent
+        LoadingComponent,
     ],
     imports: [
         ProfileRoutingModule,
