@@ -3,24 +3,22 @@
         <div class="header-wrapper pg-container">
             <div class="rout-step d-flex align-items-center">
                 <a class="title cursor-pointer">Main</a>
-                <a class="title cursor-pointer" routerLink="/profile/user-account"
-                    [routerLinkActive]="'activeTab'">User Account</a>
+                <a class="title cursor-pointer" routerLink="/profile/user-account" [routerLinkActive]="'activeTab'">User
+                    Account</a>
             </div>
-            <p class="text">Profile</p>
+            <p class="text">{{title}}</p>
         </div>
     </div>
     <div class="profile-main">
         <div class="main-container pg-container d-flex">
             <div class="menu-content d-flex flex-column">
-                <a class="title" routerLink="/profile/user-account"
-                    [routerLinkActive]="'activeMenuTab'">Profile</a>
-                <a class="title" routerLink="/profile/user-addresses"
-                    [routerLinkActive]="'activeMenuTab'">Addresses</a>
+                <a class="title" routerLink="/profile/user-account" [routerLinkActive]="'activeMenuTab'">Profile</a>
+                <a class="title" routerLink="/profile/user-addresses" [routerLinkActive]="'activeMenuTab'">Addresses</a>
                 <a class="title" routerLink="/profile/payment-details" [routerLinkActive]="'activeMenuTab'">Payment
                     details</a>
                 <a class="title" routerLink="/profile/asset-list" [routerLinkActive]="'activeMenuTab'">Asset
                     list</a>
-                <a class="title" routerLink="/profile/payment" [routerLinkActive]="'activeMenuTab'">Payments</a>
+                <a class="title" routerLink="/profile/payments" [routerLinkActive]="'activeMenuTab'">Payments</a>
             </div>
             <div class="router-content">
                 <router-outlet></router-outlet>

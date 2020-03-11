@@ -1,29 +1,30 @@
 .pg-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-    .save-btn{
-      background: #F1412E 0% 0% no-repeat padding-box;
-      border-radius: 5px;
-      font-size: 20px;
-      color: #FFFFFF !important;
-      margin-top: 24px;
-      padding: 16px 50px;
-  }
-  .add-btn {
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #009DFF;
-    border-radius: 5px;
-    opacity: 1;
-    font-size: 14px;
-    color: #009DFF !important;
-    margin-top: 30px;
-    padding: 10px 28px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.save-btn {
+  background: #f1412e;
+  border-radius: 5px;
+  font-size: 20px;
+  color: #ffffff !important;
+  margin-top: 24px;
+  padding: 16px 50px;
+}
+.add-btn {
+  background: #ffffff;
+  border: 1px solid #009dff;
+  border-radius: 5px;
+  opacity: 1;
+  font-size: 14px;
+  color: #009dff !important;
+  margin-top: 30px;
+  padding: 10px 28px;
 }
 
-  .input{
-    background: #FFFFFF 0% 0% no-repeat padding-box;
+.form-group {
+  .input {
+    background: #ffffff;
     border: 1px solid #707070;
     padding: 13px 25px;
     width: 500px;
@@ -31,7 +32,9 @@
     opacity: 0.5;
     border-radius: 0px;
   }
-  
-.border{
-  border: 1px solid red !important;
+}
+.form-group {
+  .ng-invalid.ng-touched {
+    border: 1px solid red !important;
+  }
 }

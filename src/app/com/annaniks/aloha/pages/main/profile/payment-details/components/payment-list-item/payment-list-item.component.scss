@@ -1,0 +1,37 @@
+.payment-list-item {
+  margin-bottom: 20px;
+  .label {
+    color: #17344f;
+    font-size: 14px;
+  }
+  .payment-list-item-content {
+    margin-top: 11px;
+    .payment-list-item-details {
+      width: 100%;
+      max-width: 500px;
+      .text {
+        word-break: break-all;
+        color: #17344f;
+        font-size: 18px;
+        line-height: 24px;
+      }
+    }
+  }
+  .edit-btn {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid #8695a5;
+    border-radius: 5px;
+    opacity: 1;
+    color: #17344f;
+    padding: 11px 31px;
+    font-size: 14px;
+  }
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    border: 1px solid #B4B4B4;
+    opacity: 1;
+    margin-top: 25px;
+}
+}
