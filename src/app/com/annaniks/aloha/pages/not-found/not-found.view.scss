@@ -1,0 +1,34 @@
+.not-found {
+    width: 100%;
+    height: 100vh;
+    .not-foud-content {
+        width: 50%;
+        margin: auto;
+        .not-found-icon {
+            width: 206px;
+            height: 250px;
+        }
+        .text,
+        .title {
+            color: #17344F;
+            font-size: 20px;
+            line-height: 28px;
+            word-break: break-all;
+            margin-top: 13px;
+        }
+        .title {
+            font-size: 28px;
+            margin-top: 65px;
+        }
+        .button {
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border: 1px solid #8695A5;
+            border-radius: 5px;
+            opacity: 1;
+            padding: 16px 50px;
+            color: #17344F;
+            font-size: 18px;
+            margin-top: 85px;
+        }
+    }
+}
