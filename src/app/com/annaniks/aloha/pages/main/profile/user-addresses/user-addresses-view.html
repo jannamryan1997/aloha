@@ -1,13 +1,6 @@
-<form>
-    <div class="user-addresses-form-group">
-        <p class="text">Add Addresses</p>
-        <div class="form-group">
-            <div class="input-content">
-                <input type="text" class="form-control input" id="name" placeholder="Addresses"
-                    [formControl]="addressesControl"
-                    [ngClass]="{'border':addressesControl.hasError('required') && addressesControl.touched}">
-            </div>
-        </div>
-    </div>
-    <button class="btn save-btn cursor-pointer" type="submit" >Save</button>
-</form>
+<div class="addresses pg-content">
+    <app-address-list-item></app-address-list-item>
+    <app-address-list-item></app-address-list-item>
+    <app-address-list-item></app-address-list-item>
+    <button class="btn  cursor-pointer add-btn" type="submit" [routerLink]="'add'">Add Address</button>
+</div>

@@ -2,10 +2,17 @@ import { NgModule } from "@angular/core";
 import { UserAddressesView } from './user-addresses.view';
 import { SharedModule } from '../../../../shared/shared.module';
 import { UserAddressesRoutingModule } from './user-addresses.routing.module';
+import { AddressListItemComponent } from './components';
 
 @NgModule({
-    declarations: [UserAddressesView],
-    imports: [UserAddressesRoutingModule,SharedModule],
+    declarations: [
+        UserAddressesView,
+        AddressListItemComponent
+    ],
+    imports: [
+        UserAddressesRoutingModule,
+        SharedModule
+    ],
     providers: []
 })
 

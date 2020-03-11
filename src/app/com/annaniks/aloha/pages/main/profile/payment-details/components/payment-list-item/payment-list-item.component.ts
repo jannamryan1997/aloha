@@ -6,8 +6,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
     styleUrls: ['payment-list-item.component.scss']
 })
 export class PaymentListItemComponent implements OnInit, OnDestroy {
-    public isEditPayment: boolean = false;
-
     public content: string = `
     Account Name:Insta Corporation pty
     SWIFT CODE:NATAU003UA
@@ -17,10 +15,6 @@ export class PaymentListItemComponent implements OnInit, OnDestroy {
     constructor() { }
 
     ngOnInit() { }
-
-    public onClickEdit(): void {
-        this.isEditPayment = !this.isEditPayment;
-    }
 
     ngOnDestroy() { }
 }

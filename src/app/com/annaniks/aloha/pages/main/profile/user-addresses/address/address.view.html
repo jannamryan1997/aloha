@@ -1,0 +1,11 @@
+<div class="user-addresses-form-group">
+    <p class="text">Add Addresses</p>
+    <div class="form-group">
+        <div class="input-content">
+            <textarea type="text" class="form-control input" id="name" placeholder="Addresses"
+                [formControl]="addressControl"
+                [ngClass]="{'border':addressControl.hasError('required') && addressControl.touched}"></textarea>
+        </div>
+    </div>
+    <button class="btn save-btn cursor-pointer" type="submit">Save</button>
+</div>
