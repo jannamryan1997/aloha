@@ -1,0 +1,56 @@
+.footer-content {
+    background: #F7F7F7 0% 0% no-repeat padding-box;
+    border: 1px solid #D5D5D5;
+    opacity: 1;
+    padding: 65px 0;
+    .footer-container {
+        .text,
+        .title {
+            color: #17344F;
+            font-size: 20px;
+            line-height: 27px;
+        }
+        .title {
+            font-weight: 600;
+        }
+        .footer-top-content {
+            &::after {
+                content: "";
+                display: flex;
+                width: 100%;
+                border: 1px solid #B4B4B4;
+                opacity: 1;
+                margin-top: 66px;
+            }
+            .form-content {
+                .form-input {
+                    background: #FFFFFF 0% 0% no-repeat padding-box;
+                    border: 1px solid #BEBEBE;
+                    opacity: 1;
+                    width: 400px;
+                    height: 55px;
+                }
+                .sign-btn {
+                    padding: 14px 75px;
+                    background: #17344F 0% 0% no-repeat padding-box;
+                    opacity: 1;
+                    color: white;
+                }
+            }
+
+        }
+        .footer-min-content {
+            margin-top: 70px;
+            .title {
+                margin-top: 40px;
+            }
+            .card-item {
+                .item {
+                    width: 60px;
+                    height: 35px;
+                }
+            }
+        }
+
+    }
+}
