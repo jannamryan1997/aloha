@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subject } from 'rxjs';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { takeUntil, filter } from 'rxjs/operators';
+import { MenuService } from '../../../core/services/menu.service';
+import { RouteStep } from '../../../core/models/route-step';
 
 @Component({
     selector: "profile-view",
@@ -12,20 +14,20 @@ export class ProfileView implements OnInit, OnDestroy {
     private _unsubscribe$: Subject<void> = new Subject<void>();
     public title: string;
     public beehives: boolean = false;
-    public url:string;
+    public url: string;
+    public routeSteps: RouteStep[] = [];
 
     constructor(
         private _router: Router,
         private _activatedRoute: ActivatedRoute,
-    ) { 
-     
-    }
+        private _menuService: MenuService
+    ) { }
 
     ngOnInit() {
+        this.url = this._router.url;
         this._setTitle();
         this._handleRouteEvents();
-        this.url=this._router.url;
-        
+        this._handleRouteStepsEvent();
     }
 
     private _handleRouteEvents(): void {
@@ -35,15 +37,25 @@ export class ProfileView implements OnInit, OnDestroy {
                 filter((event) => event instanceof NavigationEnd)
             )
             .subscribe(() => {
-                this.url=this._router.url;
+                this.url = this._router.url;
                 this._setTitle();
             })
+    }
+
+    private _handleRouteStepsEvent(): void {
+        this._menuService.getRouteSteps
+            .pipe(takeUntil(this._unsubscribe$))
+            .subscribe((data) => {
+                this.routeSteps = data;
+            })
+
     }
 
     private _setTitle(): void {
         const title: string = this._activatedRoute.firstChild.snapshot.data.title || '';
         this.title = title;
     }
+
     private _openbeehives(): void {
         this.beehives = !this.beehives;
     }
