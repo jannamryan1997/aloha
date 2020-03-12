@@ -37,11 +37,25 @@
                     line-height: 19px;
                     width: 160px;
                     margin-top: 12px;
-                    .payment-icon {
+                    // .payment-icon {
+                    //     width: 22px;
+                    //     height: 22px;
+                    //     cursor: pointer;
+                    // }
+                    .payment-radius {
+                        background: #FFFFFF00 0% 0% no-repeat padding-box;
+                        border: 1px solid  #8695A5;
+                        opacity: 1;
                         width: 22px;
                         height: 22px;
+                        border-radius: 50%;
                         cursor: pointer;
-                    }
+                
+                        i {
+                          color: #8695A5;
+                          font-size: 12px;
+                        }
+                      }
                 }
             }
         }
@@ -57,7 +71,7 @@
                 font-size: 18px;
             }
             .table {
-                .mat-th {
+                .mat-td {
                     padding: 7px 0;
                     border: none;
                     word-break: break-all;
@@ -66,7 +80,7 @@
                     line-height: 19px;
                     font-weight: 600;
                 }
-                .right-th {
+                .right-td {
                     font-size: 18px;
                 }
             }
