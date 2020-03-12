@@ -13,10 +13,14 @@
         <div class="beehives-header d-flex align-items-center">
             <div class=" d-flex m-auto">
                 <p class="text">Buy beehives</p>
-                <img src="assets/icons/beehives-icon.svg" class="rounded d-block icon ml-3" alt="..."
-                    (click)="onclick()" *ngIf="beehives">
-                <img src="assets/icons/behaves-open.svg" class="rounded d-block icon ml-3" alt="..." (click)="onclick()"
-                    *ngIf="!beehives">
+                <div class="behives-radius  ml-3 d-flex" (click)="onclick()">
+                    <i class="material-icons m-auto" *ngIf="beehives">
+                        keyboard_arrow_up
+                    </i>
+                    <i class="material-icons m-auto" *ngIf="!beehives">
+                        keyboard_arrow_down
+                    </i>
+                </div>
             </div>
         </div>
         <div class="beehives-main" *ngIf="beehives">
@@ -27,7 +31,7 @@
                     <p class="text">price for one: <b>$200</b></p>
                     <div class="add d-flex justify-content-between">
                         <button class="btn  add-button cursor-pointer" type="submit">-</button>
-                            <input type="number" value="2" class="input-content m-auto text-center">
+                        <input type="number" value="2" class="input-content m-auto text-center">
                         <button class="btn  add-button cursor-pointer" type="submit">+</button>
                     </div>
                 </div>
