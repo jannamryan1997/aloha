@@ -1,49 +1,56 @@
 <header class="header">
-    <div class="header-container">
+    <div class="header-container position-relative">
         <div class="header-content pg-container d-flex align-items-center text-center justify-content-between">
             <div class="header-left-side d-flex align-items-center text-center">
                 <img src="assets/images/logo.png" class="rounded d-block logo" alt="...">
                 <p class="text logo-text text-left">american raw honey</p>
             </div>
-            <div class="header-right-side d-flex">
-                <img src="assets/icons/user.svg" class="rounded d-block icon" alt="...">
-                <p class="text user-name">User: id_00900</p>
-                <img src="assets/icons/cart.svg" class="rounded d-block icon card-icon" alt="...">
-                <img src="assets/icons/menu-icon.svg" class="rounded d-block icon menu-icon" alt="..."
-                    (click)="onclick()" *ngIf="!coupon">
-                <div class="coupon-icon">
-                    <img src="assets/icons/coupon-icon.svg" class="rounded d-block icon menu-icon" alt="..."
-                        (click)="onclick()" *ngIf="coupon">
+            <div class="header-right-side d-flex justify-content-between">
+                <div class="personal-area d-flex align-items-center">
+                    <img src="assets/icons/user.svg" class="rounded d-block icon" alt="...">
+                    <p class="text user-name">User: id_00900</p>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="coupon" *ngIf="coupon">
-        <div class="coupon-content pg-container d-flex">
-            <div class="coupon-card">
-                <div class="card-description m-auto">
-                    <p class="title">Your coupon</p>
-                    <p class="text">20% discount on store purchases www.rahonyfromutha.com</p>
-                    <div class="coupon-value d-flex justify-content-between">
-                        <input type="text" class="coupon-input" value="#0123456789" #userinput disabled>
-                        <button class="btn copy-btn cursor-pointer d-flex align-items-center" type="submit"
-                            (click)="copyInputMessage(userinput)">
-                            <p>copy </p>
-                            <i class="material-icons ml-2">
-                                file_copy
-                            </i>
-                        </button>
+                <div class="nav-items d-flex align-items-center">
+                    <div class="icon-wrapper">
+                        <img src="assets/icons/cart.svg" class="rounded d-block icon card-icon" alt="...">
+                    </div>
+                    <div class="icon-wrapper" [class.active]="menuOpened">
+                        <div class="menu-icon" [class.open]='menuOpened' (click)="onClickOpenMenu()">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="coupon-menu d-flex flex-column">
-                <a class="items" routerLink="/profile/user-account" [routerLinkActive]="'activeTab'">Profile</a>
-                <a class="items" routerLink="/profile/user-addresses" [routerLinkActive]="'activeTab'">Addresses</a>
-                <a class="items" routerLink="/profile/payment-details" [routerLinkActive]="'activeTab'">Payment
-                    details</a>
-                <a class="items" routerLink="/profile/asset-list" [routerLinkActive]="'activeTab'">Asset list</a>
-                <a class="items" routerLink="/profile/payment" [routerLinkActive]="'activeTab'">Payments</a>
-                <a class="items" routerLink="#" [routerLinkActive]="'activeTab'">Support</a>
+        </div>
+        <div class="main-nav-menu" *ngIf="menuOpened">
+            <div class="main-nav-menu-content pg-container d-flex">
+                <div class="coupon-card">
+                    <div class="card-description m-auto">
+                        <p class="title">Your coupon</p>
+                        <p class="text">20% discount on store purchases <br> www.rahonyfromutha.com</p>
+                        <div class="coupon-value d-flex justify-content-between">
+                            <input type="text" class="coupon-input" value="#0123456789" #userinput disabled>
+                            <button class="btn copy-btn cursor-pointer d-flex align-items-center" type="submit"
+                                (click)="copyInputMessage(userinput)">
+                                <p>copy </p>
+                                <i class="material-icons ml-2">
+                                    file_copy
+                                </i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-nav-menu-items d-flex flex-column">
+                    <a class="items" routerLink="/profile/user-account" [routerLinkActive]="'activeTab'">Profile</a>
+                    <a class="items" routerLink="/profile/user-addresses" [routerLinkActive]="'activeTab'">Addresses</a>
+                    <a class="items" routerLink="/profile/payment-details" [routerLinkActive]="'activeTab'">Payment
+                        details</a>
+                    <a class="items" routerLink="/profile/asset-list" [routerLinkActive]="'activeTab'">Asset list</a>
+                    <a class="items" routerLink="/profile/payments" [routerLinkActive]="'activeTab'">Payments</a>
+                    <a class="items" routerLink="#" [routerLinkActive]="'activeTab'">Support</a>
+                </div>
             </div>
         </div>
     </div>

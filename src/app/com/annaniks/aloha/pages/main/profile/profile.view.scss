@@ -141,12 +141,16 @@
         max-width: 135px;
 
         .title {
+          margin:3px 0;
           font-size: 14px;
           line-height: 19px;
           color: #17344f;
           padding: 11px;
           cursor: pointer;
           transition: 0.5s all ease-out;
+          &:hover{
+            background-color: #E4F4FF ;
+          }
         }
       }
 

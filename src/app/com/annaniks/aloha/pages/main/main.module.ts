@@ -6,8 +6,8 @@ import { SharedModule } from '../../shared/shared.module';
 import { HeaderComponent } from '../../layout';
 
 @NgModule({
-    declarations: [MainView,HeaderComponent],
-    imports: [MainRoutingModule,SharedModule],
+    declarations: [MainView, HeaderComponent],
+    imports: [MainRoutingModule, SharedModule],
     providers: [MainService]
 })
 
