@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { MenuService } from '../../../../core/services/menu.service';
+import { RouteStep } from '../../../../core/models/route-step';
 
 @Component({
     selector: "asset-list-view",
@@ -8,7 +10,13 @@ import { Component, OnInit } from "@angular/core";
 
 export class AssetListComponent implements OnInit {
 
-    constructor() { }
+    constructor(private _menuService: MenuService) {
+        const routeSteps: RouteStep[] = [
+            { label: 'Main', routerLink: '/' },
+            { label: 'Asset List', routerLink: '/profile/asset-list' }
+        ]
+        this._menuService.setRouteSteps(routeSteps);
+    }
 
     ngOnInit() { }
 }

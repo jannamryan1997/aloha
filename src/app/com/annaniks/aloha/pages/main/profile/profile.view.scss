@@ -7,15 +7,20 @@
     .header-wrapper {
       .rout-step {
         padding-bottom: 10px;
-
-        .title {
+        padding-bottom: 10px;
+        .route-step-item {
           text-decoration: underline;
           font-size: 12px;
+          color:#17344f;
           cursor: pointer;
-          margin-left: 20px;
-
+          margin-left: 15px;
           &:first-child {
             margin-left: 0 !important;
+          }
+          &:last-child{
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 14px;
           }
         }
       }
@@ -43,29 +48,25 @@
       }
 
       .behives-radius {
-        background: #FFFFFF00 0% 0% no-repeat padding-box;
-        border: 1px solid #FFFFFF;
+        background: #ffffff00 0% 0% no-repeat padding-box;
+        border: 1px solid #ffffff;
         opacity: 1;
         width: 38px;
         height: 38px;
         border-radius: 50%;
         cursor: pointer;
-
         i {
-          color: #8695A5;
+          color: #8695a5;
           font-size: 32px;
         }
       }
     }
-
     .beehives-main {
       background: #f2f3f5 0% 0% no-repeat padding-box;
       box-shadow: 0px 3px 6px #00000029;
       opacity: 1;
       padding: 50px 0;
-
       .main-content {
-
         .text,
         .title {
           color: #17344f;
@@ -74,12 +75,10 @@
           word-break: break-all;
           margin-bottom: 30px;
         }
-
         .title {
           font-size: 30px;
           line-height: 40px;
         }
-
         .laft-content {
           width: 100%;
           max-width: 500px;
@@ -87,7 +86,6 @@
           box-shadow: 0px 3px 6px #00000029;
           opacity: 1;
           padding: 35px 110px;
-
           .add {
             margin-top: 25px;
             width: 180px;
@@ -95,7 +93,6 @@
             border: 1px solid #f2f3f5;
             border-radius: 5px;
             opacity: 1;
-
             .add-button {
               width: 50px;
               height: 50px;
@@ -107,7 +104,6 @@
               margin: 0;
               font-weight: bold;
             }
-
             .input-content {
               color: #17344f;
               font-size: 30px;
@@ -118,12 +114,10 @@
             }
           }
         }
-
         .right-content {
           width: 100%;
           max-width: 220px;
           padding: 35px 0;
-
           .save-btn {
             padding: 16px 70px;
           }
@@ -135,21 +129,19 @@
   .profile-main {
     .main-container {
       margin: 60px auto;
-
       .menu-content {
         width: 100%;
         max-width: 135px;
-
         .title {
-          margin:3px 0;
+          margin: 3px 0;
           font-size: 14px;
           line-height: 19px;
           color: #17344f;
           padding: 11px;
           cursor: pointer;
           transition: 0.5s all ease-out;
-          &:hover{
-            background-color: #E4F4FF ;
+          &:hover {
+            background-color: #e4f4ff;
           }
         }
       }
@@ -168,10 +160,11 @@
   }
 }
 
-.activeTab {
+.activeLink {
   color: #17344f !important;
   text-decoration: none !important;
-  font-size: 17px !important;
+  font-size: 14px !important;
+  font-weight: bold;
 }
 
 .activeMenuTab {
