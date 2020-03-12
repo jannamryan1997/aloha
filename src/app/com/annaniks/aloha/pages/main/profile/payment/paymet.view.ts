@@ -8,7 +8,7 @@ import { PayBillView } from '../../../../core/modals';
     styleUrls: ["payment.view.scss"]
 })
 export class PaymentView implements OnInit {
-
+    public hive: boolean = false;
     constructor(private _dialog: MatDialog) { }
 
     ngOnInit() { }
@@ -19,8 +19,15 @@ export class PaymentView implements OnInit {
             maxWidth: "770px"
         })
     }
+    private _openStandartHive(): void {
+        this.hive = !this.hive;
+    }
 
     public onSbmit(): void {
         this._openPayBillModal();
+    }
+
+    public onclick(): void {
+        this._openStandartHive();
     }
 }

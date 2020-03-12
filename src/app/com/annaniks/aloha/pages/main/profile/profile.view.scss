@@ -80,14 +80,13 @@
               margin: 0;
               font-weight: bold;
             }
-            .value-content {
-              width: 70px;
-              .value {
+              .input-content {
                 color: #17344f;
                 font-size: 30px;
                 line-height: 40px;
                 word-break: break-all;
-              }
+                width: 70px;
+                border: none;
             }
           }
         }
