@@ -8,10 +8,14 @@
                 <p class="text">Invoice amount</p>
                 <div class="payment-info d-flex align-items-center">
                     <p>Pyment info</p>
-                    <img src="assets/icons/pyment-icon-close.svg" class="rounded d-block icon payment-icon ml-md-3"
-                        alt="..." (click)="onclick()" *ngIf="!hive">
-                    <img src="assets/icons/payment-icon-open.svg" class="rounded d-block icon payment-icon ml-md-3"
-                        alt="..." (click)="onclick()" *ngIf="hive">
+                    <div class="payment-radius  ml-3 d-flex" (click)="onclick()">
+                        <i class="material-icons m-auto" *ngIf="hive">
+                            keyboard_arrow_up
+                        </i>
+                        <i class="material-icons m-auto" *ngIf="!hive">
+                            keyboard_arrow_down
+                        </i>
+                    </div>
                 </div>
             </div>
             <div class="value-content">
@@ -22,20 +26,20 @@
             <p class="title">Standart hive</p>
             <table class="table">
                 <tr class="mat-tr">
-                    <th class="mat-th w-50">Hive dimensions</th>
-                    <th class="mat-th w-50 right-th">90*90*90</th>
+                    <td class="mat-td w-50">Hive dimensions</td>
+                    <td class="mat-td w-50 right-td">90*90*90</td>
                 </tr>
                 <tr class="mat-tr">
-                    <th class="mat-th w-50">amount</th>
-                    <th class="mat-th w-50 right-th">2 pcs</th>
+                    <td class="mat-td w-50">amount</td>
+                    <td class="mat-td w-50 right-td">2 pcs</td>
                 </tr>
                 <tr class="mat-tr">
-                    <th class="mat-th w-50">Data of purchase</th>
-                    <th class="mat-th w-50 right-th">10.02.20</th>
+                    <td class="mat-td w-50">Data of purchase</td>
+                    <td class="mat-td w-50 right-td">10.02.20</td>
                 </tr>
                 <tr class="mat-tr">
-                    <th class="mat-th w-50">Total price</th>
-                    <th class="mat-th w-50 right-th">$ 1.500</th>
+                    <td class="mat-td w-50">Total price</td>
+                    <td class="mat-td w-50 right-td">$ 1.500</td>
                 </tr>
             </table>
         </div>
@@ -50,8 +54,11 @@
 
                 <div class="payment-info d-flex align-items-center">
                     <p>Pyment info</p>
-                    <img src="assets/icons/pyment-icon-close.svg" class="rounded d-block icon payment-icon ml-md-3"
-                        alt="...">
+                    <div class="payment-radius  ml-3 d-flex">
+                        <i class="material-icons m-auto">
+                            keyboard_arrow_down
+                        </i>
+                    </div>
                 </div>
             </div>
             <div class="value-content">
