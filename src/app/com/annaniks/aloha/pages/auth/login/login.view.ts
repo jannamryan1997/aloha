@@ -19,7 +19,6 @@ export class LoginView implements OnInit {
     private _formBuilder(): void {
         this.logIn = this._fb.group({
             email: [null, Validators.required],
-            password: [null, Validators.required]
         })
     }
     public checkIsValid(controlName): boolean {

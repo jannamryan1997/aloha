@@ -1,0 +1,40 @@
+.registration-form-content {
+    .registration-form-header {
+      background: #f2f3f5;
+      padding: 66px 0;
+      .registration-form-header-container {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 500px;
+        .text {
+          color: #17344f;
+          font-size: 30px;
+          margin-left: 100px;
+        }
+      }
+      
+    }
+    .registration-form {
+      width: 100%;
+      margin: 0 auto;
+      padding: 66px 0;
+      max-width: 500px;
+      .form-group {
+        width: 100%;
+        .input {
+          width: calc(100% - 100px) !important;
+        }
+        .label-wrapper {
+          width: 100px;
+          .label {
+            color: #17344f;
+            font-size: 21px;
+          }
+        }
+      }
+      .save-btn {
+        margin-left: 100px !important;
+      }
+    }
+  }
+  
