@@ -12,15 +12,20 @@ export class ProfileView implements OnInit, OnDestroy {
     private _unsubscribe$: Subject<void> = new Subject<void>();
     public title: string;
     public beehives: boolean = false;
+    public url:string;
 
     constructor(
         private _router: Router,
-        private _activatedRoute: ActivatedRoute
-    ) { }
+        private _activatedRoute: ActivatedRoute,
+    ) { 
+     
+    }
 
     ngOnInit() {
         this._setTitle();
         this._handleRouteEvents();
+        this.url=this._router.url;
+        
     }
 
     private _handleRouteEvents(): void {
@@ -30,6 +35,7 @@ export class ProfileView implements OnInit, OnDestroy {
                 filter((event) => event instanceof NavigationEnd)
             )
             .subscribe(() => {
+                this.url=this._router.url;
                 this._setTitle();
             })
     }

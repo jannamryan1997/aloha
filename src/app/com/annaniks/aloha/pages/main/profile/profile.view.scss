@@ -29,6 +29,7 @@
   }
 
   .beehives-content {
+    display: none;
     .beehives-header {
       background: #ffcf00 0% 0% no-repeat padding-box;
       box-shadow: 0px 1px 0px #00000029;
@@ -179,4 +180,7 @@
   background: #009dff 0% 0% no-repeat padding-box !important;
   border-radius: 5px !important;
   text-decoration: none !important;
+}
+.display{
+  display: block !important;
 }
