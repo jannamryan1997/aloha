@@ -7,18 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class HeaderComponent implements OnInit {
-    public coupon: boolean = false;
+    public menuOpened: boolean = false;
     constructor() { }
 
     ngOnInit() { }
 
-    private _openCouponMenu(): void {
-        this.coupon = !this.coupon;
+    public onClickOpenMenu(): void {
+        this.menuOpened = !this.menuOpened;
     }
 
-    public onclick(): void {
-        this._openCouponMenu();
-    }
     public copyInputMessage(userinput): void {
         userinput.select();
         document.execCommand('copy');
