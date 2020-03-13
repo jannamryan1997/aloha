@@ -14,6 +14,7 @@ export class ProfileView implements OnInit, OnDestroy {
     private _unsubscribe$: Subject<void> = new Subject<void>();
     public title: string;
     public beehives: boolean = false;
+    public url: string;
     public routeSteps: RouteStep[] = [];
 
     constructor(
@@ -23,6 +24,7 @@ export class ProfileView implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
+        this.url = this._router.url;
         this._setTitle();
         this._handleRouteEvents();
         this._handleRouteStepsEvent();
@@ -35,6 +37,7 @@ export class ProfileView implements OnInit, OnDestroy {
                 filter((event) => event instanceof NavigationEnd)
             )
             .subscribe(() => {
+                this.url = this._router.url;
                 this._setTitle();
             })
     }
