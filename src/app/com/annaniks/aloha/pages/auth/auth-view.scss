@@ -20,9 +20,23 @@
     }
   }
 
-  .auth-main {
+  .auth-content{
     width: 100%;
     max-width: 775px;
-    background: #f9f9fa;
+    .auth-main {
+      background: #f9f9fa;
+    }
+    .auth-top-content{
+      margin-top: 110px;
+      .title{
+    font-weight: 600;
+      }
+      .text,.title{
+        color: #17344f;
+        font-size: 20px;
+        line-height: 27px;
+      }
+    }
   }
+ 
 }
