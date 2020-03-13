@@ -56,11 +56,17 @@ export class ProfileView implements OnInit, OnDestroy {
     private _openbeehives(): void {
         this.beehives = !this.beehives;
     }
+    private _closeBeehivesMain(): void {
+        this.beehives = false;
+    }
 
     public onclick(): void {
         this._openbeehives();
     }
 
+    public onclickClosebeehives(): void {
+        this._closeBeehivesMain();
+    }
     ngOnDestroy() {
         this._unsubscribe$.next();
         this._unsubscribe$.complete();
