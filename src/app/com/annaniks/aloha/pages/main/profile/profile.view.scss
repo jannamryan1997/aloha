@@ -58,6 +58,13 @@
         i {
           color: #8695a5;
           font-size: 32px;
+          transition: transform 0.5s;
+        }
+        .innter-close{
+          transform: rotate(0deg);
+        }
+        .inner-open{
+          transform: rotate(180deg);
         }
       }
     }
