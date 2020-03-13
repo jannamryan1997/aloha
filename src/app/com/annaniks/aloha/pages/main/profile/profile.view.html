@@ -2,9 +2,7 @@
     <div class="profile-header">
         <div class="header-wrapper pg-container">
             <div class="rout-step d-flex align-items-center">
-                <a class="title cursor-pointer">Main</a>
-                <a class="title cursor-pointer" routerLink="/profile/user-account" [routerLinkActive]="'activeTab'">User
-                    Account</a>
+                <a class="route-step-item cursor-pointer" *ngFor="let item of routeSteps" [routerLink]="item?.routerLink">{{item?.label}}</a>
             </div>
             <p class="text">{{title}}</p>
         </div>

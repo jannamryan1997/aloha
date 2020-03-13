@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { Validators, FormControl } from '@angular/forms';
+import { RouteStep } from '../../../../core/models/route-step';
+import { MenuService } from '../../../../core/services/menu.service';
 
 @Component({
     selector: "user-addresses-view",
@@ -7,8 +8,14 @@ import { Validators, FormControl } from '@angular/forms';
     styleUrls: ["user-addresses-view.scss"]
 })
 export class UserAddressesView implements OnInit {
-    public addressesControl: FormControl = new FormControl(null, [Validators.required]);
-    constructor() { }
+
+    constructor(private _menuService: MenuService) {
+        const routeSteps: RouteStep[] = [
+            { label: 'Main', routerLink: '/' },
+            { label: 'Addresses', routerLink: '/profile/user-addresses' }
+        ]
+        this._menuService.setRouteSteps(routeSteps);
+    }
 
     ngOnInit() { }
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MenuService } from '../../../../core/services/menu.service';
+import { RouteStep } from '../../../../core/models/route-step';
 
 @Component({
     selector: "user-account-view",
@@ -7,21 +9,30 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     styleUrls: ["user-account.view.scss"]
 })
 export class UserAccountView implements OnInit {
+    public userAccountGroup: FormGroup;
 
-    public userAccountGroup:FormGroup;
-    constructor(private _fb:FormBuilder) { }
+    constructor(
+        private _fb: FormBuilder,
+        private _menuService: MenuService
+    ) {
+        const routeSteps: RouteStep[] = [
+            { label: 'Main', routerLink: '/' },
+            { label: 'Profile', routerLink: '/profile' }
+        ]
+        this._menuService.setRouteSteps(routeSteps);
+    }
 
-    ngOnInit() { 
+    ngOnInit() {
         this._formBuilder();
     }
 
-    private _formBuilder():void{
-        this.userAccountGroup=this._fb.group({
-            name:[null,Validators.required],
-            phonenumber:[null,Validators.required],
-            country:[null,Validators.required],
-            email:[null,[Validators.required,Validators.email]],
-            details:[null,Validators.required]
+    private _formBuilder(): void {
+        this.userAccountGroup = this._fb.group({
+            name: [null, Validators.required],
+            phonenumber: [null, Validators.required],
+            country: [null, Validators.required],
+            email: [null, [Validators.required, Validators.email]],
+            details: [null, Validators.required]
         })
     }
     public checkIsValid(controlName): boolean {
