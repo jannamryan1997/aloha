@@ -1,11 +1,14 @@
-<form [formGroup]="registrationForm">
+<form [formGroup]="registrationForm" *ngIf="closeRegistrationMain">
     <div class="registration-form-content">
+
         <div class="registration-form-header d-flex">
             <div class="registration-form-header-container">
                 <p class="text">Registration</p>
             </div>
         </div>
-        <div id="logreg-forms" class="registration-form">
+       
+        <div id="registration-forms" class="registration-form">
+                <p class="tex-center error text-danger error-message">{{errorMessage}}</p>
             <div class="form-group d-flex align-items-center">
                 <div class="label-wrapper">
                     <label class="label">E mail</label>
@@ -15,14 +18,27 @@
             </div>
             <div class="form-group d-flex align-items-center">
                 <div class="label-wrapper">
-                    <label class="label">Pass</label>
+                    <label class="label">Name</label>
                 </div>
-                <input type="password" id="inputPassword" formControlName="password" class="form-control input"
-                    placeholder="Password" [ngClass]="{'border':checkIsValid('password')}">
+                <input type="text" id="name" formControlName="name" class="form-control input"
+                    placeholder="Name" [ngClass]="{'border':checkIsValid('name')}">
+
+            </div>
+            <div class="form-group d-flex align-items-center">
+                <div class="label-wrapper">
+                    <label class="label">Phone</label>
+                </div>
+                <input type="text" id="phone" formControlName="phone" class="form-control input"
+                    placeholder="Phone" [ngClass]="{'border':checkIsValid('phone')}">
 
             </div>
             <button class="btn save-btn cursor-pointer" type="submit"
-                [disabled]="registrationForm.invalid">Save</button>
+                [disabled]="registrationForm.invalid" (click)="onclickRegistration()">Save</button>
         </div>
     </div>
 </form>
+
+<div class="message-main d-flex" *ngIf="!closeRegistrationMain">
+            <p class="text m-auto">Please see your email</p>
+   
+</div>
