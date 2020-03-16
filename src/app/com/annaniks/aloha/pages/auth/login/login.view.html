@@ -6,6 +6,7 @@
             </div>
         </div>
         <div id="logreg-forms" class="login-form">
+                <p class="tex-center error text-danger error-message">{{errorMessage}}</p>
             <div class="form-group d-flex align-items-center">
                 <div class="label-wrapper">
                     <label class="label">E mail</label>
@@ -15,7 +16,7 @@
                     placeholder="E mail" [ngClass]="{'border':checkIsValid('email')}">
             </div>
             <button class="btn save-btn cursor-pointer" type="submit" 
-                [disabled]="logIn.invalid">Log in</button>
+                [disabled]="logIn.invalid" (click)="onclickLogin()">Log in</button>
         </div>
     </div>
 </form>
