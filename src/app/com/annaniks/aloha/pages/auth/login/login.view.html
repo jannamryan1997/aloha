@@ -1,11 +1,11 @@
-<form [formGroup]="logIn">
+<form [formGroup]="logIn" *ngIf="closeLoginMain">
     <div class="login-form-content">
         <div class="login-form-header d-flex">
             <div class="login-form-header-container">
                 <p class="text">Sign in</p>
             </div>
         </div>
-        <div id="logreg-forms" class="login-form">
+        <div id="login-forms" class="login-form">
                 <p class="tex-center error text-danger error-message">{{errorMessage}}</p>
             <div class="form-group d-flex align-items-center">
                 <div class="label-wrapper">
@@ -15,8 +15,13 @@
                 <input type="email" id="inputEmail" formControlName="email" class="form-control input"
                     placeholder="E mail" [ngClass]="{'border':checkIsValid('email')}">
             </div>
-            <button class="btn save-btn cursor-pointer" type="submit" 
-                [disabled]="logIn.invalid" (click)="onclickLogin()">Log in</button>
+            <button class="btn save-btn cursor-pointer d-flex align-items-center" type="submit" 
+                [disabled]="logIn.invalid" (click)="onclickLogin()">Log in <app-loading *ngIf="loading" class="loading ml-3"></app-loading></button>
         </div>
     </div>
 </form>
+
+<div class="message-main d-flex" *ngIf="!closeLoginMain">
+    <p class="text m-auto">We Send Message in your email - <b class="email-text">{{email}}</b>, Please Check</p>
+
+</div>

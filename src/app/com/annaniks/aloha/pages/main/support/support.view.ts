@@ -1,17 +1,17 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Subject } from 'rxjs';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { takeUntil, filter } from 'rxjs/operators';
-import { MenuService } from '../../../core/services/menu.service';
+import { Component, OnInit,OnDestroy } from "@angular/core";
 import { RouteStep } from '../../../core/models/route-step';
-import { ProfileService } from './profile.service';
+import { Subject } from 'rxjs';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { MenuService } from '../../../core/services/menu.service';
+import { takeUntil, filter } from 'rxjs/operators';
 
 @Component({
-    selector: "profile-view",
-    templateUrl: "profile.view.html",
-    styleUrls: ["profile.view.scss"]
+    selector: "support-view",
+    templateUrl: "support.view.html",
+    styleUrls: ["support.view.scss"]
 })
-export class ProfileView implements OnInit, OnDestroy {
+
+export class SupportView implements OnInit,OnDestroy {
     private _unsubscribe$: Subject<void> = new Subject<void>();
     public title: string;
     public beehives: boolean = false;
@@ -22,7 +22,6 @@ export class ProfileView implements OnInit, OnDestroy {
         private _router: Router,
         private _activatedRoute: ActivatedRoute,
         private _menuService: MenuService,
-        private _profileService: ProfileService
     ) { }
 
     ngOnInit() {
@@ -50,30 +49,14 @@ export class ProfileView implements OnInit, OnDestroy {
             .subscribe((data) => {
                 this.routeSteps = data;
             })
-
     }
-
     private _setTitle(): void {
         const title: string = this._activatedRoute.firstChild.snapshot.data.title || '';
         this.title = title;
-    }
-
-    private _openbeehives(): void {
-        this.beehives = !this.beehives;
-    }
-    private _closeBeehivesMain(): void {
-        this.beehives = false;
-    }
-
-    public onclick(): void {
-        this._openbeehives();
-    }
-
-    public onclickClosebeehives(): void {
-        this._closeBeehivesMain();
     }
     ngOnDestroy() {
         this._unsubscribe$.next();
         this._unsubscribe$.complete();
     }
+
 }

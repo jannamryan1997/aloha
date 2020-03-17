@@ -1,0 +1,26 @@
+<div class="support-content">
+    <div class="support-header">
+        <div class="header-wrapper pg-container">
+            <div class="rout-step d-flex align-items-center">
+                <a class="route-step-item cursor-pointer" *ngFor="let item of routeSteps"
+                    [routerLink]="item?.routerLink">{{item?.label}}</a>
+            </div>
+            <p class="text">{{title}}</p>
+        </div>
+    </div>
+    <div class="support-main">
+        <div class="main-container pg-container d-flex">
+            <div class="menu-content d-flex flex-column">
+                <a class="title" routerLink="#" [routerLinkActive]="'activeMenuTab'">Privacy</a>
+                <a class="title" routerLink="#" [routerLinkActive]="'activeMenuTab'">Limited License</a>
+                <a class="title" routerLink="/support/terms" [routerLinkActive]="'activeMenuTab'">Terms of Use</a>
+                <a class="title" routerLink="#" [routerLinkActive]="'activeMenuTab'">Asset list</a>
+                <a class="title" routerLink="#" [routerLinkActive]="'activeMenuTab'">Contact us</a>
+            </div>
+            <div class="router-content">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

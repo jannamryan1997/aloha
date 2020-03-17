@@ -1,0 +1,93 @@
+@mixin text-style($fontSize, $color, $lineHeight) {
+    font-size: $fontSize;
+    color: $color;
+    line-height: $lineHeight;
+    margin-top: 30px;
+}
+
+.teams-content {
+    .title {
+        @include text-style(50px, #17344F, 67px)
+    }
+
+    .text {
+        @include text-style(30px, #17344F, 40px)
+    }
+
+    .data {
+        @include text-style(14px, #17344F, 19px)
+    }
+
+    .code-text {
+        @include text-style(20px, #17344F, 27px);
+        font-weight: 600;
+    }
+
+    .teams-main-content {
+        .main-text {
+            @include text-style(18px, #17344F, 24px);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        &::after {
+            content: "";
+            display: block;
+            width: 100%;
+            border: 1px solid #B4B4B4;
+            opacity: 1;
+            margin-top: 25px;
+        }
+    }
+
+    .trams-table {
+        margin-top: 90px;
+
+        .table {
+            .mat-th {
+                @include text-style(20px, #17344F, 27px);
+                font-weight: bold;
+                border: none !important;
+                padding: 0;
+            }
+
+            .mat-td {
+                @include text-style(14px, #17344F, 19px);
+                padding: 11px 0;
+                border: none;
+                word-break: break-all;
+            }
+        }
+    }
+
+    .paragraf-content {
+        .paragraf-text {
+            @include text-style(18px, #17344F, 24px);
+            margin-top: 0px !important;
+        }
+    }
+
+    .table-page {
+        .table {
+            margin-top: 40px;
+            .mat-th {
+                @include text-style(14px, #17344F, 19px);
+                font-weight: bold;
+                padding: 11px 0;
+                border-top: none !important;
+                border-bottom: 1px solid  #dee2e6 !important;
+            }
+
+            .mat-td {
+                @include text-style(14px, #17344F, 19px);
+                padding: 11px 0;
+                border: none;
+                word-break: break-all;
+            }
+            .secend-item{
+                background: #E6E9EC !important;
+                padding: 11px 11px;
+            }
+        }
+    }
+}
