@@ -13,5 +13,8 @@ export class ProfileService {
     public getProfile(): Observable<ProfileResponse> {
         return this._httpClient.get<ProfileResponse>('/profile');
     }
+    public postProfile(body: ProfileResponse): Observable<ProfileResponse> {
+        return this._httpClient.post<ProfileResponse>('/profile', body)
+    }
 
 }
