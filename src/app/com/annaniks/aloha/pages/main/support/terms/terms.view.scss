@@ -3,33 +3,46 @@
     color: $color;
     line-height: $lineHeight;
     margin-top: 30px;
+    word-break: break-all;
 }
-
+//general
 .teams-content {
+    .content-text {
+        @include text-style(18px, #17344F, 24px);
+        margin-top: 10px !important;
+        width: 100%;
+        max-width: 500px;
+    }
     .title {
         @include text-style(50px, #17344F, 67px)
     }
-
     .text {
         @include text-style(30px, #17344F, 40px)
     }
-
     .data {
         @include text-style(14px, #17344F, 19px)
     }
-
     .code-text {
         @include text-style(20px, #17344F, 27px);
-        font-weight: 600;
+        font-weight: 900;
     }
-
+    .mat-td {
+        @include text-style(14px, #17344F, 19px);
+        padding: 11px 0;
+        border: none;
+        word-break: break-all;
+    }
+    .mat-th {
+        @include text-style(20px, #17344F, 27px);
+        font-weight: bold;
+        border: none !important;
+        padding: 11px 0;
+    }
+    //teams-main
     .teams-main-content {
-        .main-text {
-            @include text-style(18px, #17344F, 24px);
-            width: 100%;
-            max-width: 500px;
+        .teams-text {
+            margin-top: 50px !important;
         }
-
         &::after {
             content: "";
             display: block;
@@ -39,52 +52,37 @@
             margin-top: 25px;
         }
     }
-
+//trams-table
     .trams-table {
-        margin-top: 90px;
-
-        .table {
-            .mat-th {
-                @include text-style(20px, #17344F, 27px);
-                font-weight: bold;
-                border: none !important;
-                padding: 0;
-            }
-
-            .mat-td {
-                @include text-style(14px, #17344F, 19px);
-                padding: 11px 0;
-                border: none;
-                word-break: break-all;
-            }
-        }
+        margin: 90px 0 80px 0;
     }
-
     .paragraf-content {
-        .paragraf-text {
-            @include text-style(18px, #17344F, 24px);
-            margin-top: 0px !important;
+        .content-text {
+            max-width: 800px !important;
         }
     }
-
+//quote-content
+    .quote-content {
+        margin: 40px 0 70px 0;
+        &::before {
+            display: block;
+            content: "";
+            border: 5px solid #FFCF00;
+            opacity: 1;
+        }
+        .quote-main-content {
+            margin-left: 70px;
+        }
+    }
+    //table-page
     .table-page {
         .table {
             margin-top: 40px;
             .mat-th {
                 @include text-style(14px, #17344F, 19px);
-                font-weight: bold;
-                padding: 11px 0;
-                border-top: none !important;
-                border-bottom: 1px solid  #dee2e6 !important;
+                border-bottom: 1px solid #dee2e6 !important;
             }
-
-            .mat-td {
-                @include text-style(14px, #17344F, 19px);
-                padding: 11px 0;
-                border: none;
-                word-break: break-all;
-            }
-            .secend-item{
+            .secend-item {
                 background: #E6E9EC !important;
                 padding: 11px 11px;
             }
