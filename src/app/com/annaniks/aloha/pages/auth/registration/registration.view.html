@@ -6,9 +6,9 @@
                 <p class="text">Registration</p>
             </div>
         </div>
-       
+
         <div id="registration-forms" class="registration-form">
-                <p class="tex-center error text-danger error-message">{{errorMessage}}</p>
+            <p class="tex-center error text-danger error-message">{{errorMessage}}</p>
             <div class="form-group d-flex align-items-center">
                 <div class="label-wrapper">
                     <label class="label">E mail</label>
@@ -20,25 +20,25 @@
                 <div class="label-wrapper">
                     <label class="label">Name</label>
                 </div>
-                <input type="text" id="name" formControlName="name" class="form-control input"
-                    placeholder="Name" [ngClass]="{'border':checkIsValid('name')}">
+                <input type="text" id="name" formControlName="name" class="form-control input" placeholder="Name"
+                    [ngClass]="{'border':checkIsValid('name')}">
 
             </div>
             <div class="form-group d-flex align-items-center">
                 <div class="label-wrapper">
                     <label class="label">Phone</label>
                 </div>
-                <input type="text" id="phone" formControlName="phone" class="form-control input"
-                    placeholder="Phone" [ngClass]="{'border':checkIsValid('phone')}">
+                <input type="text" id="phone" formControlName="phone" class="form-control input" placeholder="Phone"
+                    [ngClass]="{'border':checkIsValid('phone')}" OnlyNumber="true">
 
             </div>
-            <button class="btn save-btn cursor-pointer" type="submit"
-                [disabled]="registrationForm.invalid" (click)="onclickRegistration()">Save</button>
+            <button class="btn save-btn cursor-pointer d-flex align-items-center" type="submit" [disabled]="registrationForm.invalid"
+                (click)="onclickRegistration()">Save <app-loading class="ml-3" *ngIf="loading"></app-loading></button>
         </div>
     </div>
 </form>
 
 <div class="message-main d-flex" *ngIf="!closeRegistrationMain">
-            <p class="text m-auto">Please see your email</p>
-   
+    <p class="text m-auto">We Send Message in your email - <b class="email-text">{{email}}</b>, Please Check</p>
+
 </div>

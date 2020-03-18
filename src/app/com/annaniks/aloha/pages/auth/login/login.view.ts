@@ -2,7 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, finalize } from 'rxjs/operators';
+import { LoginResponse } from '../../../core/models/login';
 
 
 @Component({
@@ -15,7 +16,9 @@ export class LoginView implements OnInit {
     private _unsubscribe$: Subject<void> = new Subject<void>();
     public logIn: FormGroup;
     public errorMessage: string;
-
+    public loading: boolean = false;
+    public email: string;
+    public closeLoginMain: boolean = true;
 
     constructor(private _fb: FormBuilder, private _authService: AuthService) { }
 
@@ -29,15 +32,23 @@ export class LoginView implements OnInit {
         })
     }
     private _login(email): void {
+        this.loading = true;
+        this.logIn.disable();
         this._authService.login(email)
             .pipe(
                 takeUntil(this._unsubscribe$),
-            ).subscribe((data) => {
+                finalize(() => {
+                    this.loading = false;
+                    this.logIn.enable();
+                })
+            ).subscribe((data: LoginResponse) => {
+                this.email = email;
+                this.closeLoginMain = false;
                 console.log(data);
-
             },
                 err => {
-                    this.errorMessage = err.error.message;
+                    this.errorMessage = "Please fill in the correct email address";
+                    this.closeLoginMain = true;
                 }
             )
 

@@ -16,9 +16,11 @@
     }
 
   }
-.error-message{
-  margin-bottom: 20px;
-}
+
+  .error-message {
+    margin-bottom: 20px;
+  }
+
   .registration-form {
     width: 100%;
     margin: 0 auto;
@@ -56,7 +58,11 @@
 
   .text {
     color: #17344F;
-    font-size: 40px;
-    font-weight: 40px;
+    font-size: 25px;
+    line-height: 40px;
+  }
+
+  .email-text {
+    font-weight: 600;
   }
 }

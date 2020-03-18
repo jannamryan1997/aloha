@@ -27,10 +27,14 @@
         <div class="form-group d-flex align-items-center">
             <label for="Details" class="label">Details</label>
             <div class="input-content">
-                <textarea type="text" class="form-control input textarea" id="Details" formControlName="details"></textarea>
+                <textarea type="text" class="form-control input textarea" id="Details"
+                    formControlName="details"></textarea>
             </div>
         </div>
-     
+
     </div>
-    <button class="btn save-btn cursor-pointer" type="submit" [disabled]="userAccountGroup.invalid">Save</button>
+    <button class="btn save-btn cursor-pointer d-flex align-items-center" type="submit"
+        [disabled]="userAccountGroup.invalid" (click)="onclickPostProfile()">Save
+        <app-loading class="ml-3" *ngIf="loading"></app-loading>
+    </button>
 </form>

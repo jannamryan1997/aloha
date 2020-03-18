@@ -1,0 +1,19 @@
+mat-spinner {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+::ng-deep {
+    svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+}
+
+::ng-deep {
+
+    .mat-progress-spinner circle,
+    .mat-spinner circle {
+        stroke: white !important;
+    }
+}

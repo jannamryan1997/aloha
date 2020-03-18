@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { takeUntil } from 'rxjs/operators';
+import { FormGroup, FormBuilder, Validators, EmailValidator } from '@angular/forms';
+import { takeUntil, finalize } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { AuthService } from '../auth.service';
-import { RegistrationData } from '../../../core/models/registration';
+import { RegistrationData, RegistrationResponse } from '../../../core/models/registration';
 
 @Component({
     selector: "app-registration",
@@ -16,7 +16,8 @@ export class RegistrationView implements OnInit {
     private _unsubscribe$: Subject<void> = new Subject<void>();
     public closeRegistrationMain: boolean = true;
     public errorMessage: string;
-
+    public email: string;
+    public loading: boolean = false;
     constructor(private _fb: FormBuilder, private _authService: AuthService) { }
 
     ngOnInit() {
@@ -24,12 +25,14 @@ export class RegistrationView implements OnInit {
     }
     private _formBuilder(): void {
         this.registrationForm = this._fb.group({
-            email: [null, Validators.required],
+            email: [null, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
             name: [null, Validators.required],
             phone: [null, Validators.required]
         })
     }
     private _registration(): void {
+        this.loading = true;
+        this.registrationForm.disable();
         let registrationData: RegistrationData = {
             email: this.registrationForm.value.email,
             phone: this.registrationForm.value.phone,
@@ -38,14 +41,25 @@ export class RegistrationView implements OnInit {
         this._authService.registration(registrationData)
             .pipe(
                 takeUntil(this._unsubscribe$),
-            ).subscribe((data) => {
+                finalize(() => {
+                    this.loading = false;
+                    this.registrationForm.enable();
+                })
+            ).subscribe((data: RegistrationResponse) => {
                 console.log(data);
+                this.email = data.email;
                 this.closeRegistrationMain = false;
-            }),
-            err => {
-                this.closeRegistrationMain = true;
-                this.errorMessage = err.error.message;
-            }
+
+                console.log(this.email, "fdfdfd");
+            },
+                err => {
+                    this.closeRegistrationMain = true;
+                    this.errorMessage = err.error.msg;
+                    console.log(this.errorMessage);
+
+                }
+            )
+
     }
     public onclickRegistration(): void {
         this._registration();
