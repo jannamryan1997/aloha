@@ -5,7 +5,8 @@ import { RouteStep } from '../../../../core/models/route-step';
 import { takeUntil, finalize } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { ProfileService } from '../profile.service';
-import { ProfileResponse } from '../../../../core/models/profile';
+import { User } from '../../../../core/models/profile';
+import { AuthService } from '../../../../core/services/auth.services';
 
 @Component({
     selector: "user-account-view",
@@ -22,7 +23,8 @@ export class UserAccountView implements OnInit {
     constructor(
         private _fb: FormBuilder,
         private _menuService: MenuService,
-        private _profileService: ProfileService
+        private _profileService: ProfileService,
+        private _authService: AuthService
     ) {
         const routeSteps: RouteStep[] = [
             { label: 'Main', routerLink: '/' },
@@ -33,7 +35,8 @@ export class UserAccountView implements OnInit {
 
     ngOnInit() {
         this._formBuilder();
-        this._getProfile();
+        // this._getProfile();
+        this._setProfileValues();
     }
 
     private _formBuilder(): void {
@@ -45,26 +48,42 @@ export class UserAccountView implements OnInit {
             details: [null, Validators.required]
         })
     }
-    private _getProfile(): void {
-        this._profileService.getProfile()
-            .pipe(takeUntil(this._unsubscribe$))
-            .subscribe((data: ProfileResponse) => {
-                console.log(data, "hixxxxxxxx");
-                this._userId = data.id;
-                this._promocode = data.promocode;
-                this._contact = data.contract;
-                this.userAccountGroup.value.name = data.name;
-                this.userAccountGroup.value.phonenumber = data.phone || null;
-                this.userAccountGroup.value.country = data.country || null;
-                this.userAccountGroup.value.email = data.email || null;
-                this.userAccountGroup.value.details = data.details || null;
-            })
+    private _setProfileValues(): void {
+        const user: User = this._authService.user;
+        this._userId = user.id;
+        this._promocode = user.promocode;
+        this._contact = user.contract;
+        this.userAccountGroup.patchValue({
+            name: user.name,
+            phonenumber: user.phone,
+            country: user.country,
+            email: user.email,
+            details: user.details,
+        })
     }
+    // private _getProfile(): void {
+    //     this._profileService.getProfile()
+    //         .pipe(takeUntil(this._unsubscribe$))
+    //         .subscribe((data: ProfileResponse) => {
+    //             console.log(data, "hixxxxxxxx");
+    //             this._userId = data.id;
+    //             this._promocode = data.promocode;
+    //             this._contact = data.contract;
+    //             this.userAccountGroup.patchValue({
+    //                 name:data.name,
+    //                 phonenumber:data.phone,
+    //                 country:data.country,
+    //                 email: data.email,
+    //                 details: data.details,
+    //             })
+
+    //         })
+    // }
 
     private _postProfile(): void {
-        this.loading =true;
+        this.loading = true;
         this.userAccountGroup.disable();
-        let profileData: ProfileResponse = {
+        let profileData:User = {
             id: this._userId,
             email: this.userAccountGroup.value.email,
             contract: this._contact,

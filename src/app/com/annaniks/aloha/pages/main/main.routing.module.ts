@@ -8,7 +8,7 @@ const mainRoutes: Routes = [
             { path: "", redirectTo: "profile", pathMatch: "full" },
             {
                 path: "profile",
-                loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
+                loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
             },
             {
                 path: "support",

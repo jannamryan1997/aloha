@@ -1,4 +1,4 @@
-export interface ProfileResponse {
+export interface User {
     id: string;
     email: string;
     contract: number;

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './com/annaniks/aloha/core/guards/auth.guards';
 
 const routes: Routes = [
   { path: "", redirectTo: "auth", pathMatch: "full" },
@@ -9,7 +10,8 @@ const routes: Routes = [
   },
   {
     path: "",
-    loadChildren: () => import('./com/annaniks/aloha/pages/main/main.module').then(m => m.MainModule)
+    loadChildren: () => import('./com/annaniks/aloha/pages/main/main.module').then(m => m.MainModule),
+    canActivate:[AuthGuard]
   },
   {
     path: "**",
