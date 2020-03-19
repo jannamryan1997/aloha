@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RouteStep } from '../../../../../core/models/route-step';
 import { MenuService } from 'src/app/com/annaniks/aloha/core/services/menu.service';
@@ -10,23 +10,31 @@ import { MenuService } from 'src/app/com/annaniks/aloha/core/services/menu.servi
     styleUrls: ['payment-detail.view.scss']
 })
 export class PaymentDetailView implements OnInit, OnDestroy {
-    public paymentControl: FormControl = new FormControl(null, [Validators.required]);
+    public paymentForm: FormGroup;
     public isEdit: boolean = false;
     public title: string;
 
     constructor(
         private _activatedRoute: ActivatedRoute,
         private _router: Router,
-        private _menuService: MenuService
+        private _menuService: MenuService,
+        private _fb: FormBuilder,
     ) {
         this._checkRouteParams();
         this._setRouteSteps();
     }
 
     ngOnInit() {
-
+        this._formBuilder();
     }
 
+    private _formBuilder() {
+        this.paymentForm = this._fb.group({
+            reqv:[false],
+            pay: [false],
+            type:[null,Validators.required]
+        })
+    }
     private _checkRouteParams(): void {
         const addressId: string = this._activatedRoute.snapshot.params.id || null;
         this.isEdit = (addressId) ? true : false;
@@ -44,6 +52,9 @@ export class PaymentDetailView implements OnInit, OnDestroy {
         }
         routeSteps.push(currentRoute);
         this._menuService.setRouteSteps(routeSteps);
+    }
+    public checkIsValid(controlName): boolean {
+        return this.paymentForm.get(controlName).hasError('required') && this.paymentForm.get(controlName).touched;
     }
 
 

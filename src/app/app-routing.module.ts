@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path: "",
     loadChildren: () => import('./com/annaniks/aloha/pages/main/main.module').then(m => m.MainModule),
-    canActivate:[AuthGuard]
+    // canActivate:[AuthGuard]
   },
   {
     path: "**",
