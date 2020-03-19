@@ -4,7 +4,38 @@
     color: #17344f;
     margin-bottom: 30px;
   }
-  .input {
-    height: 117px;
+  .form-group {
+    width: 100%;
+    .form-group-item {
+      margin-top: 20px;
+      .input {
+        width: calc(100% - 100px) !important;
+      }
+      .label-wrapper {
+        width: 100px;
+        .label {
+          color: #17344f;
+          font-size: 14px;
+        }
+      }
+    }
   }
+
+}
+
+.border {
+  border: 1px solid red !important;
+}
+::ng-deep{
+  .mat-checkbox-inner-container{
+    height: 25px !important;
+    width: 25px !important;
+    border-radius: .25rem !important;
+  }
+  .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #f1412e !important;
+}
+.mat-checkbox .mat-checkbox-frame {
+  border-color: #ced4da!important;
+}
 }

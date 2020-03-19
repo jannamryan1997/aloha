@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'app-address-list-item',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['address-list-item.component.scss']
 })
 export class AddressListItemComponent implements OnInit {
+     @Input()id:string;
     public content: string = `
     Account Name:Insta Corporation pty
     SWIFT CODE:NATAU003UA
@@ -13,5 +14,8 @@ export class AddressListItemComponent implements OnInit {
     Bank Address:NATIONAL AVSTRIAL BANK LEVL 2, 424 St Kilda Road Australia `
     constructor() { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        console.log(this.id);
+        
+     }
 }

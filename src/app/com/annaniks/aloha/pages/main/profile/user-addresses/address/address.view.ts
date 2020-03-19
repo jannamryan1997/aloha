@@ -1,8 +1,15 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { RouteStep } from 'src/app/com/annaniks/aloha/core/models/route-step';
 import { MenuService } from 'src/app/com/annaniks/aloha/core/services/menu.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserAddressesService } from '../user-addresses.service';
+import { UserAddressResponse } from 'src/app/com/annaniks/aloha/core/models/user-address';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { RequestModal } from 'src/app/com/annaniks/aloha/core/modals';
+
 
 @Component({
     selector: 'address-view',
@@ -10,22 +17,47 @@ import { ActivatedRoute, Router } from '@angular/router';
     styleUrls: ['address.view.scss']
 })
 export class AddressView implements OnInit, OnDestroy {
-    public addressControl: FormControl = new FormControl(null, [Validators.required]);
+    private _unsubscribe$: Subject<void> = new Subject<void>();
     public isEdit: boolean = false;
     public title: string;
+    public addressForm: FormGroup;
+    public addressId: string;
+    public errorMessage: string;
+
 
     constructor(
         private _menuService: MenuService,
         private _activatedRoute: ActivatedRoute,
-        private _router: Router
+        private _router: Router,
+        private _fb: FormBuilder,
+        private _userAddressesService: UserAddressesService,
+        private _dialog: MatDialog,
     ) {
         this._checkRouteParams();
         this._setRouteSteps();
     }
 
+    ngOnInit() {
+        this._formBulder();
+        if (this.isEdit) {
+            this._getUserAddresById();
+        }
+    }
+
+    private _formBulder(): void {
+        this.addressForm = this._fb.group({
+            address: [null, Validators.required],
+            country: [null, Validators.required],
+            zip: [null, Validators.required],
+            billing: [false],
+            main: [false]
+        })
+    }
+
     private _checkRouteParams(): void {
         const addressId: string = this._activatedRoute.snapshot.params.id || null;
         this.isEdit = (addressId) ? true : false;
+        this.addressId = this._activatedRoute.snapshot.paramMap.get('id');
     }
 
     private _setRouteSteps(): void {
@@ -42,7 +74,79 @@ export class AddressView implements OnInit, OnDestroy {
         this._menuService.setRouteSteps(routeSteps);
     }
 
-    ngOnInit() { }
+    private _getUserAddresById(): void {
+        this._userAddressesService.getAddressById(this.addressId)
+            .pipe(takeUntil(this._unsubscribe$))
+            .subscribe((data: UserAddressResponse) => {
+                this.addressForm.patchValue({
+                    address: data.address,
+                    billing: data.billing,
+                    country: data.country,
+                    zip: data.zip,
+                    main: data.main,
+                })
+            },
+                err => {
+                    console.log(err);
 
+                }
+            )
+    }
+
+    private _createduserAddress(): void {
+        const useAddressData: UserAddressResponse = {
+            id: "",
+            billing: this.addressForm.value.billing,
+            main: this.addressForm.value.main,
+            country: this.addressForm.value.country,
+            zip: this.addressForm.value.zip,
+            address: this.addressForm.value.address,
+        }
+        this._userAddressesService.createduserAddress(useAddressData)
+            .pipe(takeUntil(this._unsubscribe$))
+            .subscribe((data) => {
+                console.log(data);
+            },
+                err => {
+                    this.errorMessage = err.error.msg;
+                }
+            )
+
+    }
+
+    private _updateUserAddress(): void {
+        const useAddressData: UserAddressResponse = {
+            id: this.addressId,
+            billing: this.addressForm.value.billing,
+            main: this.addressForm.value.main,
+            country: this.addressForm.value.country,
+            zip: this.addressForm.value.zip,
+            address: this.addressForm.value.address,
+        }
+        this._userAddressesService.updateUserAddres(this.addressId, useAddressData)
+            .pipe(takeUntil(this._unsubscribe$))
+            .subscribe((data) => {
+                console.log(data);
+            })
+    }
+
+    public onClick(): void {
+        if (!this.isEdit) {
+            this._createduserAddress();
+        }
+        else if (this.isEdit) {
+            this._updateUserAddress();
+        }
+    }
+    public onClickDelete(): void {
+        const dialogRef = this._dialog.open(RequestModal, {
+            width: "600px"
+        })
+    }
+
+    public checkIsValid(controlName): boolean {
+        return this.addressForm.get(controlName).hasError('required') && this.addressForm.get(controlName).touched;
+    }
     ngOnDestroy() { }
 }
+

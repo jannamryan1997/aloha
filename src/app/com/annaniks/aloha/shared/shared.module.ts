@@ -5,10 +5,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoadingComponent, FooterComponent } from '../layout';
 import { OnlyNumberDirective } from '../core/directive';
+import { RequestModal } from '../core/modals';
 
 
 @NgModule({
-    declarations: [LoadingComponent,OnlyNumberDirective,FooterComponent ],
+    declarations: [LoadingComponent,OnlyNumberDirective,FooterComponent,RequestModal ],
     imports: [
         CommonModule,
         ReactiveFormsModule,
@@ -25,10 +26,11 @@ import { OnlyNumberDirective } from '../core/directive';
         MatProgressSpinnerModule,
         LoadingComponent,
         OnlyNumberDirective,
-        FooterComponent 
+        FooterComponent,
+        RequestModal
     ],
     providers: [],
-    entryComponents: []
+    entryComponents: [RequestModal]
 })
 
 export class SharedModule { }
