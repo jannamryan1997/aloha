@@ -8,6 +8,8 @@ import { ApiInterceptor } from './com/annaniks/aloha/core/interceptors/api.inter
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CookieModule } from 'ngx-cookie';
 import { AppService } from './app.service';
+import { AuthGuard } from './com/annaniks/aloha/core/guards/auth.guards';
+import { AuthService } from './com/annaniks/aloha/core/services/auth.services';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { AppService } from './app.service';
       useClass: ApiInterceptor,
       multi: true
     },
-    AppService
+    AppService,
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
