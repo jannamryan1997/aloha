@@ -12,19 +12,28 @@
                 </mat-form-field>
 
             </div>
-
-
-
             <div class="form-group-item d-flex align-items-center">
                 <div class="label-wrapper">
                     <label class="label">Reqv</label>
                 </div>
                 <mat-checkbox formControlName="reqv"></mat-checkbox>
-                <div class="label-wrapper ml-5">
+               
+            </div>
+
+            <div class="form-group-item d-flex align-items-center">
+                <div class="label-wrapper">
                     <label class="label">Pay</label>
                 </div>
                 <mat-checkbox formControlName="pay"></mat-checkbox>
+               
             </div>
+
+
+
+           
+
+
+
         </div>
         <button class="btn save-btn cursor-pointer" type="submit" [disabled]="paymentForm.invalid">Save</button>
     </form>

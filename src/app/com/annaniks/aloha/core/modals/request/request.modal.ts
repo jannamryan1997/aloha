@@ -13,7 +13,14 @@ export class RequestModal implements OnInit {
 
     ngOnInit() { }
 
+    private _deletItem(): void {
+        this._dialogRef.close('yes');
+    }
     public closeDialog(): void {
         this._dialogRef.close();
+    }
+
+    public onclick(): void {
+        this._deletItem();
     }
 }

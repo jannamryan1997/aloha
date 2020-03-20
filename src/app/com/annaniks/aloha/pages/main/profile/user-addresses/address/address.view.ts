@@ -142,6 +142,22 @@ export class AddressView implements OnInit, OnDestroy {
         const dialogRef = this._dialog.open(RequestModal, {
             width: "600px"
         })
+        dialogRef.afterClosed().subscribe((data) => {
+            if (data == "yes") {
+                this._userAddressesService.deleteUserAddreses(this.addressId)
+                    .pipe(takeUntil(this._unsubscribe$))
+                    .subscribe((data) => {
+                        console.log(data);
+
+                    },
+                        err => {
+                            console.log(err);
+
+                        }
+                    )
+
+            }
+        })
     }
 
     public checkIsValid(controlName): boolean {

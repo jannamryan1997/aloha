@@ -14,12 +14,12 @@ export class AuthService {
     public registration(body: RegistrationData): Observable<RegistrationResponse> {
         let params = new HttpParams();
         params = params.set('authorization', 'false');
-        return this._httpClient.post<RegistrationResponse>('/register', body, { params });
+        return this._httpClient.post<RegistrationResponse>('/api/register', body, { params });
     }
     public login(cred:LoginData): Observable<LoginResponse> {
         let params = new HttpParams();
         params = params.set('authorization', 'false');
         params = params.set('cred', cred.toString())
-        return this._httpClient.get<LoginResponse>('/login', { params })
+        return this._httpClient.get<LoginResponse>('/api/login', { params })
     }
 }
