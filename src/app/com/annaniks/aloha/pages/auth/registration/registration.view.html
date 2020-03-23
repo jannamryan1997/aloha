@@ -29,7 +29,7 @@
                     <label class="label">Phone</label>
                 </div>
                 <input type="text" id="phone" formControlName="phone" class="form-control input" placeholder="Phone"
-                    [ngClass]="{'border':checkIsValid('phone')}" OnlyNumber="true">
+                    [ngClass]="{'border':checkIsValid('phone')}" OnlyNumber="true" [OnlyNumber]="true">
 
             </div>
             <button class="btn save-btn cursor-pointer d-flex align-items-center" type="submit" [disabled]="registrationForm.invalid"

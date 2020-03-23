@@ -10,6 +10,6 @@ export class AuthService {
     constructor(private _httpClient: HttpClient) { }
 
     public getProfile(): Observable<User> {
-        return this._httpClient.get<User>('/profile');
+        return this._httpClient.get<User>('/api/profile');
     }
 }

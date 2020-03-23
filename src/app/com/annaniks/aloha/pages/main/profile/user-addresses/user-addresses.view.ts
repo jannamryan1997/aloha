@@ -33,7 +33,7 @@ export class UserAddressesView implements OnInit {
             .subscribe((data: UserAddressResponse) => {
                // this.id=data.id;
             //    this.addressId = data.id;
-                console.log(data);
+                console.log(data,"hhhhhhhhhhh");
 
             })
     }

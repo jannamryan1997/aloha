@@ -32,7 +32,8 @@
               "src/styles.scss",
               "src/assets/styles/base/_global.scss",
               "src/assets/styles/base/_reset.scss",
-              "src/assets/styles/base/_variables.scss"
+              "src/assets/styles/base/_variables.scss",
+              "src/assets/styles/base/_responsive.scss"
             ],
             "scripts": []
           },

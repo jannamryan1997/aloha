@@ -94,8 +94,8 @@ export class AddressView implements OnInit, OnDestroy {
     }
 
     private _createduserAddress(): void {
-        const useAddressData: UserAddressResponse = {
-            id: "",
+        const useAddressData:UserAddressResponse= {
+            id:"",
             billing: this.addressForm.value.billing,
             main: this.addressForm.value.main,
             country: this.addressForm.value.country,
@@ -141,6 +141,22 @@ export class AddressView implements OnInit, OnDestroy {
     public onClickDelete(): void {
         const dialogRef = this._dialog.open(RequestModal, {
             width: "600px"
+        })
+        dialogRef.afterClosed().subscribe((data) => {
+            if (data == "yes") {
+                this._userAddressesService.deleteUserAddreses(this.addressId)
+                    .pipe(takeUntil(this._unsubscribe$))
+                    .subscribe((data) => {
+                        console.log(data);
+
+                    },
+                        err => {
+                            console.log(err);
+
+                        }
+                    )
+
+            }
         })
     }
 
