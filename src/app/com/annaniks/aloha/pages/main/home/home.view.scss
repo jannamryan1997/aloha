@@ -1,0 +1,69 @@
+.home-container {
+    background: #ffcf00;
+    width: 100%;
+    min-height: 100vh;
+  
+    .home-header {
+      padding: 95px 0;
+      .header-content {
+        width: 100%;
+        max-width: 320px;
+        .logo {
+          width: 90px;
+          height: 90px;
+        }
+        .text {
+          color: #17344f;
+          font-size: 42px;
+          line-height: 42px;
+        }
+      }
+    }
+    .home-main{
+    .home-buttons{
+      position: relative;
+      .radius{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        color: white;
+        background: #c5c2a7;
+        position: absolute;
+        top: 20px;
+        bottom: 0;
+        margin: auto;
+        right: 190px;
+      }
+    }
+  }
+  
+    .home-content{
+      width: 100%;
+      max-width: 775px;
+      .home-top-content{
+        margin-top: 110px;
+        .title{
+      font-weight: 600;
+        }
+        .text,.title{
+          color: #17344f;
+          font-size: 20px;
+          line-height: 27px;
+        }
+      }
+    }
+   
+  }
+  .save-btn{
+    border: 1px solid #a0a3a782;
+    padding: 20px 0px;
+      width: 210px;
+      cursor: pointer;
+  }
+  
+  .log-btn{
+    background: #6d8e2d !important;
+  }
+  .registr-btn{
+    background: #da961a !important;
+  }

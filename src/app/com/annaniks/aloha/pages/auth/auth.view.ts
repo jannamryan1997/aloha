@@ -6,8 +6,8 @@ import { Component, OnInit } from "@angular/core";
     styleUrls: ["auth-view.scss"]
 })
 export class AuthView implements OnInit {
-
+    public routerLink = "/auth";
     constructor() { }
 
-    ngOnInit(){}
+    ngOnInit() { }
 }

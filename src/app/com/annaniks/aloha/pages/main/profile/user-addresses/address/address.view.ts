@@ -94,8 +94,8 @@ export class AddressView implements OnInit, OnDestroy {
     }
 
     private _createduserAddress(): void {
-        const useAddressData: UserAddressResponse = {
-            id: "",
+        const useAddressData:UserAddressResponse= {
+            id:"",
             billing: this.addressForm.value.billing,
             main: this.addressForm.value.main,
             country: this.addressForm.value.country,

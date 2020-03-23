@@ -16,8 +16,8 @@ export class UserAddressesService {
         params = params.set('id', id);
         return this._httpClient.get<UserAddressResponse>('/api/address', { params })
     }
-    public createduserAddress(body: UserAddressResponse) {
-        return this._httpClient.post('/api/address', body);
+    public createduserAddress(body: UserAddressResponse): Observable<UserAddressResponse> {
+        return this._httpClient.post<UserAddressResponse>('/api/address', body);
     }
     public updateUserAddres(id: string, body: UserAddressResponse): Observable<UserAddressResponse> {
         let params = new HttpParams();
