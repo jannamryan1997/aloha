@@ -4,7 +4,7 @@ import { RouteStep } from 'src/app/com/annaniks/aloha/core/models/route-step';
 import { MenuService } from 'src/app/com/annaniks/aloha/core/services/menu.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserAddressesService } from '../user-addresses.service';
-import { UserAddressResponse } from 'src/app/com/annaniks/aloha/core/models/user-address';
+import { UserAddressResponse, UserAddressData } from 'src/app/com/annaniks/aloha/core/models/user-address';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
@@ -38,6 +38,8 @@ export class AddressView implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        console.log(this.addressId,"dfdfdfd");
+        
         this._formBulder();
         if (this.isEdit) {
             this._getUserAddresById();
@@ -94,15 +96,14 @@ export class AddressView implements OnInit, OnDestroy {
     }
 
     private _createduserAddress(): void {
-        const useAddressData:UserAddressResponse= {
-            id:"",
+        const userAddressData:UserAddressData= {
             billing: this.addressForm.value.billing,
             main: this.addressForm.value.main,
             country: this.addressForm.value.country,
             zip: this.addressForm.value.zip,
             address: this.addressForm.value.address,
         }
-        this._userAddressesService.createduserAddress(useAddressData)
+        this._userAddressesService.createduserAddress(userAddressData)
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data) => {
                 console.log(data);
@@ -115,7 +116,7 @@ export class AddressView implements OnInit, OnDestroy {
     }
 
     private _updateUserAddress(): void {
-        const useAddressData: UserAddressResponse = {
+        const userAddressData: UserAddressResponse = {
             id: this.addressId,
             billing: this.addressForm.value.billing,
             main: this.addressForm.value.main,
@@ -123,7 +124,7 @@ export class AddressView implements OnInit, OnDestroy {
             zip: this.addressForm.value.zip,
             address: this.addressForm.value.address,
         }
-        this._userAddressesService.updateUserAddres(this.addressId, useAddressData)
+        this._userAddressesService.updateUserAddres(this.addressId, userAddressData)
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data) => {
                 console.log(data);

@@ -12,8 +12,9 @@ import { UserAddressResponse } from '../../../../core/models/user-address';
     styleUrls: ["user-addresses-view.scss"]
 })
 export class UserAddressesView implements OnInit {
-    private _unsubscribe$: Subject<void> = new Subject<void>(); 
-    public addressId:string="janna";
+    private _unsubscribe$: Subject<void> = new Subject<void>();
+    public addressId: string;
+    public userAddressData: UserAddressResponse;
 
     constructor(private _menuService: MenuService, private _userAddressesService: UserAddressesService) {
         const routeSteps: RouteStep[] = [
@@ -31,9 +32,9 @@ export class UserAddressesView implements OnInit {
         this._userAddressesService.getUserAddress()
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data: UserAddressResponse) => {
-               // this.id=data.id;
-            //    this.addressId = data.id;
-                console.log(data,"hhhhhhhhhhh");
+                this.userAddressData=data;
+                this.addressId = data.id;
+                console.log(this.userAddressData, "hhhhhhhhhhh", this.addressId);
 
             })
     }

@@ -1,8 +1,8 @@
 <div class="address-list-item">
-    <P class="label">Address</P>
+    <P class="label">{{item?.address}}</P>
     <div class="address-list-item-content d-flex justify-content-between align-items-center">
         <div class="address-list-item-details">
-            <p class="text" [innerHTML]="content">
+            <p class="text" >{{item?.country}}
             </p>
         </div>
         <button class="btn  cursor-pointer edit-btn" type="submit"  [routerLink]="id">Edit</button>

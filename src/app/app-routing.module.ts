@@ -5,7 +5,7 @@ import { AuthGuard } from './com/annaniks/aloha/core/guards/auth.guards';
 const routes: Routes = [
   {
     path: "home",
-    loadChildren: () => import('./com/annaniks/aloha/pages/main/home/home.module').then(m => m.HomeModule),
+    loadChildren: () => import('./com/annaniks/aloha/pages/home/home.module').then(m => m.HomeModule),
   },
   {
     path: "auth",
@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     path: "",
     loadChildren: () => import('./com/annaniks/aloha/pages/main/main.module').then(m => m.MainModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: "**",

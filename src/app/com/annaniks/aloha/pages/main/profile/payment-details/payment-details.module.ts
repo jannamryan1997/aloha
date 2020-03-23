@@ -3,6 +3,7 @@ import { SharedModule } from '../../../../shared/shared.module';
 import { PaymentDetailsView } from './payment-details.view';
 import { PaymentDetailsRoutingModule } from './payment-details.routing.module';
 import { PaymentListItemComponent } from './components';
+import { PaymentDetailsService } from './payment-details.service';
 @NgModule({
     declarations: [
         PaymentDetailsView,
@@ -12,7 +13,7 @@ import { PaymentListItemComponent } from './components';
         PaymentDetailsRoutingModule,
         SharedModule,
     ],
-    providers: []
+    providers: [PaymentDetailsService]
 })
 
 export class PaymentDetailsModule { }

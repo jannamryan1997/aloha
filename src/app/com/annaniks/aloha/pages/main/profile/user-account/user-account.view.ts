@@ -61,25 +61,6 @@ export class UserAccountView implements OnInit {
             details: user.details,
         })
     }
-    // private _getProfile(): void {
-    //     this._profileService.getProfile()
-    //         .pipe(takeUntil(this._unsubscribe$))
-    //         .subscribe((data: ProfileResponse) => {
-    //             console.log(data, "hixxxxxxxx");
-    //             this._userId = data.id;
-    //             this._promocode = data.promocode;
-    //             this._contact = data.contract;
-    //             this.userAccountGroup.patchValue({
-    //                 name:data.name,
-    //                 phonenumber:data.phone,
-    //                 country:data.country,
-    //                 email: data.email,
-    //                 details: data.details,
-    //             })
-
-    //         })
-    // }
-
     private _postProfile(): void {
         this.loading = true;
         this.userAccountGroup.disable();
