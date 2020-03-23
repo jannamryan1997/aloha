@@ -9,7 +9,7 @@ export class ProfileService {
 
     constructor(private _httpClient: HttpClient) { }
     public postProfile(body: User): Observable<User> {
-        return this._httpClient.post<User>('/api/profile', body)
+        return this._httpClient.post<User>('/profile', body)
     }
 
 }
