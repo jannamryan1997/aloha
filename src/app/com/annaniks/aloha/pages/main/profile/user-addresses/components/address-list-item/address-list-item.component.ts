@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UserAddressResponse } from 'src/app/com/annaniks/aloha/core/models/user-address';
+import { UserAddress } from 'src/app/com/annaniks/aloha/core/models/user-address';
 
 @Component({
     selector: 'app-address-list-item',
@@ -7,9 +7,9 @@ import { UserAddressResponse } from 'src/app/com/annaniks/aloha/core/models/user
     styleUrls: ['address-list-item.component.scss']
 })
 export class AddressListItemComponent implements OnInit {
-     @Input()id:string;
-     @Input()item:UserAddressResponse;
-  
+    @Input() id: string;
+    @Input() item: UserAddress;
+
     public content: string = `
     Account Name:Insta Corporation pty
     SWIFT CODE:NATAU003UA
@@ -17,5 +17,5 @@ export class AddressListItemComponent implements OnInit {
     Bank Address:NATIONAL AVSTRIAL BANK LEVL 2, 424 St Kilda Road Australia `
     constructor() { }
 
-    ngOnInit() {}
+    ngOnInit() { }
 }

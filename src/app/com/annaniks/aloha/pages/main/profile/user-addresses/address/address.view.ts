@@ -4,7 +4,7 @@ import { RouteStep } from 'src/app/com/annaniks/aloha/core/models/route-step';
 import { MenuService } from 'src/app/com/annaniks/aloha/core/services/menu.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserAddressesService } from '../user-addresses.service';
-import { UserAddressResponse, UserAddressData } from 'src/app/com/annaniks/aloha/core/models/user-address';
+import { UserAddress, UserAddressData } from 'src/app/com/annaniks/aloha/core/models/user-address';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
@@ -38,8 +38,6 @@ export class AddressView implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        console.log(this.addressId,"dfdfdfd");
-        
         this._formBulder();
         if (this.isEdit) {
             this._getUserAddresById();
@@ -79,7 +77,7 @@ export class AddressView implements OnInit, OnDestroy {
     private _getUserAddresById(): void {
         this._userAddressesService.getAddressById(this.addressId)
             .pipe(takeUntil(this._unsubscribe$))
-            .subscribe((data: UserAddressResponse) => {
+            .subscribe((data: UserAddress) => {
                 this.addressForm.patchValue({
                     address: data.address,
                     billing: data.billing,
@@ -96,7 +94,7 @@ export class AddressView implements OnInit, OnDestroy {
     }
 
     private _createduserAddress(): void {
-        const userAddressData:UserAddressData= {
+        const userAddressData: UserAddressData = {
             billing: this.addressForm.value.billing,
             main: this.addressForm.value.main,
             country: this.addressForm.value.country,
@@ -106,7 +104,7 @@ export class AddressView implements OnInit, OnDestroy {
         this._userAddressesService.createduserAddress(userAddressData)
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data) => {
-                console.log(data);
+                this._router.navigate(['/profile/user-addresses']);
             },
                 err => {
                     this.errorMessage = err.error.msg;
@@ -116,7 +114,7 @@ export class AddressView implements OnInit, OnDestroy {
     }
 
     private _updateUserAddress(): void {
-        const userAddressData: UserAddressResponse = {
+        const userAddressData: UserAddressData = {
             id: this.addressId,
             billing: this.addressForm.value.billing,
             main: this.addressForm.value.main,

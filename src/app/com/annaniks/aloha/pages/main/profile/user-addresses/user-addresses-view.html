@@ -1,9 +1,10 @@
 <div class="addresses pg-content">
-    <div class="d-flex" *ngIf="!userAddressData">
-        <p class="result-text m-auto">no result</p>
+    <div class="d-flex" *ngIf="(!userAddressData || userAddressData.length==0) && !loading">
+        <p class="result-text m-auto">Addresses not found</p>
     </div>
     <div class="address-list-item-content">
-    <app-address-list-item  *ngFor="let item of userAddressData" [id]="item.id"  [item]="item"></app-address-list-item>
-    <button class="btn  cursor-pointer add-btn" type="submit"   [routerLink]="'add'">Add Address</button>
-</div>
+        <app-address-list-item *ngFor="let item of userAddressData" [id]="item.id" [item]="item">
+        </app-address-list-item>
+        <button class="btn  cursor-pointer add-btn" type="submit" [routerLink]="'add'">Add Address</button>
+    </div>
 </div>
