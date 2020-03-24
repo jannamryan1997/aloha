@@ -15,19 +15,11 @@ export class ApiInterceptor implements HttpInterceptor {
         let params: HttpParams = (req.params) ? req.params : new HttpParams();
         let headers: HttpHeaders = (req.headers) ? req.headers : new HttpHeaders();
         const url: string = `${this._baseUrl}${req.url}`;
-<<<<<<< HEAD
         if (!params.has('authorization') || (params.has('authorization') && params.get('authorization') === 'true')) {
             const accessToken: string = this._cookieService.get('jwt') || '';
             console.log(accessToken);
             if (accessToken) {
                 headers = headers.append('X-JWT', accessToken);
-=======
-        headers = headers.append("Content-Type", "application/x-www-form-urlencoded");
-        if (!params.has('authorization') || (params.has('authorization') && params.get('authorization') === 'true')) {
-            const accessToken: string = this._cookieService.get('jwt') || '';
-            if (accessToken) {
-                headers = headers.append('Cookie', 'jwt=' + accessToken);
->>>>>>> ade2056be56839d259ba28fd68d4171daf623100
             }
         }
         if (params.has('authorization')) {

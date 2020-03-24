@@ -20,20 +20,20 @@ export class UserAccountView implements OnInit {
     private _userId: string;
     private _promocode: string;
     private _contact: number;
-   public  keyword = 'name';
-   public  data = [
-       {
-         name: 'Armenia'
-       },
-       {
-         name: 'England'
-       },
-       {
-        name: 'Russia'
-      },
-      {
-          name:"China"
-      }
+    public keyword = 'name';
+    public data = [
+        {
+            name: 'Armenia'
+        },
+        {
+            name: 'England'
+        },
+        {
+            name: 'Russia'
+        },
+        {
+            name: "China"
+        }
     ];
     constructor(
         private _fb: FormBuilder,
@@ -50,8 +50,8 @@ export class UserAccountView implements OnInit {
 
     ngOnInit() {
         this._formBuilder();
-        // this._getProfile();
-        this._setProfileValues();
+        this._getProfile();
+      //  this._setProfileValues();
     }
 
     private _formBuilder(): void {
@@ -63,7 +63,27 @@ export class UserAccountView implements OnInit {
             details: [null, Validators.required]
         })
     }
+
+    private _getProfile(): void {
+        this._authService.getProfile().pipe(takeUntil(this._unsubscribe$))
+            .subscribe((data) => {
+                this._userId = data.body.id;
+                this._promocode = data.body.promocode;
+                this._contact = data.body.contract;
+                this.userAccountGroup.patchValue({
+                    name: data.body.name,
+                    phonenumber: data.body.phone,
+                    country: data.body.country,
+                    email: data.body.email,
+                    details: data.body.details,
+                })
+              console.log(data);
+              
+            })
+           
+    }
     private _setProfileValues(): void {
+        console.log(this._authService.user);
         const user: User = this._authService.user;
         this._userId = user.id;
         this._promocode = user.promocode;
@@ -75,11 +95,13 @@ export class UserAccountView implements OnInit {
             email: user.email,
             details: user.details,
         })
+        console.log(user, "giii");
+
     }
     private _postProfile(): void {
         this.loading = true;
         this.userAccountGroup.disable();
-        let profileData:User = {
+        let profileData: User = {
             id: this._userId,
             email: this.userAccountGroup.value.email,
             contract: this._contact,
@@ -110,11 +132,11 @@ export class UserAccountView implements OnInit {
     public checkIsValid(controlName): boolean {
         return this.userAccountGroup.get(controlName).hasError('required') && this.userAccountGroup.get(controlName).touched;
     }
-  public  onChangeSearch(val: string) {
+    public onChangeSearch(val: string) {
         // fetch remote data from here
         // And reassign the 'data' which is binded to 'data' property.
-      }
-    public  selectEvent(item) {
+    }
+    public selectEvent(item) {
         // do something with selected item
-      }
+    }
 }

@@ -7,6 +7,8 @@ import { PaymentDetailsService } from '../payment-details.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { BillingdetailsData, BillingdetailsResponse } from 'src/app/com/annaniks/aloha/core/models/payment';
+import { MatDialog } from '@angular/material/dialog';
+import { RequestModal } from 'src/app/com/annaniks/aloha/core/modals';
 
 @Component({
     selector: 'payment-detail-view',
@@ -27,6 +29,7 @@ export class PaymentDetailView implements OnInit, OnDestroy {
         private _menuService: MenuService,
         private _fb: FormBuilder,
         private _paymentDetailsService: PaymentDetailsService,
+        private _dialog: MatDialog,
     ) {
         this._checkRouteParams();
         this._setRouteSteps();
@@ -49,6 +52,7 @@ export class PaymentDetailView implements OnInit, OnDestroy {
     private _checkRouteParams(): void {
         const addressId: string = this._activatedRoute.snapshot.params.id || null;
         this.isEdit = (addressId) ? true : false;
+        this.paymentId = addressId;
     }
 
     private _setRouteSteps(): void {
@@ -66,6 +70,8 @@ export class PaymentDetailView implements OnInit, OnDestroy {
     }
 
     private _getBillingdetailsById(): void {
+        console.log(this.paymentId, "kjlllll");
+
         this._paymentDetailsService.getBillingdetailsById(this.paymentId)
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data: BillingdetailsResponse) => {
@@ -93,7 +99,7 @@ export class PaymentDetailView implements OnInit, OnDestroy {
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data) => {
                 console.log(data);
-
+                this._router.navigate(['/profile/payment-details']);
             },
                 err => {
                     this.errorMessage = err.error.msg;
@@ -122,6 +128,7 @@ export class PaymentDetailView implements OnInit, OnDestroy {
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data) => {
                 console.log(data);
+                this._router.navigate(['/profile/payment-details']);
             },
                 err => {
                     this.errorMessage = err.error.msg;
@@ -139,7 +146,15 @@ export class PaymentDetailView implements OnInit, OnDestroy {
         }
     }
     public onClickDelete(): void {
-        this._deleteBillingdetails();
+        const dialogRef = this._dialog.open(RequestModal, {
+            width: "600px"
+        })
+        dialogRef.afterClosed().subscribe((data) => {
+            if (data == "yes") {
+                this._deleteBillingdetails();
+            }
+        })
+
     }
 
     public checkIsValid(controlName): boolean {
