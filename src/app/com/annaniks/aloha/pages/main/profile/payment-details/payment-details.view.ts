@@ -14,13 +14,7 @@ import { BillingdetailsResponse } from '../../../../core/models/payment';
 export class PaymentDetailsView implements OnInit {
 
     private _unsubscribe$: Subject<void> = new Subject<void>();
-    public paymentData: BillingdetailsResponse[] = [
-        { id:"1",recv:true, pay: false, details: "janna"},
-        { id:"2",recv:true, pay: false, details: "janna"},
-        { id:"3",recv:true, pay: false, details: "janna"},
-        { id:"4",recv:true, pay: false, details: "janna"},
-        { id:"5",recv:true, pay: false, details: "janna"},
-    ];
+    public paymentData: BillingdetailsResponse;
 
     constructor(private _menuService: MenuService, private _paymentDetailsService: PaymentDetailsService) {
         const routeSteps: RouteStep[] = [
@@ -38,8 +32,8 @@ export class PaymentDetailsView implements OnInit {
         this._paymentDetailsService.getBillingdetails()
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data: BillingdetailsResponse) => {
-                // this.paymentData=data;
-                console.log(data);
+                this.paymentData=data;
+                console.log( this.paymentData);
 
             })
     }
