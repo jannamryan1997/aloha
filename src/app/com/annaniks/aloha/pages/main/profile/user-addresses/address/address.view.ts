@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder, MaxLengthValidator } from '@angular/forms';
 import { RouteStep } from 'src/app/com/annaniks/aloha/core/models/route-step';
 import { MenuService } from 'src/app/com/annaniks/aloha/core/services/menu.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -125,6 +125,7 @@ export class AddressView implements OnInit, OnDestroy {
         this._userAddressesService.updateUserAddres(this.addressId, userAddressData)
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data) => {
+                this._router.navigate(['/profile/user-addresses']);
                 console.log(data);
             })
     }
@@ -147,7 +148,7 @@ export class AddressView implements OnInit, OnDestroy {
                     .pipe(takeUntil(this._unsubscribe$))
                     .subscribe((data) => {
                         console.log(data);
-
+                        this._router.navigate(['/profile/user-addresses']);
                     },
                         err => {
                             console.log(err);
@@ -162,6 +163,7 @@ export class AddressView implements OnInit, OnDestroy {
     public checkIsValid(controlName): boolean {
         return this.addressForm.get(controlName).hasError('required') && this.addressForm.get(controlName).touched;
     }
+    
     ngOnDestroy() { }
 }
 

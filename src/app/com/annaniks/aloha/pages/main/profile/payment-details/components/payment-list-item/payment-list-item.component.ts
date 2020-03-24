@@ -7,13 +7,8 @@ import { BillingdetailsResponse } from 'src/app/com/annaniks/aloha/core/models/p
     styleUrls: ['payment-list-item.component.scss']
 })
 export class PaymentListItemComponent implements OnInit, OnDestroy {
-    @Input() id:string;
-    @Input()item:BillingdetailsResponse;
-    public content: string = `
-    Account Name:Insta Corporation pty
-    SWIFT CODE:NATAU003UA
-    Account Number:098-155-162-185-125
-    Bank Address:NATIONAL AVSTRIAL BANK LEVL 2, 424 St Kilda Road Australia `
+    @Input() id: string;
+    @Input() item: BillingdetailsResponse;
 
     constructor() { }
 

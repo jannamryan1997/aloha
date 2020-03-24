@@ -11,19 +11,23 @@ export class PaymentDetailsService {
     public getBillingdetails(): Observable<BillingdetailsResponse> {
         return this._httpClient.get<BillingdetailsResponse>('/billingdetails');
     }
+    
     public getBillingdetailsById(id: string): Observable<BillingdetailsResponse> {
         let params = new HttpParams();
         params = params.set('id', id);
-        return this._httpClient.get<BillingdetailsResponse>('//billingdetails', { params })
+        return this._httpClient.get<BillingdetailsResponse>('/billingdetails', { params })
     }
+
     public createdBillingdetails(body: BillingdetailsData): Observable<BillingdetailsResponse> {
         return this._httpClient.post<BillingdetailsResponse>('/billingdetails', body);
     }
+
     public updateBillingdetails(body: BillingdetailsData, id: string): Observable<BillingdetailsResponse> {
         let params = new HttpParams();
         params = params.set('id', id);
         return this._httpClient.post<BillingdetailsResponse>('/billingdetails', body, { params })
     }
+
     public deleteBillingdetails(id: string): Observable<BillingdetailsResponse> {
         let params = new HttpParams();
         params = params.set('id', id);

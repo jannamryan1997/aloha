@@ -23,7 +23,6 @@ export class UserAccountView implements OnInit {
     private _promocode: string;
     private _contact: number;
     public keyword = 'name';
-
     constructor(
         private _fb: FormBuilder,
         private _menuService: MenuService,
