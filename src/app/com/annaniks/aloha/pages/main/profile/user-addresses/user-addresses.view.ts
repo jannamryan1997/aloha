@@ -32,9 +32,8 @@ export class UserAddressesView implements OnInit {
         this._userAddressesService.getUserAddress()
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data: UserAddressResponse) => {
-                this.userAddressData=data;
+                this.userAddressData = data;
                 this.addressId = data.id;
-                console.log(this.userAddressData, "hhhhhhhhhhh", this.addressId);
 
             })
     }
