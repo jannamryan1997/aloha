@@ -9,7 +9,7 @@ export class AuthService {
     public user: User;
     constructor(private _httpClient: HttpClient) { }
 
-    public getProfile(): Observable<any> {
-        return this._httpClient.get<any>('/profile', { observe: 'response' });
+    public getProfile(): Observable<User> {
+        return this._httpClient.get<User>('/profile');
     }
 }

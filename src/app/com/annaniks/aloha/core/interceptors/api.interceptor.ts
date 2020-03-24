@@ -11,13 +11,16 @@ export class ApiInterceptor implements HttpInterceptor {
         private _cookieService: CookieService
     ) { }
 
+    private _checkIsRelativePath(url: string): boolean {
+        return url.startsWith('/assets')
+    }
+
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         let params: HttpParams = (req.params) ? req.params : new HttpParams();
         let headers: HttpHeaders = (req.headers) ? req.headers : new HttpHeaders();
-        const url: string = `${this._baseUrl}${req.url}`;
+        const url: string = (!this._checkIsRelativePath(req.url)) ? `${this._baseUrl}${req.url}` : req.url;
         if (!params.has('authorization') || (params.has('authorization') && params.get('authorization') === 'true')) {
             const accessToken: string = this._cookieService.get('jwt') || '';
-            console.log(accessToken);
             if (accessToken) {
                 headers = headers.append('X-JWT', accessToken);
             }
@@ -29,7 +32,6 @@ export class ApiInterceptor implements HttpInterceptor {
             url: url,
             headers: headers,
             params: params,
-            // withCredentials: true
         });
         return next.handle(clonedReq);
     }
