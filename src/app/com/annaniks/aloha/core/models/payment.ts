@@ -1,4 +1,4 @@
-export interface BillingdetailsResponse {
+export interface Billingdetails {
     id: string;
     recv: boolean;
     pay: boolean;

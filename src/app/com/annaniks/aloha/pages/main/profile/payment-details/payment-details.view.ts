@@ -4,7 +4,7 @@ import { RouteStep } from '../../../../core/models/route-step';
 import { PaymentDetailsService } from './payment-details.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { BillingdetailsResponse } from '../../../../core/models/payment';
+import { Billingdetails } from '../../../../core/models/payment';
 
 @Component({
     selector: "payment-details-view",
@@ -14,7 +14,7 @@ import { BillingdetailsResponse } from '../../../../core/models/payment';
 export class PaymentDetailsView implements OnInit {
 
     private _unsubscribe$: Subject<void> = new Subject<void>();
-    public paymentData: BillingdetailsResponse;
+    public paymentData: Billingdetails[] = [];
 
     constructor(private _menuService: MenuService, private _paymentDetailsService: PaymentDetailsService) {
         const routeSteps: RouteStep[] = [
@@ -31,9 +31,9 @@ export class PaymentDetailsView implements OnInit {
     private _getBillingdetails(): void {
         this._paymentDetailsService.getBillingdetails()
             .pipe(takeUntil(this._unsubscribe$))
-            .subscribe((data: BillingdetailsResponse) => {
-                this.paymentData=data;
-                console.log( this.paymentData);
+            .subscribe((data: Billingdetails[]) => {
+                this.paymentData = data;
+                console.log(this.paymentData);
 
             })
     }

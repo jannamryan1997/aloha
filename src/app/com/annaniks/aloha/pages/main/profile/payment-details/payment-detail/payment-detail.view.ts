@@ -6,7 +6,7 @@ import { MenuService } from 'src/app/com/annaniks/aloha/core/services/menu.servi
 import { PaymentDetailsService } from '../payment-details.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { BillingdetailsData, BillingdetailsResponse } from 'src/app/com/annaniks/aloha/core/models/payment';
+import { BillingdetailsData, Billingdetails } from 'src/app/com/annaniks/aloha/core/models/payment';
 import { MatDialog } from '@angular/material/dialog';
 import { RequestModal } from 'src/app/com/annaniks/aloha/core/modals';
 
@@ -72,7 +72,7 @@ export class PaymentDetailView implements OnInit, OnDestroy {
     private _getBillingdetailsById(): void {
         this._paymentDetailsService.getBillingdetailsById(this.paymentId)
             .pipe(takeUntil(this._unsubscribe$))
-            .subscribe((data: BillingdetailsResponse) => {
+            .subscribe((data: Billingdetails) => {
                 this.paymentForm.patchValue({
                     reqv: data.recv,
                     pay: data.pay,

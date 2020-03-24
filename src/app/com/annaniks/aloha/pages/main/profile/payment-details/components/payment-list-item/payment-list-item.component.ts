@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { BillingdetailsResponse } from 'src/app/com/annaniks/aloha/core/models/payment';
+import { Billingdetails } from 'src/app/com/annaniks/aloha/core/models/payment';
 
 @Component({
     selector: 'app-payment-list-item',
@@ -8,7 +8,7 @@ import { BillingdetailsResponse } from 'src/app/com/annaniks/aloha/core/models/p
 })
 export class PaymentListItemComponent implements OnInit, OnDestroy {
     @Input() id: string;
-    @Input() item: BillingdetailsResponse;
+    @Input() item: Billingdetails;
 
     constructor() { }
 
