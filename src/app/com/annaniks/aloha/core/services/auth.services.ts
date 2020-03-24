@@ -1,15 +1,15 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User} from '../models/profile';
+import { User } from '../models/profile';
 
 @Injectable()
 
 export class AuthService {
-    public user:User;
+    public user: User;
     constructor(private _httpClient: HttpClient) { }
 
-    public getProfile(): Observable<User> {
-        return this._httpClient.get<User>('/profile');
+    public getProfile(): Observable<any> {
+        return this._httpClient.get<any>('/profile', { observe: 'response' });
     }
 }

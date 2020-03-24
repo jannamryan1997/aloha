@@ -20,6 +20,21 @@ export class UserAccountView implements OnInit {
     private _userId: string;
     private _promocode: string;
     private _contact: number;
+   public  keyword = 'name';
+   public  data = [
+       {
+         name: 'Armenia'
+       },
+       {
+         name: 'England'
+       },
+       {
+        name: 'Russia'
+      },
+      {
+          name:"China"
+      }
+    ];
     constructor(
         private _fb: FormBuilder,
         private _menuService: MenuService,
@@ -69,7 +84,7 @@ export class UserAccountView implements OnInit {
             email: this.userAccountGroup.value.email,
             contract: this._contact,
             phone: this.userAccountGroup.value.phonenumber,
-            country: this.userAccountGroup.value.country,
+            country: this.userAccountGroup.value.country.name,
             name: this.userAccountGroup.value.name,
             details: this.userAccountGroup.value.details,
             promocode: this._promocode,
@@ -95,4 +110,11 @@ export class UserAccountView implements OnInit {
     public checkIsValid(controlName): boolean {
         return this.userAccountGroup.get(controlName).hasError('required') && this.userAccountGroup.get(controlName).touched;
     }
+  public  onChangeSearch(val: string) {
+        // fetch remote data from here
+        // And reassign the 'data' which is binded to 'data' property.
+      }
+    public  selectEvent(item) {
+        // do something with selected item
+      }
 }
