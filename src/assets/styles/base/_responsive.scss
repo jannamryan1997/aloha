@@ -89,12 +89,17 @@
             padding: 0 20px !important;
 
             .main-container {
+                flex-direction: column !important;
+
                 .menu-content {
-                    display: none !important;
+                    display: flex !important;
+                    max-width: 100% !important;
+                    margin-bottom: 40px !important;
                 }
 
                 .router-content {
                     margin: auto !important;
+                    max-width: 100% !important;
                     width: 100% !important;
                 }
             }
@@ -107,19 +112,23 @@
     .auth-container {
         .auth-header {
             padding: 50px 0 !important;
+
             .logo {
                 height: 70px !important;
                 width: 70px !important;
             }
+
             .text {
                 font-size: 27px !important;
                 line-height: 27px !important;
             }
         }
+
         .auth-top-content {
             margin-top: 50px !important;
             flex-direction: column !important;
         }
+
         .login-form-header,
         .registration-form-header {
             padding: 40px 0 !important;
@@ -129,29 +138,58 @@
             }
         }
     }
+
     .payment-content {
         .amount-text-content {
             flex-direction: column !important;
         }
     }
+
     .address-list-item-details {
         .text {
             font-size: 15px !important;
             line-height: 15px !important;
         }
     }
+
     .payment-list-item-details {
         .text {
             font-size: 15px !important;
             line-height: 15px !important;
         }
     }
+
     .btn {
         font-size: 12px !important;
         padding: 15px 30px !important;
     }
+
     .label {
         font-size: 15px !important;
     }
 
+    .home-buttons {
+        flex-direction: column !important;
+
+        .radius {
+            display: none !important;
+        }
+    }
+
+    .home-content {
+        .home-top-content {
+            margin-left: 20px !important;
+            flex-direction: column !important;
+        }
+    }
+
+    .message-main {
+        padding: 60px 60px !important;
+
+        .text {
+            color: #17344F !important;
+            font-size: 15px !important;
+            line-height: 35px !important;
+        }
+    }
 }
