@@ -1,9 +1,9 @@
 <div class="pg-content payment-detail">
-    <div class="d-flex" *ngIf="paymentData.length==0">
-        <p class="result-text m-auto" >No Result</p>
+    <div class="d-flex" *ngIf="paymentData.length==0 && !loading">
+        <p class="result-text m-auto">No Result</p>
     </div>
     <div class="payment-detail-content">
-        <app-payment-list-item  *ngFor="let item of paymentData" [id]="item.id" [item]="item"></app-payment-list-item>
+        <app-payment-list-item *ngFor="let item of paymentData" [id]="item.id" [item]="item"></app-payment-list-item>
     </div>
     <button class="btn  cursor-pointer add-btn" type="submit" [routerLink]="'add'">Add Payment</button>
 </div>
