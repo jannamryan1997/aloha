@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 import { ProfileService } from '../profile.service';
 import { User } from '../../../../core/models/profile';
 import { AuthService } from '../../../../core/services/auth.services';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: "user-account-view",
@@ -39,7 +40,8 @@ export class UserAccountView implements OnInit {
         private _fb: FormBuilder,
         private _menuService: MenuService,
         private _profileService: ProfileService,
-        private _authService: AuthService
+        private _authService: AuthService,
+        private _toastr: ToastrService
     ) {
         const routeSteps: RouteStep[] = [
             { label: 'Main', routerLink: '/' },
@@ -51,7 +53,7 @@ export class UserAccountView implements OnInit {
     ngOnInit() {
         this._formBuilder();
         this._getProfile();
-      //  this._setProfileValues();
+        //  this._setProfileValues();
     }
 
     private _formBuilder(): void {
@@ -77,10 +79,10 @@ export class UserAccountView implements OnInit {
                     email: data.body.email,
                     details: data.body.details,
                 })
-              console.log(data);
-              
+                console.log(data);
+
             })
-           
+
     }
     private _setProfileValues(): void {
         console.log(this._authService.user);
@@ -120,6 +122,7 @@ export class UserAccountView implements OnInit {
             )
             .subscribe((data) => {
                 console.log(data);
+                this._toastr.success('Your request has been successfully delivered.');
             },
                 err => {
                     err = err.error.msg;
