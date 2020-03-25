@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { MenuService } from '../../../../core/services/menu.service';
 import { RouteStep } from '../../../../core/models/route-step';
 import { PaymentDetailsService } from './payment-details.service';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, finalize } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { Billingdetails } from '../../../../core/models/payment';
 
@@ -12,9 +12,9 @@ import { Billingdetails } from '../../../../core/models/payment';
     styleUrls: ["payment-details.view.scss"]
 })
 export class PaymentDetailsView implements OnInit {
-
     private _unsubscribe$: Subject<void> = new Subject<void>();
     public paymentData: Billingdetails[] = [];
+    public loading: boolean = false;
 
     constructor(private _menuService: MenuService, private _paymentDetailsService: PaymentDetailsService) {
         const routeSteps: RouteStep[] = [
@@ -29,12 +29,14 @@ export class PaymentDetailsView implements OnInit {
     }
 
     private _getBillingdetails(): void {
+        this.loading = true;
         this._paymentDetailsService.getBillingdetails()
-            .pipe(takeUntil(this._unsubscribe$))
+            .pipe(
+                takeUntil(this._unsubscribe$),
+                finalize(() => this.loading = false)
+            )
             .subscribe((data: Billingdetails[]) => {
                 this.paymentData = data;
-                console.log(this.paymentData);
-
             })
     }
 }

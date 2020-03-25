@@ -7,6 +7,7 @@ import { Subject, Observable } from 'rxjs';
 import { ProfileService } from '../profile.service';
 import { User } from '../../../../core/models/profile';
 import { AuthService } from '../../../../core/services/auth.services';
+import { ToastrService } from 'ngx-toastr';
 import { MainService } from '../../main.service';
 
 @Component({
@@ -28,6 +29,7 @@ export class UserAccountView implements OnInit {
         private _menuService: MenuService,
         private _profileService: ProfileService,
         private _authService: AuthService,
+        private _toastr: ToastrService,
         private _mainService: MainService
     ) {
         const routeSteps: RouteStep[] = [
@@ -40,7 +42,7 @@ export class UserAccountView implements OnInit {
 
     ngOnInit() {
         this._formBuilder();
-        this._setProfileValues();
+         this._setProfileValues();
     }
 
     private _formBuilder(): void {
@@ -57,12 +59,14 @@ export class UserAccountView implements OnInit {
         this._mainService.getCountries()
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data) => {
-                this.data = data;
+                console.log(data);
+
             })
+
     }
 
     private _setProfileValues(): void {
-        const user: User = this._authService.user;
+         const user: User = this._authService.user;
         this._userId = user.id;
         this._promocode = user.promocode;
         this._contact = user.contract;
@@ -97,6 +101,7 @@ export class UserAccountView implements OnInit {
             )
             .subscribe((data) => {
                 console.log(data);
+                this._toastr.success('Your request has been successfully delivered.');
             },
                 err => {
                     err = err.error.msg;

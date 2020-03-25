@@ -5,10 +5,11 @@ import { MenuService } from 'src/app/com/annaniks/aloha/core/services/menu.servi
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserAddressesService } from '../user-addresses.service';
 import { UserAddress, UserAddressData } from 'src/app/com/annaniks/aloha/core/models/user-address';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, finalize } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { RequestModal } from 'src/app/com/annaniks/aloha/core/modals';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -23,7 +24,22 @@ export class AddressView implements OnInit, OnDestroy {
     public addressForm: FormGroup;
     public addressId: string;
     public errorMessage: string;
-
+    public loading: boolean =false;
+    public keyword = 'name';
+    public data = [
+        {
+            name: 'AM'
+        },
+        {
+            name: 'EN'
+        },
+        {
+            name: 'RU'
+        },
+        {
+            name: "CH"
+        }
+    ];
 
     constructor(
         private _menuService: MenuService,
@@ -32,6 +48,7 @@ export class AddressView implements OnInit, OnDestroy {
         private _fb: FormBuilder,
         private _userAddressesService: UserAddressesService,
         private _dialog: MatDialog,
+        private _toastr: ToastrService,
     ) {
         this._checkRouteParams();
         this._setRouteSteps();
@@ -94,16 +111,25 @@ export class AddressView implements OnInit, OnDestroy {
     }
 
     private _createduserAddress(): void {
+        this.loading = true;
+        this.addressForm.disable();
         const userAddressData: UserAddressData = {
             billing: this.addressForm.value.billing,
             main: this.addressForm.value.main,
-            country: this.addressForm.value.country,
+            country: this.addressForm.value.country.name,
             zip: this.addressForm.value.zip,
             address: this.addressForm.value.address,
         }
         this._userAddressesService.createduserAddress(userAddressData)
-            .pipe(takeUntil(this._unsubscribe$))
-            .subscribe((data) => {
+            .pipe(takeUntil(this._unsubscribe$),
+                finalize(() => {
+                    this.loading = false;
+                    this.addressForm.enable();
+                })
+
+            ).subscribe((data) => {
+
+                this._toastr.success('Your request has been successfully delivered.');
                 this._router.navigate(['/profile/user-addresses']);
             },
                 err => {
@@ -114,22 +140,43 @@ export class AddressView implements OnInit, OnDestroy {
     }
 
     private _updateUserAddress(): void {
+        this.loading = true;
+        this.addressForm.disable();
         const userAddressData: UserAddressData = {
             id: this.addressId,
             billing: this.addressForm.value.billing,
             main: this.addressForm.value.main,
-            country: this.addressForm.value.country,
+            country: this.addressForm.value.country.name,
             zip: this.addressForm.value.zip,
             address: this.addressForm.value.address,
         }
         this._userAddressesService.updateUserAddres(this.addressId, userAddressData)
-            .pipe(takeUntil(this._unsubscribe$))
+            .pipe(takeUntil(this._unsubscribe$),
+                finalize(() => {
+                    this.loading = false;
+                    this.addressForm.enable();
+                })
+            )
             .subscribe((data) => {
+                this._toastr.success('Your request has been successfully delivered.');
                 this._router.navigate(['/profile/user-addresses']);
                 console.log(data);
             })
     }
+    private _deleteAddresses(): void {
+        this._userAddressesService.deleteUserAddreses(this.addressId)
+            .pipe(takeUntil(this._unsubscribe$),
+            )
+            .subscribe((data) => {
+                console.log(data);
+                this._router.navigate(['/profile/user-addresses']);
+            },
+                err => {
+                    console.log(err);
 
+                }
+            )
+    }
     public onClick(): void {
         if (!this.isEdit) {
             this._createduserAddress();
@@ -144,17 +191,7 @@ export class AddressView implements OnInit, OnDestroy {
         })
         dialogRef.afterClosed().subscribe((data) => {
             if (data == "yes") {
-                this._userAddressesService.deleteUserAddreses(this.addressId)
-                    .pipe(takeUntil(this._unsubscribe$))
-                    .subscribe((data) => {
-                        console.log(data);
-                        this._router.navigate(['/profile/user-addresses']);
-                    },
-                        err => {
-                            console.log(err);
-
-                        }
-                    )
+                this._deleteAddresses();
 
             }
         })
@@ -163,7 +200,14 @@ export class AddressView implements OnInit, OnDestroy {
     public checkIsValid(controlName): boolean {
         return this.addressForm.get(controlName).hasError('required') && this.addressForm.get(controlName).touched;
     }
-    
+
+    public onChangeSearch(val: string) {
+        // fetch remote data from here
+        // And reassign the 'data' which is binded to 'data' property.
+    }
+    public selectEvent(item) {
+        // do something with selected item
+    }
     ngOnDestroy() { }
 }
 
