@@ -33,12 +33,14 @@
 
             </div>
             <div class="form-group-item d-flex align-items-center">
-                <div class="label-wrapper">
-                    <label class="label">Country</label>
-                </div>
-                <input type="text" id="name" formControlName="country" class="form-control input" placeholder=""
-                    [ngClass]="{'border':checkIsValid('country')}"  maxlength="2">
-
+                    <div class="label-wrapper">
+                        <label class="label">Main</label>
+                    </div>
+            <ng-autocomplete class="ng-autocomplete" [data]="data" [searchKeyword]="keyword"
+                (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' [itemTemplate]="itemTemplate"
+                [notFoundTemplate]="notFoundTemplate" formControlName="country"
+                [ngClass]="{'border':checkIsValid('country')}">
+            </ng-autocomplete>
             </div>
         </div>
         <div class="d-flex">

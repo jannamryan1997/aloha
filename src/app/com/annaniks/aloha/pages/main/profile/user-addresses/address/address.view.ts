@@ -23,7 +23,21 @@ export class AddressView implements OnInit, OnDestroy {
     public addressForm: FormGroup;
     public addressId: string;
     public errorMessage: string;
-
+    public keyword = 'name';
+    public data = [
+        {
+            name: 'AM'
+        },
+        {
+            name: 'EN'
+        },
+        {
+            name: 'RU'
+        },
+        {
+            name: "CH"
+        }
+    ];  
 
     constructor(
         private _menuService: MenuService,
@@ -97,7 +111,7 @@ export class AddressView implements OnInit, OnDestroy {
         const userAddressData: UserAddressData = {
             billing: this.addressForm.value.billing,
             main: this.addressForm.value.main,
-            country: this.addressForm.value.country,
+            country: this.addressForm.value.country.name,
             zip: this.addressForm.value.zip,
             address: this.addressForm.value.address,
         }
@@ -118,7 +132,7 @@ export class AddressView implements OnInit, OnDestroy {
             id: this.addressId,
             billing: this.addressForm.value.billing,
             main: this.addressForm.value.main,
-            country: this.addressForm.value.country,
+            country: this.addressForm.value.country.name,
             zip: this.addressForm.value.zip,
             address: this.addressForm.value.address,
         }
@@ -162,6 +176,10 @@ export class AddressView implements OnInit, OnDestroy {
     public checkIsValid(controlName): boolean {
         return this.addressForm.get(controlName).hasError('required') && this.addressForm.get(controlName).touched;
     }
+      public onChangeSearch(val: string) {
+    }
+    public selectEvent(item) {
+    }      
     ngOnDestroy() { }
 }
 
