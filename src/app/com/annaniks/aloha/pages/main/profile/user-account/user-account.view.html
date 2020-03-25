@@ -17,8 +17,6 @@
             <ng-autocomplete class="input-content  ng-autocomplete"
               [data]="data"
               [searchKeyword]="keyword"
-              (selected)='selectEvent($event)'
-              (inputChanged)='onChangeSearch($event)'
               [itemTemplate]="itemTemplate"
               [notFoundTemplate]="notFoundTemplate" formControlName="country">                                 
             </ng-autocomplete>

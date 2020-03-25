@@ -6,7 +6,7 @@ import { MenuService } from 'src/app/com/annaniks/aloha/core/services/menu.servi
 import { PaymentDetailsService } from '../payment-details.service';
 import { takeUntil, finalize } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { BillingdetailsData, BillingdetailsResponse } from 'src/app/com/annaniks/aloha/core/models/payment';
+import { BillingdetailsData} from 'src/app/com/annaniks/aloha/core/models/payment';
 import { MatDialog } from '@angular/material/dialog';
 import { RequestModal } from 'src/app/com/annaniks/aloha/core/modals';
 import { ToastrService } from 'ngx-toastr';
@@ -73,24 +73,15 @@ export class PaymentDetailView implements OnInit, OnDestroy {
     }
 
     private _getBillingdetailsById(): void {
-        console.log(this.paymentId, "kjlllll");
-
         this._paymentDetailsService.getBillingdetailsById(this.paymentId)
             .pipe(takeUntil(this._unsubscribe$))
-            .subscribe((data: BillingdetailsResponse) => {
+            .subscribe((data:BillingdetailsData) => {
                 this.paymentForm.patchValue({
                     reqv: data.recv,
                     pay: data.pay,
                     type: data.details,
                 })
-                console.log(data);
-
-            },
-                err => {
-                    console.log(err);
-
-                }
-            )
+            })
     }
     private _createdBillingdetails(): void {
         this.loading = true;
@@ -136,6 +127,7 @@ export class PaymentDetailView implements OnInit, OnDestroy {
                 this._toastr.success('Your request has been successfully delivered.');
                 console.log(data);
 
+                this._router.navigate(['/profile/payment-details'])
             },
                 err => {
                     this.errorMessage = err.error.msg;
@@ -176,13 +168,9 @@ export class PaymentDetailView implements OnInit, OnDestroy {
         })
 
     }
-
     public checkIsValid(controlName): boolean {
         return this.paymentForm.get(controlName).hasError('required') && this.paymentForm.get(controlName).touched;
     }
-
-
-
 
     ngOnDestroy() { }
 }

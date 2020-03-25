@@ -3,11 +3,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MenuService } from '../../../../core/services/menu.service';
 import { RouteStep } from '../../../../core/models/route-step';
 import { takeUntil, finalize } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { ProfileService } from '../profile.service';
 import { User } from '../../../../core/models/profile';
 import { AuthService } from '../../../../core/services/auth.services';
 import { ToastrService } from 'ngx-toastr';
+import { MainService } from '../../main.service';
 
 @Component({
     selector: "user-account-view",
@@ -18,42 +19,30 @@ export class UserAccountView implements OnInit {
     public userAccountGroup: FormGroup;
     private _unsubscribe$: Subject<void> = new Subject<void>();
     public loading: boolean = false;
+    public data = [];
     private _userId: string;
     private _promocode: string;
     private _contact: number;
     public keyword = 'name';
-    public data = [
-        {
-            name: 'Armenia'
-        },
-        {
-            name: 'England'
-        },
-        {
-            name: 'Russia'
-        },
-        {
-            name: "China"
-        }
-    ];
     constructor(
         private _fb: FormBuilder,
         private _menuService: MenuService,
         private _profileService: ProfileService,
         private _authService: AuthService,
-        private _toastr: ToastrService
+        private _toastr: ToastrService,
+        private _mainService: MainService
     ) {
         const routeSteps: RouteStep[] = [
             { label: 'Main', routerLink: '/' },
             { label: 'Profile', routerLink: '/profile' }
         ]
         this._menuService.setRouteSteps(routeSteps);
+        this._getCountries();
     }
 
     ngOnInit() {
         this._formBuilder();
-        this._getProfile();
-        //  this._setProfileValues();
+         this._setProfileValues();
     }
 
     private _formBuilder(): void {
@@ -66,27 +55,18 @@ export class UserAccountView implements OnInit {
         })
     }
 
-    private _getProfile(): void {
-        this._authService.getProfile().pipe(takeUntil(this._unsubscribe$))
+    private _getCountries(): void {
+        this._mainService.getCountries()
+            .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data) => {
-                this._userId = data.body.id;
-                this._promocode = data.body.promocode;
-                this._contact = data.body.contract;
-                this.userAccountGroup.patchValue({
-                    name: data.body.name,
-                    phonenumber: data.body.phone,
-                    country: data.body.country,
-                    email: data.body.email,
-                    details: data.body.details,
-                })
                 console.log(data);
 
             })
 
     }
+
     private _setProfileValues(): void {
-        console.log(this._authService.user);
-        const user: User = this._authService.user;
+         const user: User = this._authService.user;
         this._userId = user.id;
         this._promocode = user.promocode;
         this._contact = user.contract;
@@ -97,9 +77,8 @@ export class UserAccountView implements OnInit {
             email: user.email,
             details: user.details,
         })
-        console.log(user, "giii");
-
     }
+
     private _postProfile(): void {
         this.loading = true;
         this.userAccountGroup.disable();
@@ -108,7 +87,7 @@ export class UserAccountView implements OnInit {
             email: this.userAccountGroup.value.email,
             contract: this._contact,
             phone: this.userAccountGroup.value.phonenumber,
-            country: this.userAccountGroup.value.country.name,
+            country: this.userAccountGroup.value.country.code,
             name: this.userAccountGroup.value.name,
             details: this.userAccountGroup.value.details,
             promocode: this._promocode,
@@ -132,14 +111,13 @@ export class UserAccountView implements OnInit {
     public onclickPostProfile(): void {
         this._postProfile();
     }
+
     public checkIsValid(controlName): boolean {
         return this.userAccountGroup.get(controlName).hasError('required') && this.userAccountGroup.get(controlName).touched;
     }
-    public onChangeSearch(val: string) {
-        // fetch remote data from here
-        // And reassign the 'data' which is binded to 'data' property.
+
+    get countries(): Observable<any> {
+        return this._mainService.getCountries();
     }
-    public selectEvent(item) {
-        // do something with selected item
-    }
+
 }

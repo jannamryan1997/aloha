@@ -1,8 +1,8 @@
 <div class="payment-list-item">
-    <P class="label">{{item?.details}}</P>
     <div class="payment-list-item-content d-flex justify-content-between align-items-center">
         <div class="payment-list-item-details">
-            <p class="text">{{item?.details}}</p>
+            <p class="text">Details: {{item?.details}}</p>
+            <p class="text">Pay: {{item?.pay}}</p>
         </div>
         <button class="btn  cursor-pointer edit-btn" type="submit" [routerLink]="[id]">Edit</button>
     </div>

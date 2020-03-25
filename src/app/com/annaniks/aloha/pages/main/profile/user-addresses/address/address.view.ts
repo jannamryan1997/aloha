@@ -123,7 +123,7 @@ export class AddressView implements OnInit, OnDestroy {
         this._userAddressesService.createduserAddress(userAddressData)
             .pipe(takeUntil(this._unsubscribe$),
                 finalize(() => {
-                    this.loading = true;
+                    this.loading = false;
                     this.addressForm.enable();
                 })
 
@@ -159,6 +159,7 @@ export class AddressView implements OnInit, OnDestroy {
             )
             .subscribe((data) => {
                 this._toastr.success('Your request has been successfully delivered.');
+                this._router.navigate(['/profile/user-addresses']);
                 console.log(data);
             })
     }
