@@ -3,10 +3,11 @@
   border: 1px solid #d5d5d5;
   opacity: 1;
   .footer-container {
+    padding:0 20px;
     .text,
     .title {
-      color: #17344f;
-      font-size: 20px;
+      color: hsl(209, 55%, 20%);
+      font-size: 17px;
       line-height: 27px;
     }
     .title {
@@ -32,7 +33,7 @@
           width: 400px;
         }
         .sign-btn {
-          padding: 14px 75px;
+          padding: 15px 75px;
           opacity: 1;
           color: white;
           background-color: #17344f;
@@ -41,10 +42,6 @@
     }
     .footer-min-content {
       padding: 65px 0;
-
-      .title {
-        margin-top: 20px;
-      }
       .card-item {
         .item {
           width: 60px;

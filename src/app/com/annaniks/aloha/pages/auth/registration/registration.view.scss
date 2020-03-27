@@ -24,14 +24,14 @@
   .registration-form {
     width: 100%;
     margin: 0 auto;
-    padding: 66px 0;
+    padding: 66px 10px;
     max-width: 500px;
 
     .form-group {
       width: 100%;
 
       .input {
-        width: calc(100% - 100px) !important;
+        width: calc(100% - 100px);
       }
 
       .label-wrapper {
@@ -45,7 +45,7 @@
     }
 
     .save-btn {
-      margin-left: 100px !important;
+      margin-left: 100px;
     }
   }
 }
