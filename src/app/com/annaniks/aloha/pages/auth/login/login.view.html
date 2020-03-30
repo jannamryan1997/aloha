@@ -7,7 +7,9 @@
         </div>
         <div id="login-forms" class="login-form respons-form-content">
                 <p class="tex-center error text-danger error-message">{{errorMessage}}</p>
+                <p class="tex-center error text-danger error-message d-none" [ngClass]="{'d-block':logIn.get('email').hasError('pattern')}">Please provide a valid email address</p>
             <div class="form-group d-flex align-items-center">
+              
                 <div class="label-wrapper">
                     <label class="label">E mail</label>
                 </div>

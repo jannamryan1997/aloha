@@ -28,7 +28,7 @@ export class LoginView implements OnInit {
 
     private _formBuilder(): void {
         this.logIn = this._fb.group({
-            email: [null, Validators.required],
+            email: [null, [Validators.required,	Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"),]],
         })
     }
     private _login(email): void {
@@ -47,7 +47,9 @@ export class LoginView implements OnInit {
                 console.log(data);
             },
                 err => {
-                    this.errorMessage = "Please fill in the correct email address";
+                    console.log(err);
+                    
+                    this.errorMessage = err.error.msg;
                     this.closeLoginMain = true;
                 }
             )
@@ -58,7 +60,7 @@ export class LoginView implements OnInit {
     }
 
     public checkIsValid(controlName): boolean {
-        return this.logIn.get(controlName).hasError('required') && this.logIn.get(controlName).touched;
+        return this.logIn.get(controlName).hasError('required') && this.logIn.get(controlName).touched ;
     }
 
 }

@@ -133,6 +133,8 @@ export class AddressView implements OnInit, OnDestroy {
                 this._router.navigate(['/profile/user-addresses']);
             },
                 err => {
+                    console.log(err);
+                    
                     this.errorMessage = err.error.msg;
                 }
             )
@@ -161,7 +163,12 @@ export class AddressView implements OnInit, OnDestroy {
                 this._toastr.success('Your request has been successfully delivered.');
                 this._router.navigate(['/profile/user-addresses']);
                 console.log(data);
-            })
+            },
+            err => {
+                console.log(err);
+                this.errorMessage = err.error.msg;
+            }
+            )
     }
     private _deleteAddresses(): void {
         this._userAddressesService.deleteUserAddreses(this.addressId)
@@ -173,7 +180,7 @@ export class AddressView implements OnInit, OnDestroy {
             },
                 err => {
                     console.log(err);
-
+                    this.errorMessage = err.error.msg;
                 }
             )
     }

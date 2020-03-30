@@ -46,11 +46,8 @@ export class RegistrationView implements OnInit {
                     this.registrationForm.enable();
                 })
             ).subscribe((data: RegistrationResponse) => {
-                console.log(data);
                 this.email = data.email;
                 this.closeRegistrationMain = false;
-
-                console.log(this.email, "fdfdfd");
             },
                 err => {
                     this.closeRegistrationMain = true;

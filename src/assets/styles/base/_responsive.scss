@@ -53,6 +53,18 @@
     .card-item {
         margin-top: 20px !important;
     }
+    .pay-bill-main-content{
+    .main-text{
+        font-size: 27px !important;
+        line-height: 40px !important
+    }
+    .main-icon{
+        height: 50px !important;
+    }
+    .text{
+        font-size: 21px !important;
+    }
+}
 }
 @media only screen and (max-width:480px) {
     .f-direction-colum-w-480 {
@@ -114,4 +126,14 @@
             line-height: 30px !important;
         }
     }
+    .pay-bill-main-content{
+        margin: 30px auto !important;
+    .main-text{
+        font-size: 15px !important;
+        line-height: 30px !important
+    }
+    .text{
+        font-size: 12px !important;
+    }
+}
 }

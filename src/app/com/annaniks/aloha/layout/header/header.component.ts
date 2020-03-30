@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
         this._appService.signOff()
             .subscribe((data) => {
                 console.log(data);
-                this._router.navigate(["/auth/login"]);
+                this._router.navigate(["/home"]);
             })
     }
     public onclickSignOff(): void {
