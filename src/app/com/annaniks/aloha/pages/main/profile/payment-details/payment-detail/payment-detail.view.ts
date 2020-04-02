@@ -159,7 +159,8 @@ export class PaymentDetailView implements OnInit, OnDestroy {
     }
     public onClickDelete(): void {
         const dialogRef = this._dialog.open(RequestModal, {
-            width: "600px"
+            width: "600px",
+            panelClass: ['padding-10']
         })
         dialogRef.afterClosed().subscribe((data) => {
             if (data == "yes") {

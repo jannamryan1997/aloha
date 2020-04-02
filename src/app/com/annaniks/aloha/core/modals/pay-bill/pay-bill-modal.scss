@@ -1,14 +1,15 @@
 .pay-bill-content {
     .header-content {
         .icon {
-            width: 42px;
-            height: 42px;
+            width: 35px;
+            height: 35px;
             cursor: pointer;
         }
     }
     .pay-bill-main-content {
-        width: 60%;
+        max-width: 60%;
         margin: 55px auto;
+        width: 100%;
 
         .main-description {
             .main-text {
@@ -32,5 +33,14 @@
             word-break: break-all;
             margin-top: 35px;
         }
+    }
+}
+
+::ng-deep{
+    .cdk-overlay-pane{
+        padding: 0 20px !important;
+    }
+    .mat-dialog-container{
+        padding: 24px 10px !important
     }
 }

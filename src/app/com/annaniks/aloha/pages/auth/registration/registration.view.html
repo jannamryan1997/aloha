@@ -9,6 +9,8 @@
 
         <div id="registration-forms" class="registration-form respons-form-content">
             <p class="tex-center error text-danger error-message">{{errorMessage}}</p>
+            <p class="tex-center error text-danger error-message d-none"
+                [ngClass]="{'d-block':registrationForm.get('email').hasError('pattern')}">Please provide a valid email address</p>
             <div class="form-group d-flex align-items-center">
                 <div class="label-wrapper">
                     <label class="label">E mail</label>
@@ -32,8 +34,9 @@
                     [ngClass]="{'border':checkIsValid('phone')}" OnlyNumber="true" [OnlyNumber]="true">
 
             </div>
-            <button class="btn save-btn cursor-pointer d-flex align-items-center" type="submit" [disabled]="registrationForm.invalid"
-                (click)="onclickRegistration()">Save <app-loading class="ml-3" *ngIf="loading"></app-loading></button>
+            <button class="btn save-btn cursor-pointer d-flex align-items-center" type="submit"
+                [disabled]="registrationForm.invalid" (click)="onclickRegistration()">Save <app-loading class="ml-3"
+                    *ngIf="loading"></app-loading></button>
         </div>
     </div>
 </form>

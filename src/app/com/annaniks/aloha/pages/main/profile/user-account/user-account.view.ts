@@ -24,6 +24,7 @@ export class UserAccountView implements OnInit {
     private _promocode: string;
     private _contact: number;
     public keyword = 'name';
+    public messageError:string;
     constructor(
         private _fb: FormBuilder,
         private _menuService: MenuService,
@@ -50,7 +51,7 @@ export class UserAccountView implements OnInit {
             name: [null, Validators.required],
             phonenumber: [null, Validators.required],
             country: [null, Validators.required],
-            email: [null, [Validators.required, Validators.email]],
+            email: [null, [Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
             details: [null, Validators.required]
         })
     }
@@ -100,11 +101,10 @@ export class UserAccountView implements OnInit {
                 })
             )
             .subscribe((data) => {
-                console.log(data);
                 this._toastr.success('Your request has been successfully delivered.');
             },
                 err => {
-                    err = err.error.msg;
+                    this.messageError = err.error.msg;
                 }
             )
     }
