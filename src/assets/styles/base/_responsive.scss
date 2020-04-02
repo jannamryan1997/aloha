@@ -2,17 +2,21 @@
     .f-direction-colum-w-1100 {
         flex-direction: column !important;
     }
+
     .response-content {
         padding: 0 20px !important;
     }
+
     .payment-content {
         .save-btn {
             display: none !important;
         }
+
         .puy-btn {
             display: block !important;
         }
     }
+
     .footer-top-content-wrapper {
         padding: 40px 0px !important;
 
@@ -30,94 +34,157 @@
     .f-direction-colum-w-900 {
         flex-direction: column !important;
     }
+
     .d-flex-colum-w-900 {
         display: flex !important;
     }
+
     .d-none-w-900 {
         display: none !important;
     }
+
+    .d-block-w-900 {
+        display: block !important;
+    }
+
     .header-content {
         padding: 0 20px !important;
     }
+
+    .main-nav-menu-content {
+        flex-direction: column-reverse !important;
+
+        .main-nav-menu-items {
+            margin-left: 0 !important;
+        }
+
+        .main-nav-menu-content {
+            .coupon-card {
+                width: 100% !important;
+                max-width: 500px !important;
+            }
+        }
+    }
+
     //profile
     .profile-main {
         .menu-content {
-            max-width: 100% !important;
+            // max-width: 100% !important;
             margin-bottom: 30px !important;
         }
+
         .router-content {
             width: 100% !important;
             margin-left: 0 !important;
+
+            &::before {
+                display: block;
+                content: "";
+                display: block;
+                border: 1px solid #B4B4B4;
+                opacity: 1;
+            }
         }
     }
+
     .card-item {
         margin-top: 20px !important;
     }
-    .pay-bill-main-content{
-    .main-text{
-        font-size: 27px !important;
-        line-height: 40px !important
+
+    .pay-bill-main-content {
+        .main-text {
+            font-size: 27px !important;
+            line-height: 40px !important
+        }
+
+        .main-icon {
+            height: 50px !important;
+        }
+
+        .text {
+            font-size: 21px !important;
+        }
+
     }
-    .main-icon{
-        height: 50px !important;
-    }
-    .text{
-        font-size: 21px !important;
+
+    .right-content {
+        max-width: 300px !important;
     }
 }
-}
+
 @media only screen and (max-width:480px) {
     .f-direction-colum-w-480 {
         flex-direction: column !important;
     }
-    .save-btn{
+
+    .d-block-w-480 {
+        display: block !important;
+    }
+
+    .d-none-w-480 {
+        display: none !important;
+    }
+
+    .save-btn {
         padding: 15px 30px !important;
     }
+
     .form-header {
         padding: 30px 0 !important;
     }
+
     .result-text {
         font-size: 20px !important;
         line-height: 20px !important;
     }
+
     .respons-form-content {
         .label {
             font-size: 15px !important;
         }
+
         .form-control {
             width: 100% !important;
         }
+
         .save-btn {
             font-size: 15px !important;
             padding: 15px 20px !important;
             margin-left: 75px !important;
         }
     }
+
     .menu-content {
         .title {
             font-size: 10px !important;
             line-height: 10px !important;
         }
     }
+
     .asset-list-item {
+
         .add-btn,
         .out-btn {
             font-size: 12px !important;
             padding: 10px 10px !important;
         }
     }
+
     .amount-text-content {
+
         .text,
         .value {
             font-size: 20px !important;
         }
 
     }
+
     .footer-content {
         .footer-min-content {
             padding: 30px 0 !important;
         }
     }
+
     .message-main {
         padding: 60px 60px !important;
 
@@ -126,14 +193,55 @@
             line-height: 30px !important;
         }
     }
-    .pay-bill-main-content{
+
+    .pay-bill-main-content {
         margin: 30px auto !important;
-    .main-text{
-        font-size: 15px !important;
-        line-height: 30px !important
+
+        .main-text {
+            font-size: 15px !important;
+            line-height: 30px !important
+        }
+
+        .text {
+            font-size: 12px !important;
+        }
     }
-    .text{
-        font-size: 12px !important;
+
+    .main-nav-menu-content {
+        .coupon-card {
+            margin-top: 20px !important;
+            padding: 30px 20px !important;
+
+            .title,
+            .coupon-input {
+                font-size: 20px !important;
+            }
+
+            text {
+                font-size: 12px !important;
+            }
+
+            .coupon-value {
+                justify-content: left !important;
+
+                .coupon-input {
+                    width: 160px !important;
+                }
+            }
+        }
     }
-}
+
+    .logo-text {
+        font-size: 18px !important;
+    }
+
+    .right-content {
+        .buy-btn {
+            padding: 15px 70px !important;
+        }
+    }
+
+    .laft-content {
+        padding: 35px 20px !important;
+    }
 }
