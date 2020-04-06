@@ -1,7 +1,6 @@
-export interface ServerResponse<T> {
-    code: number;
-    data?: T,
-    message?: string;
+export interface ServerResponse {
+    status: number;
+    msg?: string;
 }
 interface Error {
     code: number,

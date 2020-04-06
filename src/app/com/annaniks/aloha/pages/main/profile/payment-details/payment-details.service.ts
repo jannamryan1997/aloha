@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Billingdetails, BillingdetailsData } from '../../../../core/models/payment';
+import { Billingdetails, BillingdetailsData } from '../../../../core/models/payment-details';
 
 @Injectable()
 

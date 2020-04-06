@@ -6,7 +6,7 @@ import { MenuService } from 'src/app/com/annaniks/aloha/core/services/menu.servi
 import { PaymentDetailsService } from '../payment-details.service';
 import { takeUntil, finalize } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { BillingdetailsData} from 'src/app/com/annaniks/aloha/core/models/payment';
+import { BillingdetailsData} from 'src/app/com/annaniks/aloha/core/models/payment-details';
 import { MatDialog } from '@angular/material/dialog';
 import { RequestModal } from 'src/app/com/annaniks/aloha/core/modals';
 import { ToastrService } from 'ngx-toastr';

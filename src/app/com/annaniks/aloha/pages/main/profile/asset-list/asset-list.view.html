@@ -1,6 +1,4 @@
-<app-asset-list-item></app-asset-list-item>
-<app-asset-list-item></app-asset-list-item>
-<app-asset-list-item></app-asset-list-item>
-<app-asset-list-item></app-asset-list-item>
-<app-asset-list-item></app-asset-list-item>
-<app-asset-list-item></app-asset-list-item>
+<div class="d-flex" *ngIf="orderResponseData?.length==0">
+    <p class="result-text m-auto">No Result</p>
+</div>
+<app-asset-list-item *ngFor="let item of orderResponseData"></app-asset-list-item>

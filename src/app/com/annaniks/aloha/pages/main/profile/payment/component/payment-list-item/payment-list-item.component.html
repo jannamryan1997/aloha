@@ -7,7 +7,7 @@
             <div class="amount-description">
                 <div class="amount-text-content d-flex justify-content-between f-direction-colum-w-900">
                 <p class="text">Invoice amount</p>
-                <p class="value">$ 1.500</p>
+                <p class="value">$ {{paymentData?.amount}}</p>
             </div>
                 <div class="payment-info d-flex align-items-center">
                     <p>Pyment info</p>
@@ -44,7 +44,7 @@
             </table>
         </div>
     </div>
-    <div class="payment-item-content position-relative">
+    <!-- <div class="payment-item-content position-relative">
         <div class="payment-item d-flex">
             <div class="image-content">
                 <img src="assets/icons/payment-close-icon.svg" class="rounded d-block icon menu-icon" alt="...">
@@ -70,6 +70,6 @@
             </div>
         </div>
         <button class="btn  cursor-pointer save-btn" type="submit" (click)="onSbmit()">Puy bill</button>
-    </div>
+    </div> -->
  
 </div>
