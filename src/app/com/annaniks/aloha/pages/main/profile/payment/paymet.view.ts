@@ -1,18 +1,20 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { MenuService } from '../../../../core/services/menu.service';
 import { RouteStep } from '../../../../core/models/route-step';
 import { PaymentService } from './payment.service';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, finalize } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { Payment } from '../../../../core/models/payment';
 
 @Component({
     selector: "payment-view",
     templateUrl: "payment.view.html",
     styleUrls: ["payment.view.scss"]
 })
-export class PaymentView implements OnInit {
+export class PaymentView implements OnInit, OnDestroy {
     private _unsubscribe$: Subject<void> = new Subject<void>();
-    public paymentResponseData:PaymentResponse;
+    public paymentResponseData: Payment[];
+    public loading: boolean = false;
     constructor(
         private _menuService: MenuService,
         private _paymentService: PaymentService,
@@ -29,13 +31,20 @@ export class PaymentView implements OnInit {
     }
 
     private _getPayment(): void {
+        this.loading = true;
         this._paymentService.getPayment()
-            .pipe(takeUntil(this._unsubscribe$))
-            .subscribe((data:PaymentResponse)=>{
-                this.paymentResponseData=data;
-                console.log(data);
-                
+            .pipe(
+                takeUntil(this._unsubscribe$),
+                finalize(() => this.loading = false)
+            )
+            .subscribe((data: Payment[]) => {
+                this.paymentResponseData = data;
             })
+    }
+
+    ngOnDestroy() {
+        this._unsubscribe$.next();
+        this._unsubscribe$.complete();
     }
 
 

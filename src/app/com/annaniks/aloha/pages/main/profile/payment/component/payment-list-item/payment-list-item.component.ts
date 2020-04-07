@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { MatDialog } from '@angular/material/dialog';
 import { PayBillView } from 'src/app/com/annaniks/aloha/core/modals';
+import { Payment } from 'src/app/com/annaniks/aloha/core/models/payment';
 
 @Component({
     selector: "payment-list-item",
@@ -9,9 +10,9 @@ import { PayBillView } from 'src/app/com/annaniks/aloha/core/modals';
 })
 
 export class PaymentListItemComponent implements OnInit {
-    @Input() paymentData:PaymentResponse;
+    @Input() paymentData: Payment;
     public hive: boolean = false;
-    constructor(  private _dialog: MatDialog) { }
+    constructor(private _dialog: MatDialog) { }
 
     ngOnInit() { }
 

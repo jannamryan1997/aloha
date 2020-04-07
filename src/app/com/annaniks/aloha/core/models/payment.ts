@@ -1,4 +1,4 @@
-export interface PaymentResponse {
+export interface Payment {
     id: string;
     action: string;
     goods: number;

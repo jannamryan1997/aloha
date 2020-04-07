@@ -1,4 +1,4 @@
-export interface OrderResponse {
+export interface Order {
     id: string;
     parent: number;
     quantity: number;
@@ -10,7 +10,7 @@ export interface OrderResponse {
 }
 
 export interface OrderData {
-     goods:number;
+    goods: number;
     count: number;
     action: string;
     message: string;

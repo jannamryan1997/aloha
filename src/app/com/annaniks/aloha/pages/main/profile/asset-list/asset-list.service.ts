@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { OrderResponse, OrderData } from '../../../../core/models/order';
+import { Order, OrderData } from '../../../../core/models/order';
 import { ServerResponse } from '../../../../core/models/server-response';
 import { GoodsResponse } from '../../../../core/models/goods';
 
@@ -12,8 +12,8 @@ export class AssetsListService {
 
     constructor(private _httpClient: HttpClient) { }
 
-    public getOrder(): Observable<OrderResponse> {
-        return this._httpClient.get<OrderResponse>('/order');
+    public getOrder(): Observable<Order[]> {
+        return this._httpClient.get<Order[]>('/order');
     }
 
     public getGoods(): Observable<GoodsResponse> {
