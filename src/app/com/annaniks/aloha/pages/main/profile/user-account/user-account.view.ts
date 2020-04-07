@@ -62,7 +62,12 @@ export class UserAccountView implements OnInit {
             .subscribe((data) => {
                 console.log(data);
 
-            })
+            },
+            err => {
+                this.messageError = err.error.msg;
+            }
+            
+            )
 
     }
 

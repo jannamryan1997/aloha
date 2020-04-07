@@ -5,11 +5,13 @@ import { SharedModule } from '../../../shared/shared.module';
 import { ProfileService } from './profile.service';
 import { AssetsListService } from './asset-list/asset-list.service';
 import { FocusNextInputDriective } from '../../../core/directive/focuse-next.directive';
+import { BeehivesComponent } from '../../../layout';
 
 @NgModule({
     declarations: [
         ProfileView,
-        FocusNextInputDriective
+        FocusNextInputDriective,
+        BeehivesComponent
     ],
     imports: [
         ProfileRoutingModule,
