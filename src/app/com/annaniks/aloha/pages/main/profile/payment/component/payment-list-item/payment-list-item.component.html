@@ -1,5 +1,5 @@
 <div class="payment-content w-100">
-    <div class="payment-item-content" *ngIf="paymentData.paid !=null">
+    <div class="payment-item-content" >
         <div class="payment-item d-flex">
             <div class="image-content">
                 <img src="assets/icons/payment-open-icon.svg" class="rounded d-block icon menu-icon" alt="...">
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="asset-list" *ngIf="hive">
-            <p class="title">Standart hive</p>
+            <p class="title">{{paymentData?.descr}}</p>
             <table class="table">
                 <tr class="mat-tr">
                     <td class="mat-td w-50">Hive dimensions</td>
@@ -31,7 +31,7 @@
                 </tr>
                 <tr class="mat-tr">
                     <td class="mat-td w-50">amount</td>
-                    <td class="mat-td w-50 right-td">2 pcs</td>
+                    <td class="mat-td w-50 right-td">{{paymentData?.amount}} pcs</td>
                 </tr>
                 <tr class="mat-tr">
                     <td class="mat-td w-50">Data of purchase</td>
