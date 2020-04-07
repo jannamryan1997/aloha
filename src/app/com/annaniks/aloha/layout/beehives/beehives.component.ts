@@ -56,7 +56,7 @@ export class BeehivesComponent implements OnInit {
             this.count = this.count + 1;
 
         }
-        else if (message == "remove" && this.count <1) {
+        else if (message == "remove" && this.count >1) {
             this.count = this.count - 1;
         }
        

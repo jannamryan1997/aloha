@@ -1,5 +1,5 @@
 <div class="payment-content w-100">
-    <div class="payment-item-content">
+    <div class="payment-item-content" *ngIf="paymentData.paid !=null">
         <div class="payment-item d-flex">
             <div class="image-content">
                 <img src="assets/icons/payment-open-icon.svg" class="rounded d-block icon menu-icon" alt="...">
@@ -44,7 +44,7 @@
             </table>
         </div>
     </div>
-    <!-- <div class="payment-item-content position-relative">
+    <div class="payment-item-content position-relative" *ngIf="paymentData.paid==null">
         <div class="payment-item d-flex">
             <div class="image-content">
                 <img src="assets/icons/payment-close-icon.svg" class="rounded d-block icon menu-icon" alt="...">
@@ -70,6 +70,6 @@
             </div>
         </div>
         <button class="btn  cursor-pointer save-btn" type="submit" (click)="onSbmit()">Puy bill</button>
-    </div> -->
+    </div>
  
 </div>
