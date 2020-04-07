@@ -8,3 +8,9 @@ export interface User {
     details: string;
     promocode: string;
 }
+
+export interface CountryResponse {
+    name: string;
+    code: string;
+
+}
