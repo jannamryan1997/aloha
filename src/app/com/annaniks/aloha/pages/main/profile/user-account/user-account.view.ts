@@ -5,7 +5,7 @@ import { RouteStep } from '../../../../core/models/route-step';
 import { takeUntil, finalize } from 'rxjs/operators';
 import { Subject, Observable } from 'rxjs';
 import { ProfileService } from '../profile.service';
-import { User } from '../../../../core/models/profile';
+import { User, CountryResponse } from '../../../../core/models/profile';
 import { AuthService } from '../../../../core/services/auth.services';
 import { ToastrService } from 'ngx-toastr';
 import { MainService } from '../../main.service';
@@ -25,6 +25,7 @@ export class UserAccountView implements OnInit {
     private _contact: number;
     public keyword = 'name';
     public messageError:string;
+    public countryData:CountryResponse;
     constructor(
         private _fb: FormBuilder,
         private _menuService: MenuService,
@@ -59,8 +60,9 @@ export class UserAccountView implements OnInit {
     private _getCountries(): void {
         this._mainService.getCountries()
             .pipe(takeUntil(this._unsubscribe$))
-            .subscribe((data) => {
-                console.log(data);
+            .subscribe((data:CountryResponse) => {
+                this.countryData=data;
+                console.log(this.countryData,";;;;;;;;;;;;;;;;");
 
             },
             err => {
