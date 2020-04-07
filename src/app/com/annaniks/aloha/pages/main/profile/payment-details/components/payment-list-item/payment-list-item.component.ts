@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { Billingdetails } from 'src/app/com/annaniks/aloha/core/models/payment';
+import { Billingdetails } from 'src/app/com/annaniks/aloha/core/models/payment-details';
 
 @Component({
     selector: 'app-payment-list-item',

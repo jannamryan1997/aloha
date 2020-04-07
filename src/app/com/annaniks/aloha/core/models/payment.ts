@@ -1,11 +1,12 @@
-export interface Billingdetails {
+export interface PaymentResponse {
     id: string;
-    recv: boolean;
-    pay: boolean;
-    details: string;
-}
-export interface BillingdetailsData{
-    recv: boolean;
-    pay: boolean;
-    details: string;
+    action: string;
+    goods: number;
+    quantity: number;
+    amount: number;
+    paid: string;
+    done: string;
+    cancel: string;
+    accepted: string;
+    descr: string;
 }

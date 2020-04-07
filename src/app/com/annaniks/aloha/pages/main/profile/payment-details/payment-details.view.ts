@@ -4,7 +4,7 @@ import { RouteStep } from '../../../../core/models/route-step';
 import { PaymentDetailsService } from './payment-details.service';
 import { takeUntil, finalize } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { Billingdetails } from '../../../../core/models/payment';
+import { Billingdetails } from '../../../../core/models/payment-details';
 
 @Component({
     selector: "payment-details-view",
