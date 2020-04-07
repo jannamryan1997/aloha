@@ -38,6 +38,8 @@ export class PaymentView implements OnInit, OnDestroy {
                 finalize(() => this.loading = false)
             )
             .subscribe((data: Payment[]) => {
+                console.log(data);
+                
                 this.paymentResponseData = data;
             })
     }
