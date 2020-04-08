@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie';
+import { AuthService } from '../../core/services/auth.services';
 
 @Component({
     selector: "app-header",
@@ -10,14 +12,22 @@ import { Router } from '@angular/router';
 
 export class HeaderComponent implements OnInit {
     public menuOpened: boolean = false;
-    constructor(private _appService: AppService, private _router: Router) { }
+    public userName: string;
+    constructor(
+        private _appService: AppService,
+        private _router: Router,
+        private _cookieService: CookieService,
+        private _authService: AuthService,
+    ) {
+        this.userName = this._authService.user.name;
+    }
 
     ngOnInit() { }
 
     private _signOff(): void {
         this._appService.signOff()
             .subscribe((data) => {
-                console.log(data);
+                this._cookieService.removeAll();
                 this._router.navigate(["/home"]);
             })
     }

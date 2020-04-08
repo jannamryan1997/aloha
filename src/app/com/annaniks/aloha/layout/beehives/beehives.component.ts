@@ -19,6 +19,7 @@ export class BeehivesComponent implements OnInit {
     public count: number = 1;
     public loading: boolean = false;
     public messageError: string;
+    public totalPrice:number=1;
 
     constructor(private _assetsListService: AssetsListService,
         private _toastr: ToastrService, ) {
@@ -52,12 +53,15 @@ export class BeehivesComponent implements OnInit {
     }
 
     public changedOrderCount(message):void {
+ 
         if (message == "add") {
             this.count = this.count + 1;
+            this.totalPrice=this.totalPrice*this.count;
 
         }
         else if (message == "remove" && this.count >1) {
             this.count = this.count - 1;
+            this.totalPrice=this.totalPrice/this.count;
         }
        
     }

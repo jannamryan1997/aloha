@@ -1,14 +1,43 @@
 <div class="payment-content w-100">
-    <div class="payment-item-content" *ngIf="paymentData.paid !=null">
-        <div class="payment-item d-flex">
-            <div class="image-content">
+    <div class="payment-item-content">
+        <div class="payment-item d-flex" >
+            <div class="image-content d-none" [ngClass]="{'d-block':paymentData.paid}">
                 <img src="assets/icons/payment-open-icon.svg" class="rounded d-block icon menu-icon" alt="...">
+            </div>
+            <div class="image-content d-none" >
+                <img src="assets/icons/payment-close-icon.svg" class="rounded d-block icon menu-icon" alt="...">
+            </div>
+            <div class="d-none" [ngClass]="{'d-block':paymentData.cancel  && !paymentData.paid}">
+
+                <div class="d-flex align-items-center">
+
+                    <div class="behives-radius  d-flex">
+                        <i class="material-icons m-auto">
+                            keyboard_arrow_down
+                        </i>
+                    </div>
+                    <p class="ml-2">cancel</p>
+                </div>
+
+            </div>
+            <div class="d-none" [ngClass]="{'d-block':paymentData.paid==null && paymentData.done==null && paymentData.cancel==null }">
+
+                <div class="d-flex align-items-center">
+
+                    <div class="behives-radius  d-flex">
+                        <i class="material-icons m-auto">
+                            keyboard_arrow_down
+                        </i>
+                    </div>
+                    <p class="ml-2">done</p>
+                </div>
+
             </div>
             <div class="amount-description">
                 <div class="amount-text-content d-flex justify-content-between f-direction-colum-w-900">
-                <p class="text">Invoice amount</p>
-                <p class="value">$ {{paymentData?.amount}}</p>
-            </div>
+                    <p class="text">Invoice amount</p>
+                    <p class="value">$ {{paymentData?.amount}}</p>
+                </div>
                 <div class="payment-info d-flex align-items-center">
                     <p>Pyment info</p>
                     <div class="payment-radius  ml-3 d-flex" (click)="onclick()">
@@ -44,7 +73,7 @@
             </table>
         </div>
     </div>
-    <div class="payment-item-content position-relative" *ngIf="paymentData.paid==null">
+    <!-- <div class="payment-item-content position-relative" *ngIf="paymentData.paid==null">
         <div class="payment-item d-flex">
             <div class="image-content">
                 <img src="assets/icons/payment-close-icon.svg" class="rounded d-block icon menu-icon" alt="...">
@@ -52,7 +81,7 @@
             <div class="amount-description">
                 <div class="amount-text-content d-flex justify-content-between f-direction-colum-w-900">
                         <p class="text">Invoice amount</p>
-                        <p class="value">$ 1.500</p>
+                        <p class="value">$ {{paymentData?.amount}}</p>
                 </div>
               
 <div class="d-flex">
@@ -70,6 +99,6 @@
             </div>
         </div>
         <button class="btn  cursor-pointer save-btn" type="submit" (click)="onSbmit()">Puy bill</button>
-    </div>
- 
+    </div> -->
+
 </div>
