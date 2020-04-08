@@ -1,5 +1,5 @@
 <div class="asset-list-item">
-    <p class="title">Standart hive</p>
+    <p class="title">{{orderData?.name}}</p>
     <div class="assets-table">
         <table class="table">
             <tr class="mat-tr">
@@ -8,7 +8,7 @@
             </tr>
             <tr class="mat-tr">
                 <td class="mat-td w-50">amount</td>
-                <td class="mat-td w-50">2 pcs</td>
+                <td class="mat-td w-50">{{orderData?.quantity}}pcs</td>
             </tr>
             <tr class="mat-tr">
                 <td class="mat-td w-50">Data of purchase</td>
@@ -20,7 +20,7 @@
             </tr>
             <tr class="mat-tr">
                 <td class="mat-td w-50">Total price</td>
-                <td class="mat-td w-50">$ 1.500</td>
+                <td class="mat-td w-50">$ {{orderData?.price}}</td>
             </tr>
         </table>
         <div class="buttons-content d-flex">

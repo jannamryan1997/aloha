@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="asset-list" *ngIf="hive">
-            <p class="title">Standart hive</p>
+            <p class="title">{{paymentData?.descr}}</p>
             <table class="table">
                 <tr class="mat-tr">
                     <td class="mat-td w-50">Hive dimensions</td>
@@ -31,11 +31,11 @@
                 </tr>
                 <tr class="mat-tr">
                     <td class="mat-td w-50">amount</td>
-                    <td class="mat-td w-50 right-td">2 pcs</td>
+                    <td class="mat-td w-50 right-td">{{paymentData?.amount}} pcs</td>
                 </tr>
                 <tr class="mat-tr">
                     <td class="mat-td w-50">Data of purchase</td>
-                    <td class="mat-td w-50 right-td">10.02.20</td>
+                    <td class="mat-td w-50 right-td">{{paymentData?.paid | date}}</td>
                 </tr>
                 <tr class="mat-tr">
                     <td class="mat-td w-50">Total price</td>
