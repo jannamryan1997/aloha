@@ -3,6 +3,7 @@ import { AppService } from 'src/app/app.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie';
 import { AuthService } from '../../core/services/auth.services';
+import { AuthGuard } from '../../core/guards/auth.guards';
 
 @Component({
     selector: "app-header",
@@ -13,6 +14,7 @@ import { AuthService } from '../../core/services/auth.services';
 export class HeaderComponent implements OnInit {
     public menuOpened: boolean = false;
     public userName: string;
+    public fa:string;
     constructor(
         private _appService: AppService,
         private _router: Router,
