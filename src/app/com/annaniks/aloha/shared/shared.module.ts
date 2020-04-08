@@ -7,17 +7,26 @@ import { LoadingComponent, FooterComponent } from '../layout';
 import { OnlyNumberDirective } from '../core/directive';
 import { RequestModal } from '../core/modals';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { MaxLength } from '../core/pipe';
+
 
 
 @NgModule({
-    declarations: [LoadingComponent, OnlyNumberDirective, FooterComponent, RequestModal],
+    declarations: [
+        LoadingComponent,
+        OnlyNumberDirective,
+        FooterComponent,
+        RequestModal,
+        MaxLength
+    ],
     imports: [
         CommonModule,
         ReactiveFormsModule,
         FormsModule,
         MatDialogModule,
         MatProgressSpinnerModule,
-        AutocompleteLibModule
+        AutocompleteLibModule,
+
     ],
     exports: [
         CommonModule,
@@ -29,7 +38,8 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
         OnlyNumberDirective,
         FooterComponent,
         RequestModal,
-        AutocompleteLibModule
+        AutocompleteLibModule,
+        MaxLength
     ],
     providers: [],
     entryComponents: [RequestModal]

@@ -9,6 +9,7 @@ import { User, CountryResponse } from '../../../../core/models/profile';
 import { AuthService } from '../../../../core/services/auth.services';
 import { ToastrService } from 'ngx-toastr';
 import { MainService } from '../../main.service';
+import { CookieService } from 'ngx-cookie';
 
 @Component({
     selector: "user-account-view",
@@ -32,7 +33,8 @@ export class UserAccountView implements OnInit {
         private _profileService: ProfileService,
         private _authService: AuthService,
         private _toastr: ToastrService,
-        private _mainService: MainService
+        private _mainService: MainService,
+        private _cookieService:CookieService,
     ) {
         const routeSteps: RouteStep[] = [
             { label: 'Main', routerLink: '/' },
@@ -40,6 +42,7 @@ export class UserAccountView implements OnInit {
         ]
         this._menuService.setRouteSteps(routeSteps);
         this._getCountries();
+    
     }
 
     ngOnInit() {
@@ -62,8 +65,6 @@ export class UserAccountView implements OnInit {
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data:CountryResponse) => {
                 this.countryData=data;
-                console.log(this.countryData,";;;;;;;;;;;;;;;;");
-
             },
             err => {
                 this.messageError = err.error.msg;
@@ -108,6 +109,8 @@ export class UserAccountView implements OnInit {
                 })
             )
             .subscribe((data) => {
+                console.log(data);
+                this._authService.user=data;
                 this._toastr.success('Your request has been successfully delivered.');
             },
                 err => {

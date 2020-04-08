@@ -113,3 +113,19 @@
     padding: 10px 20px;
     display: none;
 }
+
+.behives-radius {
+    background: #ffffff00 0% 0% no-repeat padding-box;
+    border: 1px solid rgb(89, 180, 184);
+    opacity: 1;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    i {
+        color: rgb(89, 180, 184);
+        font-size: 22px;
+        transition: transform 0.5s;
+    }
+}
