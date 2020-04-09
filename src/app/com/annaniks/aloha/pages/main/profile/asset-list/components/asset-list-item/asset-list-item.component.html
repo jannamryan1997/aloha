@@ -3,10 +3,6 @@
     <div class="assets-table">
         <table class="table">
             <tr class="mat-tr">
-                <td class="mat-td w-50">Hive dimensions</td>
-                <td class="mat-td w-50">90*90*90</td>
-            </tr>
-            <tr class="mat-tr">
                 <td class="mat-td w-50">amount</td>
                 <td class="mat-td w-50">{{orderData?.quantity}}pcs</td>
             </tr>
@@ -14,10 +10,10 @@
                 <td class="mat-td w-50">Data of purchase</td>
                 <td class="mat-td w-50">10.02.20</td>
             </tr>
-            <tr class="mat-tr">
+            <!-- <tr class="mat-tr">
                 <td class="mat-td w-50">Price for one</td>
                 <td class="mat-td w-50">$ 300</td>
-            </tr>
+            </tr> -->
             <tr class="mat-tr">
                 <td class="mat-td w-50">Total price</td>
                 <td class="mat-td w-50">$ {{orderData?.price}}</td>
@@ -25,11 +21,12 @@
         </table>
         <div class="buttons-content d-flex">
             <div class="w-50">
-                <button class="btn  cursor-pointer add-btn" type="submit">Download contact</button>
+                <button class="btn  cursor-pointer add-btn" type="submit">Download contract</button>
             </div>
             <div class="w-50">
-                <button class="btn  cursor-pointer out-btn" type="submit">Sell out</button>
+                <button class="btn  cursor-pointer out-btn" type="submit" (click)="sellOrder(orderData.goods,orderData.quantity)">Sell out</button>
             </div>
         </div>
     </div>
 </div>
+

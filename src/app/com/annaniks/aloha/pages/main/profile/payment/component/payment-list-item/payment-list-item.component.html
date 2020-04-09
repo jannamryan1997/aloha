@@ -11,12 +11,12 @@
 
                 <div class="d-flex align-items-center">
 
-                    <div class="behives-radius  d-flex">
-                        <i class="material-icons m-auto">
+                    <div class="behives-radius  cancle d-flex">
+                        <i class="material-icons cancle-icon m-auto">
                             keyboard_arrow_down
                         </i>
                     </div>
-                    <p class="ml-2">cancel</p>
+                    <p class="ml-2 cancle-text">cancel</p>
                 </div>
 
             </div>
@@ -36,7 +36,7 @@
             <div class="amount-description">
                 <div class="amount-text-content d-flex justify-content-between f-direction-colum-w-900">
                     <p class="text">Invoice amount</p>
-                    <p class="value">$ {{paymentData?.amount}}</p>
+                    <p class="value">$ {{paymentData?.quantity}}</p>
                 </div>
                 <div class="payment-info d-flex align-items-center">
                     <p>Pyment info</p>
@@ -54,21 +54,21 @@
         <div class="asset-list" *ngIf="hive">
             <p class="title">{{paymentData?.descr}}</p>
             <table class="table">
-                <tr class="mat-tr">
+                <!-- <tr class="mat-tr">
                     <td class="mat-td w-50">Hive dimensions</td>
                     <td class="mat-td w-50 right-td">90*90*90</td>
-                </tr>
+                </tr> -->
                 <tr class="mat-tr">
                     <td class="mat-td w-50">amount</td>
                     <td class="mat-td w-50 right-td">{{paymentData?.amount}} pcs</td>
                 </tr>
                 <tr class="mat-tr">
                     <td class="mat-td w-50">Data of purchase</td>
-                    <td class="mat-td w-50 right-td">{{paymentData?.paid | date}}</td>
+                    <td class="mat-td w-50 right-td">{{paymentData?.purchase_date}}</td>
                 </tr>
                 <tr class="mat-tr">
                     <td class="mat-td w-50">Total price</td>
-                    <td class="mat-td w-50 right-td">$ 1.500</td>
+                    <td class="mat-td w-50 right-td">$ {{paymentData?.amount}}</td>
                 </tr>
             </table>
         </div>

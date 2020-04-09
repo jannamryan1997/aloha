@@ -40,9 +40,8 @@ export class AssetListComponent implements OnInit, OnDestroy {
             )
             .subscribe((data: Order[]) => {
                 this.orderResponseData = data;
-                console.log(this.orderResponseData,"assets");
-
-            })
+            console.log(this.orderResponseData,"order");
+                        })
     }
 
     ngOnDestroy() {

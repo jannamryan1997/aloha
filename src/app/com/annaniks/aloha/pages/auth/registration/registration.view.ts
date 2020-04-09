@@ -52,8 +52,6 @@ export class RegistrationView implements OnInit {
                 err => {
                     this.closeRegistrationMain = true;
                     this.errorMessage = err.error.msg;
-                    console.log(this.errorMessage);
-
                 }
             )
 

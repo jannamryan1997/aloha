@@ -4,17 +4,21 @@ import { AssetListComponent } from './asset-list.view';
 import { AssetListRoutingModule } from './asset-list.routing.module';
 import { AssetListItemComponent } from './components';
 import { AssetsListService } from './asset-list.service';
+import { MessageModal } from '../../../../core/modals';
 
 @NgModule({
     declarations: [
         AssetListComponent,
-        AssetListItemComponent
+        AssetListItemComponent,
+        MessageModal
+
     ],
     imports: [
         AssetListRoutingModule,
         SharedModule
     ],
-    providers: [AssetsListService]
+    providers: [AssetsListService],
+    entryComponents:[MessageModal]
 })
 
 export class AssetListModule { }
