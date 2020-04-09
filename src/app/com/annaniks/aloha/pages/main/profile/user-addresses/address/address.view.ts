@@ -104,7 +104,6 @@ export class AddressView implements OnInit, OnDestroy {
                 })
             },
                 err => {
-                    console.log(err);
 
                 }
             )
@@ -133,7 +132,6 @@ export class AddressView implements OnInit, OnDestroy {
                 this._router.navigate(['/profile/user-addresses']);
             },
                 err => {
-                    console.log(err);
                     
                     this.errorMessage = err.error.msg;
                 }
@@ -162,10 +160,8 @@ export class AddressView implements OnInit, OnDestroy {
             .subscribe((data) => {
                 this._toastr.success('Your request has been successfully delivered.');
                 this._router.navigate(['/profile/user-addresses']);
-                console.log(data);
             },
             err => {
-                console.log(err);
                 this.errorMessage = err.error.msg;
             }
             )
@@ -175,11 +171,9 @@ export class AddressView implements OnInit, OnDestroy {
             .pipe(takeUntil(this._unsubscribe$),
             )
             .subscribe((data) => {
-                console.log(data);
                 this._router.navigate(['/profile/user-addresses']);
             },
                 err => {
-                    console.log(err);
                     this.errorMessage = err.error.msg;
                 }
             )

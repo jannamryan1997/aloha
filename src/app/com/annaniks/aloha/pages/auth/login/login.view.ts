@@ -44,10 +44,8 @@ export class LoginView implements OnInit {
             ).subscribe((data: LoginResponse) => {
                 this.email = email;
                 this.closeLoginMain = false;
-                console.log(data);
             },
                 err => {
-                    console.log(err);
                     
                     this.errorMessage = err.error.msg;
                     this.closeLoginMain = true;

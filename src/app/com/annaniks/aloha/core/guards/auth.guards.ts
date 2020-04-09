@@ -12,7 +12,6 @@ export class AuthGuard implements CanActivate {
     canActivate(): Observable<boolean> | Promise<boolean> | boolean {
         return this._authService.getProfile().pipe(
             map((data) => {
-                console.log(data);
                 if (data) {
                     this._authService.user = data;
                     return true;
@@ -23,7 +22,6 @@ export class AuthGuard implements CanActivate {
                 }
             }),
             catchError((err) => {
-                console.log(err);
                 this._router.navigate(["/home"]);
                 return throwError(false)
 

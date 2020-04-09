@@ -2,10 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MenuService } from '../../../../core/services/menu.service';
 import { RouteStep } from '../../../../core/models/route-step';
-import { takeUntil, finalize } from 'rxjs/operators';
+import { takeUntil, finalize, count } from 'rxjs/operators';
 import { Subject, Observable } from 'rxjs';
 import { ProfileService } from '../profile.service';
-import { User, CountryResponse } from '../../../../core/models/profile';
+import { User, Country } from '../../../../core/models/profile';
 import { AuthService } from '../../../../core/services/auth.services';
 import { ToastrService } from 'ngx-toastr';
 import { MainService } from '../../main.service';
@@ -24,9 +24,11 @@ export class UserAccountView implements OnInit {
     private _userId: string;
     private _promocode: string;
     private _contact: number;
+    private _user: User;
+    public selectedCountry: Country;
     public keyword = 'name';
-    public messageError:string;
-    public countryData:CountryResponse;
+    public messageError: string;
+    public countryData: Country[] = [];
     constructor(
         private _fb: FormBuilder,
         private _menuService: MenuService,
@@ -40,13 +42,14 @@ export class UserAccountView implements OnInit {
             { label: 'Profile', routerLink: '/profile' }
         ]
         this._menuService.setRouteSteps(routeSteps);
+        this._user = this._authService.user;
         this._getCountries();
-    
+
     }
 
     ngOnInit() {
         this._formBuilder();
-         this._setProfileValues();
+        this._setProfileValues();
     }
 
     private _formBuilder(): void {
@@ -54,37 +57,49 @@ export class UserAccountView implements OnInit {
             name: [null, Validators.required],
             phonenumber: [null, Validators.required],
             country: [null, Validators.required],
-            email: [null, [Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
+            email: [null, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
             details: [null, Validators.required]
         })
     }
-
-    private _getCountries(): void {
-        this._mainService.getCountries()
-            .pipe(takeUntil(this._unsubscribe$))
-            .subscribe((data:CountryResponse) => {
-                this.countryData=data;
-            },
-            err => {
-                this.messageError = err.error.msg;
-            }
-            
-            )
-
-    }
-
     private _setProfileValues(): void {
-         const user: User = this._authService.user;
+        const user: User = this._authService.user;
         this._userId = user.id;
         this._promocode = user.promocode;
         this._contact = user.contract;
         this.userAccountGroup.patchValue({
             name: user.name,
             phonenumber: user.phone,
-            country: user.country,
             email: user.email,
             details: user.details,
         })
+    }
+
+    private _getCountries(): void {
+        this._mainService.getCountries()
+            .pipe(takeUntil(this._unsubscribe$))
+            .subscribe((data: Country[]) => {
+                this.countryData = data;
+                const userCountry: string = this._user.country;
+                let country: Country;
+                for (let i = 0; i < this.countryData.length; i++) {
+                    if (this.countryData[i].code === userCountry){
+                        country = this.countryData[i];
+                    }
+                }
+                // const country: Country = this.countryData.find((element) => element.code == userCountry);
+                if (country) {
+                    this.userAccountGroup.patchValue({
+                        country: country.name
+                    })
+                    this.selectedCountry = country;
+                }
+            },
+                err => {
+                    this.messageError = err.error.msg;
+                }
+
+            )
+
     }
 
     private _postProfile(): void {
@@ -95,7 +110,7 @@ export class UserAccountView implements OnInit {
             email: this.userAccountGroup.value.email,
             contract: this._contact,
             phone: this.userAccountGroup.value.phonenumber,
-            country: this.userAccountGroup.value.country.code,
+            country: (this.selectedCountry && this.selectedCountry.code) ? this.selectedCountry.code : '',
             name: this.userAccountGroup.value.name,
             details: this.userAccountGroup.value.details,
             promocode: this._promocode,
@@ -108,8 +123,7 @@ export class UserAccountView implements OnInit {
                 })
             )
             .subscribe((data) => {
-                console.log(data);
-                this._authService.user=data;
+                this._authService.user = data;
                 this._toastr.success('Your request has been successfully delivered.');
             },
                 err => {
@@ -117,6 +131,11 @@ export class UserAccountView implements OnInit {
                 }
             )
     }
+
+    public selectEvent(country: Country): void {
+        this.selectedCountry = country;
+    }
+
     public onclickPostProfile(): void {
         this._postProfile();
     }

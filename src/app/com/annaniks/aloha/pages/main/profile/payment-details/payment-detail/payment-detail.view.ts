@@ -99,7 +99,6 @@ export class PaymentDetailView implements OnInit, OnDestroy {
             })
             )
             .subscribe((data) => {
-                console.log(data);
                 this._toastr.success('Your request has been successfully delivered.');
                 this._router.navigate(['/profile/payment-details']);
             },
@@ -125,7 +124,6 @@ export class PaymentDetailView implements OnInit, OnDestroy {
             )
             .subscribe((data) => {
                 this._toastr.success('Your request has been successfully delivered.');
-                console.log(data);
 
                 this._router.navigate(['/profile/payment-details'])
             },
@@ -138,7 +136,6 @@ export class PaymentDetailView implements OnInit, OnDestroy {
         this._paymentDetailsService.deleteBillingdetails(this.paymentId)
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data) => {
-                console.log(data);
                 this._toastr.success('Your request has been successfully delivered.');
                 this._router.navigate(['/profile/payment-details']);
             },

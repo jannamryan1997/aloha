@@ -43,7 +43,6 @@ export class BeehivesComponent implements OnInit {
                 })
             )
             .subscribe((data) => {
-                console.log(data);
                 this._toastr.success('Your request has been successfully delivered.');
             },
                 err => {

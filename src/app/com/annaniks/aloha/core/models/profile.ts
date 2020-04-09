@@ -9,8 +9,7 @@ export interface User {
     promocode: string;
 }
 
-export interface CountryResponse {
+export interface Country {
     name: string;
     code: string;
-
 }
