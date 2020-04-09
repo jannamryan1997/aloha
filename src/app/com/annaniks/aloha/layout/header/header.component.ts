@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, AfterViewChecked } from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie';
 import { AuthService } from '../../core/services/auth.services';
-import { AuthGuard } from '../../core/guards/auth.guards';
 
 @Component({
     selector: "app-header",
@@ -11,20 +10,25 @@ import { AuthGuard } from '../../core/guards/auth.guards';
     styleUrls: ["header.component.scss"]
 })
 
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewChecked {
     public menuOpened: boolean = false;
     public userName: string;
-    public fa:string;
+    public fa: string;
     constructor(
         private _appService: AppService,
         private _router: Router,
         private _cookieService: CookieService,
         private _authService: AuthService,
+
     ) {
         this.userName = this._authService.user.name;
     }
 
     ngOnInit() { }
+
+    ngAfterViewChecked():void {
+        this.userName = this._authService.user.name;
+    }
 
     private _signOff(): void {
         this._appService.signOff()
@@ -39,6 +43,11 @@ export class HeaderComponent implements OnInit {
 
     public onClickOpenMenu(): void {
         this.menuOpened = !this.menuOpened;
+    }
+
+    public router(router): void {
+        this._router.navigate([router]);
+        this.menuOpened = false;
     }
 
     public copyInputMessage(userinput): void {
