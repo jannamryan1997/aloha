@@ -9,7 +9,7 @@ import { User, CountryResponse } from '../../../../core/models/profile';
 import { AuthService } from '../../../../core/services/auth.services';
 import { ToastrService } from 'ngx-toastr';
 import { MainService } from '../../main.service';
-import { CookieService } from 'ngx-cookie';
+
 
 @Component({
     selector: "user-account-view",
@@ -34,7 +34,6 @@ export class UserAccountView implements OnInit {
         private _authService: AuthService,
         private _toastr: ToastrService,
         private _mainService: MainService,
-        private _cookieService:CookieService,
     ) {
         const routeSteps: RouteStep[] = [
             { label: 'Main', routerLink: '/' },
