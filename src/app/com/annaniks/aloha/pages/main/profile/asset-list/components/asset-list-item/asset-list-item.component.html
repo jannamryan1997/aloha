@@ -21,10 +21,10 @@
         </table>
         <div class="buttons-content d-flex">
             <div class="w-50">
-                <button class="btn  cursor-pointer add-btn" type="submit">Download contract</button>
+                <a class="btn  cursor-pointer add-btn" type="submit" [href]="'https://honey.bestmx.net/doc/contract.pdf'" target="_blank">Download contract</a>
             </div>
             <div class="w-50">
-                <button class="btn  cursor-pointer out-btn" type="submit" (click)="sellOrder(orderData.goods,orderData.quantity)">Sell out</button>
+                <button class="btn  cursor-pointer out-btn" type="submit" (click)="sellOrder(orderData?.goods,orderData?.quantity)">Sell out</button>
             </div>
         </div>
     </div>
