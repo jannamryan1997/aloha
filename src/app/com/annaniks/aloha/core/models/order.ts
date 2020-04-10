@@ -7,6 +7,7 @@ export interface Order {
     unit: string;
     price: number;
     descr: string;
+    goods: number;
 }
 
 export interface OrderData {

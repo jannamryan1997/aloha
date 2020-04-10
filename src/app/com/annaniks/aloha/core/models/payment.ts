@@ -1,5 +1,6 @@
 export interface Payment {
     id: string;
+    purchase_date:string;
     action: string;
     goods: number;
     quantity: number;

@@ -36,7 +36,7 @@
                 <div class="label-wrapper">
                     <label for="Country" class="label">Country</label>
                 </div>
-                <ng-autocomplete class="input-content  ng-autocomplete" [data]="data" [searchKeyword]="keyword"
+                <ng-autocomplete class="input-content  ng-autocomplete" [data]="countryData" [searchKeyword]="keyword"
                     (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)'
                     [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate" formControlName="country">
                 </ng-autocomplete>

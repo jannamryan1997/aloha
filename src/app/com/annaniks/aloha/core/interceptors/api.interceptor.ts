@@ -12,7 +12,7 @@ export class ApiInterceptor implements HttpInterceptor {
     ) { }
 
     private _checkIsRelativePath(url: string): boolean {
-        return url.startsWith('/assets')
+        return url.startsWith('/assets') || url.startsWith('http://') || url.startsWith('https://')
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

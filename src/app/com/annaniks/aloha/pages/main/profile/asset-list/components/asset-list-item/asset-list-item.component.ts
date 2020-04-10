@@ -44,5 +44,11 @@ export class AssetListItemComponent implements OnInit, OnDestroy {
             )
     }
 
-    ngOnDestroy() { }
+
+
+
+    ngOnDestroy() {
+        this._unsubscribe$.next();
+        this._unsubscribe$.complete();
+    }
 }

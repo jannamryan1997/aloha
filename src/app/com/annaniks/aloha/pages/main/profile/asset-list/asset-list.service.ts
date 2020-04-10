@@ -19,6 +19,7 @@ export class AssetsListService {
     public getGoods(): Observable<GoodsResponse> {
         return this._httpClient.get<GoodsResponse>('/goods');
     }
+
     public addOrder(body: OrderData): Observable<ServerResponse> {
         return this._httpClient.post<ServerResponse>('/order', body);
     }

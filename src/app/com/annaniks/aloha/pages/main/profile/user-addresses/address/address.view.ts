@@ -10,6 +10,8 @@ import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { RequestModal } from 'src/app/com/annaniks/aloha/core/modals';
 import { ToastrService } from 'ngx-toastr';
+import { MainService } from '../../../main.service';
+import { Country } from 'src/app/com/annaniks/aloha/core/models/profile';
 
 
 @Component({
@@ -24,22 +26,11 @@ export class AddressView implements OnInit, OnDestroy {
     public addressForm: FormGroup;
     public addressId: string;
     public errorMessage: string;
-    public loading: boolean =false;
+    public loading: boolean = false;
     public keyword = 'name';
-    public data = [
-        {
-            name: 'AM'
-        },
-        {
-            name: 'EN'
-        },
-        {
-            name: 'RU'
-        },
-        {
-            name: "CH"
-        }
-    ];
+    public countryData: Country[] = [];
+    public selectedCountry: Country;
+
 
     constructor(
         private _menuService: MenuService,
@@ -49,6 +40,7 @@ export class AddressView implements OnInit, OnDestroy {
         private _userAddressesService: UserAddressesService,
         private _dialog: MatDialog,
         private _toastr: ToastrService,
+        private _mainService: MainService,
     ) {
         this._checkRouteParams();
         this._setRouteSteps();
@@ -59,6 +51,7 @@ export class AddressView implements OnInit, OnDestroy {
         if (this.isEdit) {
             this._getUserAddresById();
         }
+        this._getCount();
     }
 
     private _formBulder(): void {
@@ -91,21 +84,36 @@ export class AddressView implements OnInit, OnDestroy {
         this._menuService.setRouteSteps(routeSteps);
     }
 
+
+    private _getCount(): void {
+        this._mainService.getCountries()
+            .pipe(takeUntil(this._unsubscribe$))
+            .subscribe((data: Country[]) => {
+                this.countryData = data;
+                console.log(this.countryData);
+
+            })
+    }
+
     private _getUserAddresById(): void {
+        let countryCode:Country;
         this._userAddressesService.getAddressById(this.addressId)
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data: UserAddress) => {
+                for(var i=0;i<this.countryData.length;i++){
+                    if(this.countryData[i].code===data.country){
+                        countryCode= this.countryData[i]
+                    }
+                }
                 this.addressForm.patchValue({
                     address: data.address,
                     billing: data.billing,
-                    country: data.country,
+                    country: countryCode.name,
                     zip: data.zip,
                     main: data.main,
                 })
+                
             },
-                err => {
-
-                }
             )
     }
 
@@ -115,7 +123,7 @@ export class AddressView implements OnInit, OnDestroy {
         const userAddressData: UserAddressData = {
             billing: this.addressForm.value.billing,
             main: this.addressForm.value.main,
-            country: this.addressForm.value.country.name,
+            country: (this.selectedCountry && this.selectedCountry.code) ? this.selectedCountry.code : '',
             zip: this.addressForm.value.zip,
             address: this.addressForm.value.address,
         }
@@ -132,7 +140,7 @@ export class AddressView implements OnInit, OnDestroy {
                 this._router.navigate(['/profile/user-addresses']);
             },
                 err => {
-                    
+
                     this.errorMessage = err.error.msg;
                 }
             )
@@ -146,7 +154,7 @@ export class AddressView implements OnInit, OnDestroy {
             id: this.addressId,
             billing: this.addressForm.value.billing,
             main: this.addressForm.value.main,
-            country: this.addressForm.value.country.name,
+            country: (this.selectedCountry && this.selectedCountry.code) ? this.selectedCountry.code : '',
             zip: this.addressForm.value.zip,
             address: this.addressForm.value.address,
         }
@@ -161,9 +169,9 @@ export class AddressView implements OnInit, OnDestroy {
                 this._toastr.success('Your request has been successfully delivered.');
                 this._router.navigate(['/profile/user-addresses']);
             },
-            err => {
-                this.errorMessage = err.error.msg;
-            }
+                err => {
+                    this.errorMessage = err.error.msg;
+                }
             )
     }
     private _deleteAddresses(): void {
@@ -206,8 +214,8 @@ export class AddressView implements OnInit, OnDestroy {
         // fetch remote data from here
         // And reassign the 'data' which is binded to 'data' property.
     }
-    public selectEvent(item) {
-        // do something with selected item
+    public selectEvent(country: Country): void {
+        this.selectedCountry = country;
     }
     ngOnDestroy() { }
 }
