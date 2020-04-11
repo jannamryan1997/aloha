@@ -3,13 +3,13 @@
     <div class="main-content d-flex  pg-container justify-content-between f-direction-colum-w-900" >
         <div class="laft-content">
             <p class="title">{{item?.name}}</p>
-            <p class="text">{{item?.descr | maxLength}}</p>
+            <p class="text descr-text">{{item?.descr}}</p>
             <p class="text">{{item?.unit}}: <b>${{item?.price}}</b></p>
             <div class="add d-flex justify-content-between">
-                <button class="btn  add-button cursor-pointer d-flex" type="submit">
-                    <p class="m-auto"  (click)="changedOrderCount('remove')">-</p>
+                <button class="btn  add-button cursor-pointer d-flex" type="submit"  (click)="changedOrderCount('remove')">
+                    <p class="m-auto" >-</p>
                 </button>
-                <input type="number" min="1" class="input-content m-auto text-center"  [(ngModel)]="count" [max-count]="1"  app-focus-next-input maxLength="1" OnlyNumber="true">
+                <input type="number" min="1" class="input-content m-auto text-center" (ngModelChange)="countCange($event)"  [(ngModel)]="count" [max-count]="1"  app-focus-next-input maxLength="1" OnlyNumber="true">
                 <button class="btn  add-button cursor-pointer d-flex" type="submit" (click)="changedOrderCount('add')">
                     <p class="m-auto">+</p>
                 </button>
