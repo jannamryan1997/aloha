@@ -19,14 +19,15 @@ export class BeehivesComponent implements OnInit {
     public count: number = 1;
     public loading: boolean = false;
     public messageError: string;
-    public totalPrice:number=1;
+    public totalPrice: number;
 
     constructor(private _assetsListService: AssetsListService,
-        private _toastr: ToastrService, ) {
-
+        private _toastr: ToastrService ) {
     }
 
-    ngOnInit() { }
+    ngOnInit() { 
+        this.totalPrice =  this.count * this.item.price;   
+    }
 
     public addOrder(goodId): void {
         this.loading = true;
@@ -51,21 +52,22 @@ export class BeehivesComponent implements OnInit {
             )
     }
 
-    public changedOrderCount(message):void {
- 
+    public changedOrderCount(message): void {
+
         if (message == "add") {
             this.count = this.count + 1;
-            this.totalPrice=this.totalPrice*this.count;
+            this.totalPrice =  this.count * this.item.price;
 
         }
-        else if (message == "remove" && this.count >1) {
+        else if (message == "remove" && this.count > 1) {
             this.count = this.count - 1;
-            this.totalPrice=this.totalPrice/this.count;
+            this.totalPrice =  this.count * this.item.price;
         }
-       
+
     }
-    // public countCange(event){
-    //     this.totalPrice=this.totalPrice*event;
-        
-    // }
+    public countCange(event){
+        this.totalPrice =  event * this.item.price;
+     
+
+    }
 }
