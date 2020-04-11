@@ -24,9 +24,9 @@ export class AssetListItemComponent implements OnInit, OnDestroy {
 
     ngOnInit() { }
 
-    public sellOrder(id, quantity): void {
+    public sellOrder(id:string, quantity): void {
         let orderData: OrderData = {
-            goods: id,
+            goods: id.toString(),
             count: quantity,
             action: "sell",
             message: "",
