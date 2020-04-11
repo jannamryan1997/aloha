@@ -7,11 +7,11 @@ export interface Order {
     unit: string;
     price: number;
     descr: string;
-    goods: number;
+    goods: string;
 }
 
 export interface OrderData {
-    goods: number;
+    goods: string;
     count: number;
     action: string;
     message: string;

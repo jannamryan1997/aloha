@@ -30,6 +30,8 @@ export class BeehivesComponent implements OnInit {
     }
 
     public addOrder(goodId): void {
+        console.log(typeof(goodId));
+        
         this.loading = true;
         let orderData: OrderData = {
             goods: goodId,
