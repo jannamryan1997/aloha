@@ -14,13 +14,13 @@
       font-weight: 600;
     }
     .footer-top-content {
-      &::after {
-        content: "";
-        display: flex;
-        width: 100%;
-        border: 1px solid #b4b4b4;
-        opacity: 1;
-      }
+      // &::after {
+      //   content: "";
+      //   display: flex;
+      //   width: 100%;
+      //   border: 1px solid #b4b4b4;
+      //   opacity: 1;
+      // }
       &-wrapper {
         padding: 65px 0;
       }

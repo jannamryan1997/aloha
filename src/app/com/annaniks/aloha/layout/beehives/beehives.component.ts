@@ -34,7 +34,7 @@ export class BeehivesComponent implements OnInit {
             goods: goodId,
             count: this.count,
             action: "buy",
-            message: "giiiii",
+            message: "",
         }
         this._assetsListService.addOrder(orderData)
             .pipe(takeUntil(this._unsubscribe$),
@@ -64,4 +64,8 @@ export class BeehivesComponent implements OnInit {
         }
        
     }
+    // public countCange(event){
+    //     this.totalPrice=this.totalPrice*event;
+        
+    // }
 }
