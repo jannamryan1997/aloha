@@ -13,4 +13,3 @@ export class SupportService {
         return this._httpClient.post<MsgResponse[]>('/msg', body)
     }
 }
-
