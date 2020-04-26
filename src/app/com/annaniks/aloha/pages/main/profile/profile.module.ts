@@ -3,9 +3,9 @@ import { ProfileRoutingModule } from './profile.routing.module';
 import { ProfileView } from './profile.view';
 import { SharedModule } from '../../../shared/shared.module';
 import { ProfileService } from './profile.service';
-import { AssetsListService } from './asset-list/asset-list.service';
 import { FocusNextInputDriective } from '../../../core/directive/focuse-next.directive';
 import { BeehivesComponent } from '../../../layout';
+import { InventoryService } from './inventory/inventory.service';
 
 @NgModule({
     declarations: [
@@ -17,7 +17,7 @@ import { BeehivesComponent } from '../../../layout';
         ProfileRoutingModule,
         SharedModule
     ],
-    providers: [ProfileService,AssetsListService]
+    providers: [ProfileService,InventoryService]
 })
 
 export class ProfileModule { }

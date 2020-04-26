@@ -11,6 +11,8 @@ import { AppService } from './app.service';
 import { AuthGuard } from './com/annaniks/aloha/core/guards/auth.guards';
 import { AuthService } from './com/annaniks/aloha/core/services/auth.services';
 import { ToastrModule } from 'ngx-toastr';
+
+
 @NgModule({
   declarations: [
     AppComponent

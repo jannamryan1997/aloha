@@ -1,0 +1,5 @@
+<div class="d-flex" *ngIf="orderResponseData?.length==0 && !loading">
+    <p class="result-text m-auto">You haven`t purchase anything yet. Click
+        the arrow above to see all items.</p>
+</div>
+<app-inventory-item *ngFor="let item of orderResponseData" [orderData]="item"></app-inventory-item>

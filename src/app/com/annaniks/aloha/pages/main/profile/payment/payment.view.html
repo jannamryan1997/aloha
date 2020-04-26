@@ -1,4 +1,5 @@
 <div class="d-flex" *ngIf="paymentResponseData?.length==0">
-    <p class="result-text m-auto">No Result</p>
+    <p class="result-text m-auto">You haven`t purchase anything yet. Click
+        the arrow above to see all items.</p>
 </div>
 <payment-list-item *ngFor="let item of paymentResponseData" [paymentData]="item"></payment-list-item>

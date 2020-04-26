@@ -10,7 +10,8 @@ export class PaymentListItemComponent implements OnInit, OnDestroy {
     @Input() id: string;
     @Input() item: Billingdetails;
 
-    constructor() { }
+
+    constructor() {}
 
     ngOnInit() { }
 

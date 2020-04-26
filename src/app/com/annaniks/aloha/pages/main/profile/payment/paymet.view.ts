@@ -13,7 +13,7 @@ import { Payment } from '../../../../core/models/payment';
 })
 export class PaymentView implements OnInit, OnDestroy {
     private _unsubscribe$: Subject<void> = new Subject<void>();
-    public paymentResponseData: Payment[];
+    public paymentResponseData: Payment[]=[];
     public loading: boolean = false;
     constructor(
         private _menuService: MenuService,

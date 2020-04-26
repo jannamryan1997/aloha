@@ -4,6 +4,7 @@ import { PaymentDetailsView } from './payment-details.view';
 import { PaymentDetailsRoutingModule } from './payment-details.routing.module';
 import { PaymentListItemComponent } from './components';
 import { PaymentDetailsService } from './payment-details.service';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 @NgModule({
     declarations: [
         PaymentDetailsView,
@@ -11,6 +12,7 @@ import { PaymentDetailsService } from './payment-details.service';
     ],
     imports: [
         PaymentDetailsRoutingModule,
+        MatCheckboxModule,
         SharedModule,
     ],
     providers: [PaymentDetailsService]

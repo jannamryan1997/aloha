@@ -63,6 +63,7 @@ export class UserAccountView implements OnInit {
     }
     private _setProfileValues(): void {
         const user: User = this._authService.user;
+        
         this._userId = user.id;
         this._promocode = user.promocode;
         this._contact = user.contract;
@@ -125,6 +126,8 @@ export class UserAccountView implements OnInit {
             .subscribe((data) => {
                 this._authService.user = data;
                 this._toastr.success('Your request has been successfully delivered.');
+              console.log(this._authService.user,"kkkkkkkk");
+              
             },
                 err => {
                     this.messageError = err.error.msg;
@@ -148,4 +151,8 @@ export class UserAccountView implements OnInit {
         return this._mainService.getCountries();
     }
 
+    public onCountryChange(event):void{
+        console.log(event);
+        
+    }
 }

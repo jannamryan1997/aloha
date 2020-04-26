@@ -90,6 +90,7 @@ export class PaymentDetailView implements OnInit, OnDestroy {
             recv: this.paymentForm.value.reqv,
             pay: this.paymentForm.value.pay,
             details: this.paymentForm.value.type,
+            
         }
         this._paymentDetailsService.createdBillingdetails(billingdetailsData)
             .pipe(takeUntil(this._unsubscribe$),

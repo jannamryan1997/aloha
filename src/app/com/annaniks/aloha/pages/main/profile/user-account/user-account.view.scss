@@ -7,25 +7,49 @@
   }
 
   .form-group {
-      margin-bottom: 20px;
+    margin-bottom: 20px;
+
     .label {
       color: #17344f;
       font-size: 14px;
       line-height: 19px;
       width: 180px;
     }
+
     .textarea {
       height: 117px !important;
     }
   }
 }
+
 .save-btn {
   margin-left: 140px;
 }
-.ng-autocomplete{
+
+.ng-autocomplete {
   border: 1px solid #B4B4B4;
 }
-.text-danger{
-margin-left: 140px;
-margin-bottom: 20px;
+
+.text-danger {
+  margin-left: 140px;
+  margin-bottom: 20px;
+}
+
+::ng-deep {
+  .iti--allow-dropdown {
+    width: 100% !important;
+    border: 1px solid #707070 !important;
+  z-index: 1;
+  }
+
+  .iti__flag-container {
+    width: 50px !important;
+
+  }
+}
+
+.phone-form {
+  width: calc(100% - 60px) !important;
+  margin-left: 60px !important;
+  border: none !important;
 }

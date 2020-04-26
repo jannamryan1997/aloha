@@ -4,8 +4,8 @@ import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { takeUntil, filter, finalize } from 'rxjs/operators';
 import { MenuService } from '../../../core/services/menu.service';
 import { RouteStep } from '../../../core/models/route-step';
-import { AssetsListService } from './asset-list/asset-list.service';
 import { GoodsResponse } from '../../../core/models/goods';
+import { InventoryService } from './inventory/inventory.service';
 
 @Component({
     selector: "profile-view",
@@ -26,7 +26,7 @@ export class ProfileView implements OnInit, OnDestroy {
         private _router: Router,
         private _activatedRoute: ActivatedRoute,
         private _menuService: MenuService,
-        private _assetsListService: AssetsListService,
+        private _inventoryService: InventoryService,
 
     ) { }
 
@@ -59,7 +59,7 @@ export class ProfileView implements OnInit, OnDestroy {
 
     }
     private _getGoods(): void {
-        this._assetsListService.getGoods()
+        this._inventoryService.getGoods()
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data: GoodsResponse) => {
                 this.goodData = data;

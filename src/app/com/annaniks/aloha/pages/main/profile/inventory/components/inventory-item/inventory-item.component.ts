@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Order, OrderData } from 'src/app/com/annaniks/aloha/core/models/order';
-import { AssetsListService } from '../../asset-list.service';
+import { InventoryService } from '../../inventory.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
@@ -8,17 +8,17 @@ import { MatDialog } from '@angular/material/dialog';
 import { MessageModal } from 'src/app/com/annaniks/aloha/core/modals';
 
 @Component({
-    selector: 'app-asset-list-item',
-    templateUrl: 'asset-list-item.component.html',
-    styleUrls: ['asset-list-item.component.scss']
+    selector: 'app-inventory-item',
+    templateUrl: 'inventory-item.component.html',
+    styleUrls: ['inventory-item.component.scss']
 })
-export class AssetListItemComponent implements OnInit, OnDestroy {
+export class InventoryItemComponent implements OnInit, OnDestroy {
 
     @Input() orderData: Order;
     private _unsubscribe$: Subject<void> = new Subject<void>();
 
     constructor(
-        private _assetsListService: AssetsListService,
+        private _inventoryService: InventoryService,
         private _toastr: ToastrService,
         private _dialog: MatDialog) { }
 
@@ -31,7 +31,7 @@ export class AssetListItemComponent implements OnInit, OnDestroy {
             action: "sell",
             message: "",
         }
-        this._assetsListService.addOrder(orderData)
+        this._inventoryService.addOrder(orderData)
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data) => {
                 const dialogRef = this._dialog.open(MessageModal, {

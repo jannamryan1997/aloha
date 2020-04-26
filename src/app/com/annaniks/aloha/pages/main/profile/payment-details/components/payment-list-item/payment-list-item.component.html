@@ -2,7 +2,15 @@
     <div class="payment-list-item-content d-flex justify-content-between align-items-center">
         <div class="payment-list-item-details">
             <p class="text">Details: {{item?.details}}</p>
-            <p class="text">Pay: {{item?.pay}}</p>
+            <div class="d-flex align-items-center">
+                    <p class="text">Pay:</p>
+                    <mat-checkbox [checked]="item?.pay" disabled class="ml-2"></mat-checkbox>
+            </div>
+            <div class="d-flex align-items-center">
+                    <p class="text">Recv:</p>
+                    <mat-checkbox [checked]="item?.recv" disabled ></mat-checkbox>
+            </div>
+            <p class="text">Type: {{item?.type}}</p>
         </div>
         <button class="btn  cursor-pointer edit-btn" type="submit" [routerLink]="[id]">Edit</button>
     </div>

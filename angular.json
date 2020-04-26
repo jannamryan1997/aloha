@@ -34,9 +34,10 @@
               "src/assets/styles/base/_reset.scss",
               "src/assets/styles/base/_variables.scss",
               "src/assets/styles/base/_responsive.scss",
-              "node_modules/ngx-toastr/toastr.css"
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/intl-tel-input/build/css/intlTelInput.css"
             ],
-            "scripts": []
+            "scripts": ["node_modules/intl-tel-input/build/js/intlTelInput.min.js"]
           },
           "configurations": {
             "production": {

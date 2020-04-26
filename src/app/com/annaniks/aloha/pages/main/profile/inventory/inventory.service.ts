@@ -8,7 +8,7 @@ import { GoodsResponse } from '../../../../core/models/goods';
 
 @Injectable()
 
-export class AssetsListService {
+export class InventoryService {
 
     constructor(private _httpClient: HttpClient) { }
 

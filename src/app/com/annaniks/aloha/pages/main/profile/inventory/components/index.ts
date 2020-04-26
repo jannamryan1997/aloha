@@ -1,0 +1,1 @@
+export * from "./inventory-item/inventory-item.component";

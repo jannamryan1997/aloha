@@ -47,7 +47,7 @@ export class LoginView implements OnInit {
             },
                 err => {
                     
-                    this.errorMessage = err.error.msg;
+                    this.errorMessage ="User not found."
                     this.closeLoginMain = true;
                 }
             )

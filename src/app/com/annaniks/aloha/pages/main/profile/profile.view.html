@@ -8,7 +8,7 @@
             <p class="text">{{title}}</p>
         </div>
     </div>
-    <div class="beehives-content position-relative"  [ngClass]="{'d-block':url=='/profile/asset-list'}">
+    <div class="beehives-content position-relative"  [ngClass]="{'d-block':url=='/profile/inventory'}">
         <div class="beehives-header d-flex align-items-center">
             <div class=" d-flex m-auto">
                 <p class="text">Buy beehives</p>
@@ -32,8 +32,7 @@
                 <p class="title" routerLink="/profile/user-addresses" [routerLinkActive]="'activeMenuTab'">Addresses</p>
                 <p class="title" routerLink="/profile/payment-details" [routerLinkActive]="'activeMenuTab'">Payment
                     details</p>
-                <p class="title" routerLink="/profile/asset-list" [routerLinkActive]="'activeMenuTab'">Asset
-                    list</p>
+                <p class="title" routerLink="/profile/inventory" [routerLinkActive]="'activeMenuTab'">Inventory</p>
                 <p class="title" routerLink="/profile/payments" [routerLinkActive]="'activeMenuTab'">Payments</p>
             </div>
             <div class="router-content">

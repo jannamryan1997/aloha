@@ -10,8 +10,8 @@
                     <img src="assets/icons/user.svg" class="rounded d-block icon" alt="...">
                     <p class="text user-name">{{userName | maxLength}}</p>
                 </div>
-                <div class="nav-items d-flex align-items-center">
-                    <div class="card-wrapper d-block">
+                <div class="nav-items d-flex align-items-center ">
+                    <div class="card-wrapper d-block" routerLink="/profile/inventory">
                         <img src="assets/icons/cart.svg" class="rounded d-block icon card-icon" alt="...">
                     </div>
                     <div class="icon-wrapper" [class.active]="menuOpened">
@@ -49,8 +49,7 @@
                         [routerLinkActive]="'activeTab'">Addresses</a>
                     <a class="items" (click)="router('/profile/payment-details')" [routerLinkActive]="'activeTab'">Payment
                         details</a>
-                    <a class="items" (click)="router('/profile/asset-list')" [routerLinkActive]="'activeTab'">Asset
-                        list</a>
+                    <a class="items" (click)="router('/profile/inventory')" [routerLinkActive]="'activeTab'">Inventory</a>
                     <a class="items" (click)="router('/profile/payments')" [routerLinkActive]="'activeTab'">Payments</a>
                     <a class="items" (click)="router('/support')" [routerLinkActive]="'activeTab'">Support</a>
                     <a class="items" [routerLinkActive]="'activeTab'"

@@ -3,8 +3,8 @@ import { GoodsResponse } from '../../core/models/goods';
 import { OrderData } from '../../core/models/order';
 import { takeUntil, finalize } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
-import { AssetsListService } from '../../pages/main/profile/asset-list/asset-list.service';
 import { Subject } from 'rxjs';
+import { InventoryService } from '../../pages/main/profile/inventory/inventory.service';
 
 @Component({
     selector: "beehives-app",
@@ -16,12 +16,12 @@ export class BeehivesComponent implements OnInit {
 
     @Input() item: GoodsResponse;
     private _unsubscribe$: Subject<void> = new Subject<void>();
-    public count: number = 1;
+    public count: number = 0;
     public loading: boolean = false;
     public messageError: string;
     public totalPrice: number;
 
-    constructor(private _assetsListService: AssetsListService,
+    constructor(private _inventoryService: InventoryService,
         private _toastr: ToastrService ) {
     }
 
@@ -39,7 +39,7 @@ export class BeehivesComponent implements OnInit {
             action: "buy",
             message: "",
         }
-        this._assetsListService.addOrder(orderData)
+        this._inventoryService.addOrder(orderData)
             .pipe(takeUntil(this._unsubscribe$),
                 finalize(() => {
                     this.loading = false;
