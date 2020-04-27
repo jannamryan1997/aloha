@@ -55,10 +55,10 @@ export class UserAccountView implements OnInit {
     private _formBuilder(): void {
         this.userAccountGroup = this._fb.group({
             name: [null, Validators.required],
-            phonenumber: [null, Validators.required],
+            phonenumber: [null],
             country: [null, Validators.required],
             email: [null, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
-            details: [null, Validators.required]
+            details: [null]
         })
     }
     private _setProfileValues(): void {

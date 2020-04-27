@@ -1,5 +1,5 @@
 <div class="payment-content w-100">
-    <div class="payment-item-content">
+    <div class="payment-item-content" [ngClass]="{'backgroud-buy':paymentData.action=='buy','backgroud-sell':paymentData.action=='sell'}">
         <div class="payment-item d-flex" >
             <div class="image-content d-none" [ngClass]="{'d-block':paymentData.paid}">
                 <img src="assets/icons/payment-open-icon.svg" class="rounded d-block icon menu-icon" alt="...">
@@ -29,7 +29,7 @@
                             keyboard_arrow_down
                         </i>
                     </div>
-                    <p class="ml-2">done</p>
+                    <p class="ml-2 done-text">done</p>
                 </div>
 
             </div>

@@ -29,7 +29,6 @@ export class PaymentDetailsView implements OnInit {
     }
 
     private _getBillingdetails(): void {
-        console.log("fggfgfg")
         this.loading = true;
         this._paymentDetailsService.getBillingdetails()
             .pipe(
