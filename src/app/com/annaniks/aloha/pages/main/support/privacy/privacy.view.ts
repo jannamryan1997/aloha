@@ -18,7 +18,7 @@ export class PrivacyView implements OnInit {
     private _unsubscribe$: Subject<void> = new Subject<void>();
     public privacyGroup: FormGroup;
     public loading: boolean = false;
-    public errorMessage: String;
+    public messageError: String;
 
     constructor(private _menuService: MenuService, 
         private _fb: FormBuilder, 
@@ -64,7 +64,7 @@ export class PrivacyView implements OnInit {
 
             },
                 err => {
-                    this.errorMessage = err.error.msg;
+                    this.messageError = err.error.msg;
                 }
             )
     }
