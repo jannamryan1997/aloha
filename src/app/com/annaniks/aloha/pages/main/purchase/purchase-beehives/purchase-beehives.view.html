@@ -1,0 +1,34 @@
+<div class="beehives-content">
+    <form [formGroup]="purchaseForm">
+        <div class="form-group">
+            <div class="form-group-item d-flex flex-column">
+
+                <mat-label class="label">Tип ульев</mat-label>
+                <select class="select" formControlName="type" ng-options="option.value as option.name for option in goodData" (ngModelChange)="onControlChange($event)">
+                    <option class="option" *ngFor="let item of goodData" [value]="item?.id"
+                       >{{item?.name}}</option>
+                </select>
+
+                <div class="add-container">
+                    <label class="label">Количество ульев</label>
+                    <div class="add d-flex justify-content-between">
+                        <button class="btn  add-button cursor-pointer d-flex" type="submit"
+                            (click)="changedOrderCount('remove')">
+                            <p class="m-auto">-</p>
+                        </button>
+                        <input type="number" min="1" class="input-content m-auto text-center"
+                            (ngModelChange)="countChange($event)" formControlName="count" [max-count]="0"
+                            app-focus-next-input maxLength="0" OnlyNumber="true">
+                        <button class="btn  add-button cursor-pointer d-flex" type="submit"
+                            (click)="changedOrderCount('add')">
+                            <p class="m-auto">+</p>
+                        </button>
+                    </div>
+                    <p class="totalPrice">${{price}} USD</p>
+                    <button class="btn" (click)="onClickBuyOrder()"><span>PURCHASE REQUEST</span></button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>

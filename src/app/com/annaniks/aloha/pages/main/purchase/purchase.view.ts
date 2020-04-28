@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from '@angular/router';
 
 @Component({
     selector: "view-purchase",
@@ -7,8 +8,14 @@ import { Component, OnInit } from "@angular/core";
 })
 
 export class PurchaseView implements OnInit {
-
-    constructor() { }
+    public router: string;
+    constructor(private _router: Router) {
+        this.router = this._router.url;
     
-    ngOnInit() { }
+    }
+
+    ngOnInit() {
+        console.log(this.router);
+
+    }
 }

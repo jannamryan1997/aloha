@@ -5,11 +5,11 @@ import { MainView } from './main.view';
 const mainRoutes: Routes = [
     {
         path: "", component: MainView, children: [
-            { path: "", redirectTo: "profile", pathMatch: "full" },
-            // {
-            //     path: "purchase",
-            //     loadChildren: () => import('./purchase/purchase.module').then(m => m.PurchaseModule),
-            // },
+            { path: "", redirectTo: "purchase", pathMatch: "full" },
+            {
+                path: "purchase",
+                loadChildren: () => import('./purchase/purchase.module').then(m => m.PurchaseModule),
+            },
             {
                 path: "profile",
                 loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),

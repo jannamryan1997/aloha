@@ -9,7 +9,7 @@
                 <button class="btn  add-button cursor-pointer d-flex" type="submit"  (click)="changedOrderCount('remove')">
                     <p class="m-auto" >-</p>
                 </button>
-                <input type="number" min="1" class="input-content m-auto text-center" (ngModelChange)="countCange($event)"  [(ngModel)]="count" [max-count]="0"  app-focus-next-input maxLength="0" OnlyNumber="true">
+                <input type="number" min="1" class="input-content m-auto text-center" (ngModelChange)="countChange($event)"  [(ngModel)]="count" [max-count]="0"  app-focus-next-input maxLength="0" OnlyNumber="true">
                 <button class="btn  add-button cursor-pointer d-flex" type="submit" (click)="changedOrderCount('add')">
                     <p class="m-auto">+</p>
                 </button>

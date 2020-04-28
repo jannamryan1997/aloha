@@ -10,7 +10,16 @@ const purchaseRoutes: Routes = [
                 {
                     path: "request",
                     loadChildren: () => import('./purchase-request/purchase-request.module').then(m => m.PurchaseRequestModule),
+                },
+                {
+                    path: "purchaseBeehives",
+                    loadChildren: () => import('./purchase-beehives/purchase-beehives.module').then(m => m.PurchaseBeehivesModule)
+                },
+                {
+                    path: "sent",
+                    loadChildren: () => import('./sent/sent.module').then(m => m.SentModule)
                 }
+
             ]
     }
 ]

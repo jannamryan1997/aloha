@@ -67,7 +67,7 @@ export class BeehivesComponent implements OnInit {
         }
 
     }
-    public countCange(event){
+    public countChange(event){
         this.totalPrice =  event * this.item.price;
      
 
