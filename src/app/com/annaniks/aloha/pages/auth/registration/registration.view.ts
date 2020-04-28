@@ -27,7 +27,7 @@ export class RegistrationView implements OnInit {
         this.registrationForm = this._fb.group({
             email: [null, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
             name: [null, Validators.required],
-            phone: [null, Validators.required]
+            phone: [null]
         })
     }
     private _registration(): void {
