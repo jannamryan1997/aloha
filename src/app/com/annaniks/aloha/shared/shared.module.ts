@@ -8,6 +8,7 @@ import { OnlyNumberDirective } from '../core/directive';
 import { RequestModal } from '../core/modals';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { MaxLength } from '../core/pipe';
+import { FocusNextInputDriective } from '../core/directive/focuse-next.directive';
 
 
 
@@ -17,7 +18,8 @@ import { MaxLength } from '../core/pipe';
         OnlyNumberDirective,
         FooterComponent,
         RequestModal,
-        MaxLength
+        MaxLength,
+        FocusNextInputDriective
     ],
     imports: [
         CommonModule,
@@ -39,7 +41,9 @@ import { MaxLength } from '../core/pipe';
         FooterComponent,
         RequestModal,
         AutocompleteLibModule,
-        MaxLength
+        MaxLength,
+        FocusNextInputDriective
+
     ],
     providers: [],
     entryComponents: [RequestModal]
