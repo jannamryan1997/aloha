@@ -15,61 +15,15 @@ import { ToastrService } from 'ngx-toastr';
 })
 
 export class PrivacyView implements OnInit {
-    private _unsubscribe$: Subject<void> = new Subject<void>();
-    public privacyGroup: FormGroup;
-    public loading: boolean = false;
-    public messageError: String;
+    
 
-    constructor(private _menuService: MenuService, 
-        private _fb: FormBuilder, 
-        private _supportService: SupportService,
-        private _toastr:ToastrService,
-        ) {
+    constructor(private _menuService: MenuService) {
         const routeSteps: RouteStep[] = [
             { label: 'Main', routerLink: '/' },
-            { label: 'Terms', routerLink: '/privacy' }
+            { label: 'Privacy', routerLink: '/privacy' }
         ]
         this._menuService.setRouteSteps(routeSteps);
     }
 
-    ngOnInit() {
-        this._formBuilder();
-    }
-
-    private _formBuilder(): void {
-        this.privacyGroup = this._fb.group({
-            subject: [null, Validators.required],
-            text: [null, Validators.required]
-        })
-    }
-
-    private _createMsg(): void {
-        this.loading = true;
-        this.privacyGroup.disable();
-        let msgData: MsgData = {
-            subject: this.privacyGroup.value.subject,
-            text: this.privacyGroup.value.text,
-        }
-        this._supportService.creatMsg(msgData)
-            .pipe(takeUntil(this._unsubscribe$),
-                finalize(() => {
-                    this.loading = false;
-                    this.privacyGroup.enable();
-                })
-            )
-
-            .subscribe((data) => {
-                console.log(data);
-                this._toastr.success('Your request has been successfully delivered.');
-
-            },
-                err => {
-                    this.messageError = err.error.msg;
-                }
-            )
-    }
-
-    public onClickcreateMsg(): void {
-        this._createMsg();
-    }
+   ngOnInit(){}
 }

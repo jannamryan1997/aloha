@@ -1,5 +1,4 @@
 .payment-content {
-    opacity: .5;
     .payment-item-content {
         width: 100%;
         font-weight: bold;
@@ -17,7 +16,7 @@
             opacity: 1;
             .text,
             .value {
-                color: #17344F;
+                // color: #17344F;
                 font-size: 25px;
                 line-height: 30px;
                 word-break: break-all;
@@ -145,9 +144,10 @@
 }
 
 .backgroud-buy{
- background: rgba(255, 0, 0, 0.3);
+ background:#f1412e44;
+ color: #f1412e !important;
 }
 .backgroud-sell{
-   
-    background: #59b4b8;
+    background: #a5daa744;
+    color: #a5daa7 !important
 }

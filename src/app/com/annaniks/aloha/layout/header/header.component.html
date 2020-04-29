@@ -31,7 +31,7 @@
                         <p class="title">Your coupon</p>
                         <p class="text">20% discount on store purchases <br> www.rahonyfromutha.com</p>
                         <div class="coupon-value d-flex justify-content-between">
-                            <input type="text" class="coupon-input" value="#0123456789" #userinput disabled>
+                            <input type="text" class="coupon-input" [value]="promoCode" #userinput disabled >
                             <button class="btn copy-btn cursor-pointer d-flex align-items-center" type="submit"
                                 (click)="copyInputMessage(userinput)">
                                 <p>copy </p>

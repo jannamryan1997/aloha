@@ -62,4 +62,9 @@ export class RegistrationView implements OnInit {
     public checkIsValid(controlName): boolean {
         return this.registrationForm.get(controlName).hasError('required') && this.registrationForm.get(controlName).touched;
     }
+    
+    public onCountryChange(event):void{
+        console.log(event);
+        
+    }
 }

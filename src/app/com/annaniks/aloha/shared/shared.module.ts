@@ -5,7 +5,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoadingComponent, FooterComponent } from '../layout';
 import { OnlyNumberDirective } from '../core/directive';
-import { RequestModal } from '../core/modals';
+import { RequestModal, SuccessfullyModal } from '../core/modals';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { MaxLength } from '../core/pipe';
 import { FocusNextInputDriective } from '../core/directive/focuse-next.directive';
@@ -19,7 +19,8 @@ import { FocusNextInputDriective } from '../core/directive/focuse-next.directive
         FooterComponent,
         RequestModal,
         MaxLength,
-        FocusNextInputDriective
+        FocusNextInputDriective,
+        SuccessfullyModal
     ],
     imports: [
         CommonModule,
@@ -46,7 +47,7 @@ import { FocusNextInputDriective } from '../core/directive/focuse-next.directive
 
     ],
     providers: [],
-    entryComponents: [RequestModal]
+    entryComponents: [RequestModal,SuccessfullyModal]
 })
 
 export class SharedModule { }

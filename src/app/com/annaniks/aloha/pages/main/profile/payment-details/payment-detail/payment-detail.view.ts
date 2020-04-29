@@ -6,10 +6,9 @@ import { MenuService } from 'src/app/com/annaniks/aloha/core/services/menu.servi
 import { PaymentDetailsService } from '../payment-details.service';
 import { takeUntil, finalize } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { BillingdetailsData} from 'src/app/com/annaniks/aloha/core/models/payment-details';
+import { BillingdetailsData, Billingdetails} from 'src/app/com/annaniks/aloha/core/models/payment-details';
 import { MatDialog } from '@angular/material/dialog';
-import { RequestModal } from 'src/app/com/annaniks/aloha/core/modals';
-import { ToastrService } from 'ngx-toastr';
+import { RequestModal, SuccessfullyModal } from 'src/app/com/annaniks/aloha/core/modals';
 
 @Component({
     selector: 'payment-detail-view',
@@ -32,7 +31,6 @@ export class PaymentDetailView implements OnInit, OnDestroy {
         private _fb: FormBuilder,
         private _paymentDetailsService: PaymentDetailsService,
         private _dialog: MatDialog,
-        private _toastr:ToastrService
     ) {
         this._checkRouteParams();
         this._setRouteSteps();
@@ -49,7 +47,8 @@ export class PaymentDetailView implements OnInit, OnDestroy {
         this.paymentForm = this._fb.group({
             reqv: [false],
             pay: [false],
-            type: [null, Validators.required]
+            type: [null, Validators.required],
+            details:[null,Validators.required]
         })
     }
     private _checkRouteParams(): void {
@@ -75,13 +74,17 @@ export class PaymentDetailView implements OnInit, OnDestroy {
     private _getBillingdetailsById(): void {
         this._paymentDetailsService.getBillingdetailsById(this.paymentId)
             .pipe(takeUntil(this._unsubscribe$))
-            .subscribe((data:BillingdetailsData) => {
+            .subscribe((data:Billingdetails) => {
                 this.paymentForm.patchValue({
                     reqv: data.recv,
                     pay: data.pay,
-                    type: data.details,
+                    type: data.type,
+                    details:data.details
                 })
+                console.log(data,"data");
             })
+         
+            
     }
     private _createdBillingdetails(): void {
         this.loading = true;
@@ -89,7 +92,8 @@ export class PaymentDetailView implements OnInit, OnDestroy {
         const billingdetailsData: BillingdetailsData = {
             recv: this.paymentForm.value.reqv,
             pay: this.paymentForm.value.pay,
-            details: this.paymentForm.value.type,
+            details: this.paymentForm.value.details,
+            type:this.paymentForm.value.type,
             
         }
         this._paymentDetailsService.createdBillingdetails(billingdetailsData)
@@ -100,7 +104,10 @@ export class PaymentDetailView implements OnInit, OnDestroy {
             })
             )
             .subscribe((data) => {
-                this._toastr.success('Your request has been successfully delivered.');
+                this._dialog.open(SuccessfullyModal, {
+                    width: "666px",
+                    height: "360px",
+                })
                 this._router.navigate(['/profile/payment-details']);
             },
                 err => {
@@ -114,7 +121,8 @@ export class PaymentDetailView implements OnInit, OnDestroy {
         const billingdetailsData: BillingdetailsData = {
             recv: this.paymentForm.value.reqv,
             pay: this.paymentForm.value.pay,
-            details: this.paymentForm.value.type,
+            details: this.paymentForm.value.details,
+            type:this.paymentForm.value.type,
         }
         this._paymentDetailsService.updateBillingdetails(billingdetailsData, this.paymentId)
             .pipe(takeUntil(this._unsubscribe$),
@@ -124,7 +132,10 @@ export class PaymentDetailView implements OnInit, OnDestroy {
             })
             )
             .subscribe((data) => {
-                this._toastr.success('Your request has been successfully delivered.');
+                this._dialog.open(SuccessfullyModal, {
+                    width: "666px",
+                    height: "360px",
+                })
 
                 this._router.navigate(['/profile/payment-details'])
             },
@@ -137,7 +148,10 @@ export class PaymentDetailView implements OnInit, OnDestroy {
         this._paymentDetailsService.deleteBillingdetails(this.paymentId)
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data) => {
-                this._toastr.success('Your request has been successfully delivered.');
+                this._dialog.open(SuccessfullyModal, {
+                    width: "666px",
+                    height: "360px",
+                })
                 this._router.navigate(['/profile/payment-details']);
             },
                 err => {

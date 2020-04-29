@@ -17,16 +17,21 @@
         </div>
         <div class="right-content">
             <p class="title">Order cost</p>
-            <p class="text">FREE SHIPPING 2-3 DAYS</p>
+            <div class="form-group">
+                    <div class="label-wrapper">
+                            <label class="label comment">Your Comment</label>
+                    </div>
+                <textarea name="comment" class="form-control trext-area" rows="3" [(ngModel)]="comment"></textarea>
+              </div>
             <p class="text total-price">Total price: <b>${{totalPrice}}</b></p>
             <div class="d-flex justify-content-between align-items-center">
             <button class="btn  save-btn buy-btn cursor-pointer d-flex" type="submit" (click)="addOrder(item.id)">BUY
                 <app-loading class="ml-3" *ngIf="loading"></app-loading>
             </button>
-            <img src="assets/icons/Close.svg" class="rounded d-none d-block-w-900 icon" alt="..." >
+            <!-- <img src="assets/icons/Close.svg" class="rounded d-none d-block-w-900 icon" alt="..." > -->
         </div>
         </div>
         <div>
-            <img src="assets/icons/Close.svg" class="rounded d-block d-none-w-900 icon" alt="..." >
+            <!-- <img src="assets/icons/Close.svg" class="rounded d-block d-none-w-900 icon" alt="..." > -->
         </div>
     </div>

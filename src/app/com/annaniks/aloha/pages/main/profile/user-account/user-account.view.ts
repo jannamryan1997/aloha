@@ -7,8 +7,9 @@ import { Subject, Observable } from 'rxjs';
 import { ProfileService } from '../profile.service';
 import { User, Country } from '../../../../core/models/profile';
 import { AuthService } from '../../../../core/services/auth.services';
-import { ToastrService } from 'ngx-toastr';
 import { MainService } from '../../main.service';
+import { SuccessfullyModal } from '../../../../core/modals';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -34,8 +35,8 @@ export class UserAccountView implements OnInit {
         private _menuService: MenuService,
         private _profileService: ProfileService,
         private _authService: AuthService,
-        private _toastr: ToastrService,
         private _mainService: MainService,
+        private _dialog:MatDialog
     ) {
         const routeSteps: RouteStep[] = [
             { label: 'Main', routerLink: '/' },
@@ -63,7 +64,7 @@ export class UserAccountView implements OnInit {
     }
     private _setProfileValues(): void {
         const user: User = this._authService.user;
-        
+
         this._userId = user.id;
         this._promocode = user.promocode;
         this._contact = user.contract;
@@ -83,7 +84,7 @@ export class UserAccountView implements OnInit {
                 const userCountry: string = this._user.country;
                 let country: Country;
                 for (let i = 0; i < this.countryData.length; i++) {
-                    if (this.countryData[i].code === userCountry){
+                    if (this.countryData[i].code === userCountry) {
                         country = this.countryData[i];
                     }
                 }
@@ -125,9 +126,11 @@ export class UserAccountView implements OnInit {
             )
             .subscribe((data) => {
                 this._authService.user = data;
-                this._toastr.success('Your request has been successfully delivered.');
-              console.log(this._authService.user,"kkkkkkkk");
-              
+                this._dialog.open(SuccessfullyModal, {
+                    width: "666px",
+                    height: "360px",
+                })
+
             },
                 err => {
                     this.messageError = err.error.msg;
@@ -151,8 +154,8 @@ export class UserAccountView implements OnInit {
         return this._mainService.getCountries();
     }
 
-    public onCountryChange(event):void{
+    public onCountryChange(event): void {
         console.log(event);
-        
+
     }
 }

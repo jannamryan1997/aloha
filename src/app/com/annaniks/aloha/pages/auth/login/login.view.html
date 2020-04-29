@@ -6,10 +6,11 @@
             </div>
         </div>
         <div id="login-forms" class="login-form respons-form-content">
-                <p class="tex-center error text-danger error-message">{{errorMessage}}</p>
-                <p class="tex-center error text-danger error-message d-none" [ngClass]="{'d-block':logIn.get('email').hasError('pattern')}">Please provide a valid email address</p>
+            <p class="tex-center error text-danger error-message">{{errorMessage}}</p>
+            <p class="tex-center error text-danger error-message d-none"
+                [ngClass]="{'d-block':logIn.get('email').hasError('pattern')}">Please provide a valid email address</p>
             <div class="form-group d-flex align-items-center">
-              
+
                 <div class="label-wrapper">
                     <label class="label">E mail</label>
                 </div>
@@ -17,8 +18,11 @@
                 <input type="email" id="inputEmail" formControlName="email" class="form-control input"
                     placeholder="E mail" [ngClass]="{'border':checkIsValid('email')}">
             </div>
-            <button class="btn save-btn cursor-pointer d-flex align-items-center" type="submit" 
-                [disabled]="logIn.invalid" (click)="onclickLogin()">Log in <app-loading *ngIf="loading" class="loading ml-3"></app-loading></button>
+            <button class="btn save-btn cursor-pointer d-flex align-items-center" type="submit"
+                [disabled]="logIn.invalid" (click)="onclickLogin()">Log in <app-loading *ngIf="loading"
+                    class="loading ml-3"></app-loading></button>
+            <p class="title"> I don’t have an account.<b class="title-danger"
+                    routerLink="/auth/registration">Registration</b></p>
         </div>
     </div>
 </form>

@@ -49,19 +49,31 @@
     }
     .right-content {
       width: 100%;
-      max-width: 220px;
-      padding: 35px 0;
+      max-width: 300px;
+      padding: 10px 0;
       .save-btn {
         padding: 16px 70px;
       }
     }
+    .total-price{
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden !important;
+      text-overflow: ellipsis;
+    }
+    .descr-text{
+      font-size: 15px !important;
+    }
+  
+    .comment{
+      color: #17344f;
+      font-size: 18px;
+      line-height: 24px;
+      word-break: break-all;
+      margin-bottom: 10px;
+    }
   }
-  .total-price{
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden !important;
-    text-overflow: ellipsis;
-  }
-  .descr-text{
-    font-size: 15px !important;
-  }
+.trext-area{
+  min-height: 120px !important;
+    height: 120px !important;
+}

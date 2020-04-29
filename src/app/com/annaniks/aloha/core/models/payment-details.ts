@@ -3,9 +3,11 @@ export interface Billingdetails {
     recv: boolean;
     pay: boolean;
     details: string;
+    type:string;
 }
 export interface BillingdetailsData{
     recv: boolean;
     pay: boolean;
     details: string;
+    type:string;
 }

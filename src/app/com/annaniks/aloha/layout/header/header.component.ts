@@ -13,6 +13,7 @@ import { AuthService } from '../../core/services/auth.services';
 export class HeaderComponent implements OnInit, AfterViewChecked {
     public menuOpened: boolean = false;
     public userName: string;
+    public promoCode:string;
     public fa: string;
     constructor(
         private _appService: AppService,
@@ -28,6 +29,7 @@ export class HeaderComponent implements OnInit, AfterViewChecked {
 
     ngAfterViewChecked():void {
         this.userName = this._authService.user.name;
+        this.promoCode=this._authService.user.promocode;
     }
 
     private _signOff(): void {

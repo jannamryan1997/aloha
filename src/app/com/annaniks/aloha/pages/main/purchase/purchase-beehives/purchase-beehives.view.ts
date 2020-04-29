@@ -58,7 +58,7 @@ export class PurchaseBeehivesView implements OnInit {
         if (message == "add") {
             this.purchaseForm.get('count').setValue(this.purchaseForm.value.count += 1);
         }
-        else if (message == "remove" && this.purchaseForm.value.count > 1) {
+        else if (message == "remove" && this.purchaseForm.value.count > 0) {
             this.purchaseForm.get('count').setValue(this.purchaseForm.value.count -= 1);
         }
         this.price = this.purchaseForm.value.count * this.totalPrice;

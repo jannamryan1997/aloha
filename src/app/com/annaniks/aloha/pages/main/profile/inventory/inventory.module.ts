@@ -4,13 +4,14 @@ import { InventoryComponent } from './inventory.view';
 import { InventoryRoutingModule } from './inventory.routing.module';
 import { InventoryItemComponent } from './components';
 import { InventoryService } from './inventory.service';
-import { MessageModal } from '../../../../core/modals';
+import { MessageModal, SellOutModal } from '../../../../core/modals';
 
 @NgModule({
     declarations: [
         InventoryComponent,
         InventoryItemComponent,
-        MessageModal
+        MessageModal,
+        SellOutModal
 
     ],
     imports: [
@@ -18,7 +19,7 @@ import { MessageModal } from '../../../../core/modals';
         SharedModule
     ],
     providers: [InventoryService],
-    entryComponents:[MessageModal]
+    entryComponents:[MessageModal,SellOutModal]
 })
 
 export class InventoryModule { }

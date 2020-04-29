@@ -26,17 +26,28 @@
                     [ngClass]="{'border':checkIsValid('name')}">
 
             </div>
-            <div class="form-group d-flex align-items-center">
+            <!-- <div class="form-group d-flex align-items-center">
                 <div class="label-wrapper">
                     <label class="label">Phone</label>
                 </div>
                 <input type="text" id="phone" formControlName="phone" class="form-control input" placeholder="Phone"
                     [ngClass]="{'border':checkIsValid('phone')}" OnlyNumber="true" [OnlyNumber]="true">
 
-            </div>
+            </div> -->
+            <div class="form-group d-flex align-items-center">
+                    <div class="label-wrapper">
+                    <label for="Phonenumber" class="label">Phone number</label>
+                    </div>
+                    <div class="input-content phone-content">
+                        <input type="text" class=" form-control input phone-form" ng2TelInput formControlName="phone"
+                            (countryChange)="onCountryChange($event)" [OnlyNumber]="true" maxlength="11" />
+                    </div>
+                </div>
             <button class="btn save-btn cursor-pointer d-flex align-items-center" type="submit"
                 [disabled]="registrationForm.invalid" (click)="onclickRegistration()">Save <app-loading class="ml-3"
                     *ngIf="loading"></app-loading></button>
+                    <p class="title">I have an account.<b class="title-danger"
+                        routerLink="/auth/login">Login</b></p>
         </div>
     </div>
 </form>

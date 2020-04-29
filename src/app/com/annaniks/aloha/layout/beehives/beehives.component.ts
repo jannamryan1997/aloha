@@ -5,6 +5,8 @@ import { takeUntil, finalize } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { InventoryService } from '../../pages/main/profile/inventory/inventory.service';
+import { SuccessfullyModal } from '../../core/modals';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
     selector: "beehives-app",
@@ -20,9 +22,10 @@ export class BeehivesComponent implements OnInit {
     public loading: boolean = false;
     public messageError: string;
     public totalPrice: number;
+    public comment:string;
 
     constructor(private _inventoryService: InventoryService,
-        private _toastr: ToastrService ) {
+        private _dialog:MatDialog ) {
     }
 
     ngOnInit() { 
@@ -37,7 +40,7 @@ export class BeehivesComponent implements OnInit {
             goods: goodId,
             count: this.count,
             action: "buy",
-            message: "",
+            message: this.comment,
         }
         this._inventoryService.addOrder(orderData)
             .pipe(takeUntil(this._unsubscribe$),
@@ -46,7 +49,10 @@ export class BeehivesComponent implements OnInit {
                 })
             )
             .subscribe((data) => {
-                this._toastr.success('Your request has been successfully delivered.');
+                this._dialog.open(SuccessfullyModal, {
+                    width: "666px",
+                    height: "360px",
+                })
             },
                 err => {
                     this.messageError = err.error.msg;
@@ -61,7 +67,7 @@ export class BeehivesComponent implements OnInit {
             this.totalPrice =  this.count * this.item.price;
 
         }
-        else if (message == "remove" && this.count > 1) {
+        else if (message == "remove" && this.count > 0) {
             this.count = this.count - 1;
             this.totalPrice =  this.count * this.item.price;
         }

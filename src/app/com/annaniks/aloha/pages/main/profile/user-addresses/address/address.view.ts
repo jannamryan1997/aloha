@@ -8,8 +8,7 @@ import { UserAddress, UserAddressData } from 'src/app/com/annaniks/aloha/core/mo
 import { takeUntil, finalize } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { RequestModal } from 'src/app/com/annaniks/aloha/core/modals';
-import { ToastrService } from 'ngx-toastr';
+import { RequestModal, SuccessfullyModal } from 'src/app/com/annaniks/aloha/core/modals';
 import { MainService } from '../../../main.service';
 import { Country } from 'src/app/com/annaniks/aloha/core/models/profile';
 
@@ -39,7 +38,6 @@ export class AddressView implements OnInit, OnDestroy {
         private _fb: FormBuilder,
         private _userAddressesService: UserAddressesService,
         private _dialog: MatDialog,
-        private _toastr: ToastrService,
         private _mainService: MainService,
     ) {
         this._checkRouteParams();
@@ -136,7 +134,10 @@ export class AddressView implements OnInit, OnDestroy {
 
             ).subscribe((data) => {
 
-                this._toastr.success('Your request has been successfully delivered.');
+                this._dialog.open(SuccessfullyModal, {
+                    width: "666px",
+                    height: "360px",
+                })
                 this._router.navigate(['/profile/user-addresses']);
             },
                 err => {
@@ -166,7 +167,10 @@ export class AddressView implements OnInit, OnDestroy {
                 })
             )
             .subscribe((data) => {
-                this._toastr.success('Your request has been successfully delivered.');
+                this._dialog.open(SuccessfullyModal, {
+                    width: "666px",
+                    height: "360px",
+                })
                 this._router.navigate(['/profile/user-addresses']);
             },
                 err => {
