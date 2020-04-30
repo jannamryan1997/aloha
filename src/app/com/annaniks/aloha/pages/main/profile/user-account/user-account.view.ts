@@ -29,6 +29,7 @@ export class UserAccountView implements OnInit {
     public selectedCountry: Country;
     public keyword = 'name';
     public messageError: string;
+    public dialCode:number;
     public countryData: Country[] = [];
     constructor(
         private _fb: FormBuilder,
@@ -36,7 +37,7 @@ export class UserAccountView implements OnInit {
         private _profileService: ProfileService,
         private _authService: AuthService,
         private _mainService: MainService,
-        private _dialog:MatDialog
+        private _dialog: MatDialog
     ) {
         const routeSteps: RouteStep[] = [
             { label: 'Main', routerLink: '/' },
@@ -56,7 +57,7 @@ export class UserAccountView implements OnInit {
     private _formBuilder(): void {
         this.userAccountGroup = this._fb.group({
             name: [null, Validators.required],
-            phonenumber: [null],
+            phonenumber: [null,Validators.required],
             country: [null, Validators.required],
             email: [null, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
             details: [null]
@@ -70,7 +71,7 @@ export class UserAccountView implements OnInit {
         this._contact = user.contract;
         this.userAccountGroup.patchValue({
             name: user.name,
-            phonenumber: user.phone,
+            phonenumber:user.phone,
             email: user.email,
             details: user.details,
         })
@@ -111,7 +112,7 @@ export class UserAccountView implements OnInit {
             id: this._userId,
             email: this.userAccountGroup.value.email,
             contract: this._contact,
-            phone: this.userAccountGroup.value.phonenumber,
+            phone:this.userAccountGroup.value.phonenumber,
             country: (this.selectedCountry && this.selectedCountry.code) ? this.selectedCountry.code : '',
             name: this.userAccountGroup.value.name,
             details: this.userAccountGroup.value.details,
@@ -155,7 +156,9 @@ export class UserAccountView implements OnInit {
     }
 
     public onCountryChange(event): void {
-        console.log(event);
-
+        this.dialCode = event.dialCode;
+        this.userAccountGroup.patchValue({
+            phonenumber: this.dialCode,
+        })
     }
 }

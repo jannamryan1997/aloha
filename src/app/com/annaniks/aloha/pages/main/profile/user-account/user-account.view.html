@@ -26,8 +26,8 @@
             <div class="form-group d-flex align-items-center">
                 <label for="Phonenumber" class="label">Phone number</label>
                 <div class="input-content">
-                    <input type="text" class="form-control input phone-form" ng2TelInput formControlName="phonenumber"
-                        (countryChange)="onCountryChange($event)" [OnlyNumber]="true" />
+                    <input type="text" class="form-control input phone-form" ng2TelInput   mdInput formControlName="phonenumber"
+                        (countryChange)="onCountryChange($event)" [OnlyNumber]="true" maxlength="11" placeholder=" "/>
                 </div>
             </div>
             <p class="tex-center error text-danger error-message d-none"

@@ -18,6 +18,7 @@ export class RegistrationView implements OnInit {
     public errorMessage: string;
     public email: string;
     public loading: boolean = false;
+    public dialCode:number;
     constructor(private _fb: FormBuilder, private _authService: AuthService) { }
 
     ngOnInit() {
@@ -64,7 +65,11 @@ export class RegistrationView implements OnInit {
     }
     
     public onCountryChange(event):void{
-        console.log(event);
+        this.dialCode = event.dialCode;
+        this.registrationForm.patchValue({
+            phone: this.dialCode,
+        })
+    }
         
     }
-}
+

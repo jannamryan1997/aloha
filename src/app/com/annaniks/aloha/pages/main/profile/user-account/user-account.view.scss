@@ -52,4 +52,9 @@
   width: calc(100% - 60px) !important;
   margin-left: 60px !important;
   border: none !important;
+  
+}
+
+.input::-moz-placeholder {
+  color:white !important;
 }
