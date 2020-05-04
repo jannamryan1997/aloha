@@ -1,105 +1,89 @@
-<div class="payment-content w-100">
-    <div class="payment-item-content" [ngClass]="{'backgroud-buy':paymentData.action=='buy','backgroud-sell':paymentData.action=='sell'}">
-        <div class="payment-item d-flex" >
-            <div class="image-content d-none" [ngClass]="{'d-block':paymentData.paid}">
-                <img src="assets/icons/payment-open-icon.svg" class="rounded d-block icon menu-icon" alt="...">
-            </div>
-            <div class="image-content d-none" >
-                <img src="assets/icons/payment-close-icon.svg" class="rounded d-block icon menu-icon" alt="...">
-            </div>
-            <div class="d-none" [ngClass]="{'d-block':paymentData.cancel  && !paymentData.paid}">
 
-                <div class="d-flex align-items-center">
+<div class="payment-item w-100">
+    <div class="paymen-item-description d-flex"
+        [ngClass]="{'backgroud-buy':paymentData.action=='buy','backgroud-sell':paymentData.action=='sell'}">
+        <div class="behives-content" [ngClass]="{'d-block':paymentData.cancel}">
+            <div class="d-flex">
 
-                    <div class="behives-radius  cancle d-flex">
-                        <i class="material-icons cancle-icon m-auto">
-                            keyboard_arrow_down
-                        </i>
-                    </div>
-                    <p class="ml-2 cancle-text">cancel</p>
+                <div class="behives-radius  cancle d-flex">
+                    <i class="material-icons  m-auto">
+                        keyboard_arrow_down
+                    </i>
                 </div>
-
-            </div>
-            <div class="d-none" [ngClass]="{'d-block':paymentData.paid==null && paymentData.done==null && paymentData.cancel==null }">
-
-                <div class="d-flex align-items-center">
-
-                    <div class="behives-radius  d-flex">
-                        <i class="material-icons m-auto">
-                            keyboard_arrow_down
-                        </i>
-                    </div>
-                    <p class="ml-2 done-text">done</p>
-                </div>
-
-            </div>
-            <div class="amount-description">
-                <div class="amount-text-content d-flex justify-content-between f-direction-colum-w-900">
-                    <p class="text">Invoice amount</p>
-                    <p class="value d-none"  [ngClass]="{'d-block':paymentData.action=='buy'}">$ -{{paymentData?.amount}}</p>
-                    <p class="value d-none" [ngClass]="{'d-block':paymentData.action=='sell'}">$ +{{paymentData?.amount}}</p>
-                </div>
-                <div class="payment-info d-flex align-items-center">
-                    <p>Pyment info</p>
-                    <div class="payment-radius  ml-3 d-flex" (click)="onclick()">
-                        <i class="material-icons m-auto" *ngIf="hive">
-                            keyboard_arrow_up
-                        </i>
-                        <i class="material-icons m-auto" *ngIf="!hive">
-                            keyboard_arrow_down
-                        </i>
-                    </div>
-                </div>
+                <p class="ml-2 cancle-text">cancel</p>
             </div>
         </div>
-        <div class="asset-list" *ngIf="hive">
-            <p class="title">{{paymentData?.descr}}</p>
-            <table class="table">
-                <!-- <tr class="mat-tr">
-                    <td class="mat-td w-50">Hive dimensions</td>
-                    <td class="mat-td w-50 right-td">90*90*90</td>
-                </tr> -->
-                <tr class="mat-tr">
-                    <td class="mat-td w-50"> quantity</td>
-                    <td class="mat-td w-50 right-td">{{paymentData?. quantity}} pcs</td>
-                </tr>
-                <tr class="mat-tr">
-                    <td class="mat-td w-50">Data of purchase</td>
-                    <td class="mat-td w-50 right-td">{{paymentData?.purchase_date}}</td>
-                </tr>
-                <tr class="mat-tr">
-                    <td class="mat-td w-50">Total price</td>
-                    <td class="mat-td w-50 right-td">$ {{paymentData?.amount}}</td>
-                </tr>
-            </table>
+        <div class="behives-content" [ngClass]="{'d-flex': paymentData.cancel==null && paymentData.paid}">
+            <div class="d-flex">
+
+                <div class="behives-radius  d-flex">
+                    <i class="material-icons  m-auto">
+                        keyboard_arrow_down
+                    </i>
+                </div>
+                <p class="ml-2 paid-text">paid</p>
+            </div>
+        </div>
+
+
+
+        <div class="behives-content" [ngClass]="{'d-flex':paymentData.cancel==null && paymentData.paid==null && paymentData.accepted==null}">
+            <div class="d-flex">
+                <div class="behives-radius  d-flex">
+                    <i class="material-icons  m-auto">
+                        keyboard_arrow_down
+                    </i>
+                </div>
+                <p class="ml-2 paid-text">wait</p>
+            </div>
+        </div>
+      <div class="behives-content  align-items-center" [ngClass]="{'d-flex':paymentData.paid==null && paymentData.accepted}">
+        <div class="d-flex">
+        <div class="behives-radius   d-flex">
+                <i class="material-icons  m-auto">
+                    keyboard_arrow_down
+                </i>
+            </div>
+            <p class="ml-2 accept-text">accepted</p>
+        </div>
+      </div>
+
+        <div class="amount-description">
+            <div class="amount-text-content d-flex justify-content-between f-direction-colum-w-900">
+                <p class="text">Invoice amount</p>
+                <p class="value d-none"  [ngClass]="{'d-block':paymentData.action=='buy'}">$ -{{paymentData?.amount}}</p>
+                <p class="value d-none" [ngClass]="{'d-block':paymentData.action=='sell'}">$ +{{paymentData?.amount}}</p>
+            </div>
+            <div class="payment-info d-flex align-items-center">
+                <p>Pyment info</p>
+                <div class="payment-radius  ml-3 d-flex" (click)="onclick()">
+                    <i class="material-icons m-auto" *ngIf="hive">
+                        keyboard_arrow_up
+                    </i>
+                    <i class="material-icons m-auto" *ngIf="!hive">
+                        keyboard_arrow_down
+                    </i>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- <div class="payment-item-content position-relative" *ngIf="paymentData.paid==null">
-        <div class="payment-item d-flex">
-            <div class="image-content">
-                <img src="assets/icons/payment-close-icon.svg" class="rounded d-block icon menu-icon" alt="...">
-            </div>
-            <div class="amount-description">
-                <div class="amount-text-content d-flex justify-content-between f-direction-colum-w-900">
-                        <p class="text">Invoice amount</p>
-                        <p class="value">$ {{paymentData?.amount}}</p>
-                </div>
-              
-<div class="d-flex">
-    <div class="payment-info d-flex align-items-center">
-        <p>Pyment info</p>
-        <div class="payment-radius  ml-3 d-flex">
-            <i class="material-icons m-auto">
-                keyboard_arrow_down
-            </i>
-        </div>
-    </div>
-    <button class="btn  cursor-pointer puy-btn ml-3" type="submit" (click)="onSbmit()">Puy bill</button>
-</div>
-               
-            </div>
-        </div>
-        <button class="btn  cursor-pointer save-btn" type="submit" (click)="onSbmit()">Puy bill</button>
-    </div> -->
 
+    <div class="asset-list" *ngIf="hive">
+        <p class="title">{{paymentData?.descr}}</p>
+        <table class="table">
+            <tr class="mat-tr">
+                <td class="mat-td w-50"> quantity</td>
+                <td class="mat-td w-50 right-td">{{paymentData?. quantity}} pcs</td>
+            </tr>
+            <tr class="mat-tr">
+                <td class="mat-td w-50">Data of purchase</td>
+                <td class="mat-td w-50 right-td">{{paymentData?.purchase_date}}</td>
+            </tr>
+            <tr class="mat-tr">
+                <td class="mat-td w-50">Total price</td>
+                <td class="mat-td w-50 right-td">$ {{paymentData?.amount}}</td>
+            </tr>
+        </table>
+    </div>
+    <button class="btn  cursor-pointer save-btn" type="submit" (click)="onSbmit()" *ngIf="paymentData.action=='buy'">Puy bill</button>
 </div>
