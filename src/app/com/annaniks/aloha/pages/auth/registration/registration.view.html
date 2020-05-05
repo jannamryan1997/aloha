@@ -3,14 +3,16 @@
 
         <div class="registration-form-header form-header d-flex">
             <div class="registration-form-header-container">
-                <p class="text">Registration</p>
+                <p class="text">Welcome to the personal account of American Raw Honey partners. To log
+                    in to your account you need to register.</p>
             </div>
         </div>
 
         <div id="registration-forms" class="registration-form respons-form-content">
             <p class="tex-center error text-danger error-message">{{errorMessage}}</p>
             <p class="tex-center error text-danger error-message d-none"
-                [ngClass]="{'d-block':registrationForm.get('email').hasError('pattern')}">Please provide a valid email address</p>
+                [ngClass]="{'d-block':registrationForm.get('email').hasError('pattern')}">Please provide a valid email
+                address</p>
             <div class="form-group d-flex align-items-center">
                 <div class="label-wrapper">
                     <label class="label">E mail</label>
@@ -35,24 +37,24 @@
 
             </div> -->
             <div class="form-group d-flex align-items-center">
-                    <div class="label-wrapper">
+                <div class="label-wrapper">
                     <label for="Phonenumber" class="label">Phone number</label>
-                    </div>
-                    <div class="input-content phone-content">
-                        <input type="text" class=" form-control input phone-form" ng2TelInput formControlName="phone"
-                            (countryChange)="onCountryChange($event)" [OnlyNumber]="true" maxlength="11" placeholder=" " />
-                    </div>
                 </div>
+                <div class="input-content phone-content">
+                    <input type="text" class=" form-control input phone-form" ng2TelInput formControlName="phone"
+                        (countryChange)="onCountryChange($event)" [OnlyNumber]="true" maxlength="11" placeholder=" " />
+                </div>
+            </div>
             <button class="btn save-btn cursor-pointer d-flex align-items-center" type="submit"
                 [disabled]="registrationForm.invalid" (click)="onclickRegistration()">Save <app-loading class="ml-3"
                     *ngIf="loading"></app-loading></button>
-                    <p class="title">I have an account.<b class="title-danger"
-                        routerLink="/auth/login">Login</b></p>
+            <p class="title">I have an account.<b class="title-danger" routerLink="/auth/login">Login</b></p>
         </div>
     </div>
 </form>
 
 <div class="message-main d-flex" *ngIf="!closeRegistrationMain">
-    <p class="text m-auto">We Send Message in your email - <b class="email-text">{{email}}</b>, Please Check</p>
-
+    <!-- <p class="text m-auto">We Send Message in your email - <b class="email-text">{{email}}</b>, Please Check</p> -->
+    <p class="text m-auto"> To log in to your personal account, enter the e-mail address you used to
+        register and click on the link sent to your <b class="email-text">{{email}}</b> e-mail.</p>
 </div>

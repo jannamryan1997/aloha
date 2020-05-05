@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MenuService } from '../../../../core/services/menu.service';
 import { RouteStep } from '../../../../core/models/route-step';
 import { takeUntil, finalize, count } from 'rxjs/operators';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, of } from 'rxjs';
 import { ProfileService } from '../profile.service';
 import { User, Country } from '../../../../core/models/profile';
 import { AuthService } from '../../../../core/services/auth.services';
@@ -29,7 +29,7 @@ export class UserAccountView implements OnInit {
     public selectedCountry: Country;
     public keyword = 'name';
     public messageError: string;
-    public dialCode:number;
+    public dialCode: string;
     public countryData: Country[] = [];
     constructor(
         private _fb: FormBuilder,
@@ -57,10 +57,14 @@ export class UserAccountView implements OnInit {
     private _formBuilder(): void {
         this.userAccountGroup = this._fb.group({
             name: [null, Validators.required],
-            phonenumber: [null,Validators.required],
+            phonenumber: [null, Validators.required],
             country: [null, Validators.required],
             email: [null, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
             details: [null]
+        })
+        this.userAccountGroup.get('phonenumber').patchValue((data)=>{
+            console.log(data);
+            
         })
     }
     private _setProfileValues(): void {
@@ -71,7 +75,7 @@ export class UserAccountView implements OnInit {
         this._contact = user.contract;
         this.userAccountGroup.patchValue({
             name: user.name,
-            phonenumber:user.phone,
+            phonenumber: '+'+user.phone,
             email: user.email,
             details: user.details,
         })
@@ -112,7 +116,7 @@ export class UserAccountView implements OnInit {
             id: this._userId,
             email: this.userAccountGroup.value.email,
             contract: this._contact,
-            phone:this.userAccountGroup.value.phonenumber,
+            phone: this.userAccountGroup.value.phonenumber,
             country: (this.selectedCountry && this.selectedCountry.code) ? this.selectedCountry.code : '',
             name: this.userAccountGroup.value.name,
             details: this.userAccountGroup.value.details,
@@ -130,6 +134,9 @@ export class UserAccountView implements OnInit {
                 this._dialog.open(SuccessfullyModal, {
                     width: "666px",
                     height: "360px",
+                    data: {
+                        msg: "profileUpdated"
+                    }
                 })
 
             },
@@ -155,10 +162,9 @@ export class UserAccountView implements OnInit {
         return this._mainService.getCountries();
     }
 
-    public onCountryChange(event): void {
-        this.dialCode = event.dialCode;
+    public cancle(): void {
         this.userAccountGroup.patchValue({
-            phonenumber: this.dialCode,
+            details: "",
         })
     }
 }

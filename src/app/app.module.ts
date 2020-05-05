@@ -10,7 +10,6 @@ import { CookieModule } from 'ngx-cookie';
 import { AppService } from './app.service';
 import { AuthGuard } from './com/annaniks/aloha/core/guards/auth.guards';
 import { AuthService } from './com/annaniks/aloha/core/services/auth.services';
-import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -23,7 +22,6 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     HttpClientModule,
     CookieModule.forRoot(),
-    ToastrModule.forRoot()
   ],
   providers: [
     {

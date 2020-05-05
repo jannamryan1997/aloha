@@ -50,7 +50,7 @@
 
         <div class="amount-description">
             <div class="amount-text-content d-flex justify-content-between f-direction-colum-w-900">
-                <p class="text">Invoice amount</p>
+                <p class="text">{{goodDataName}} ${{goodPrice}}</p>
                 <p class="value d-none"  [ngClass]="{'d-block':paymentData.action=='buy'}">$ -{{paymentData?.amount}}</p>
                 <p class="value d-none" [ngClass]="{'d-block':paymentData.action=='sell'}">$ +{{paymentData?.amount}}</p>
             </div>
@@ -85,5 +85,5 @@
             </tr>
         </table>
     </div>
-    <button class="btn  cursor-pointer save-btn" type="submit" (click)="onSbmit()" *ngIf="paymentData.action=='buy'">Puy bill</button>
+    <button class="btn  cursor-pointer save-btn" type="submit" (click)="onSbmit()" [ngClass]="{'d-block':paymentData.paid==null && paymentData.accepted}">Pay</button>
 </div>

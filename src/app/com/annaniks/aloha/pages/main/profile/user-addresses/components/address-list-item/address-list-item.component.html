@@ -8,6 +8,14 @@
             </p>
             <p class="text">Zip Code: {{item?.zip}}
             </p>
+            <div class="d-flex align-items-center">
+                <p class="text">Main:</p>
+                <mat-checkbox [checked]="item?.main" disabled class="ml-2"></mat-checkbox>
+        </div>
+        <div class="d-flex align-items-center">
+                <p class="text">Billing:</p>
+                <mat-checkbox [checked]="item?.billing" disabled ></mat-checkbox>
+        </div>
         </div>
         <button class="btn  cursor-pointer edit-btn" type="submit" [routerLink]="id">Edit</button>
     </div>

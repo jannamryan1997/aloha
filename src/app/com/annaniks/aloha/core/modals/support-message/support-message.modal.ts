@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { Subject } from 'rxjs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SupportService } from '../../../pages/main/support/support.service';
-import { ToastrService } from 'ngx-toastr';
 import { MsgData } from '../../models/msg';
 import { takeUntil, finalize } from 'rxjs/operators';
 import { SuccessfullyModal } from '../successfully/successfully.modal';

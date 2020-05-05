@@ -13,7 +13,7 @@ export class LimitView implements OnInit {
     constructor(private _menuService: MenuService) {
         const routeSteps: RouteStep[] = [
             { label: 'Main', routerLink: '/' },
-            { label: 'Limit', routerLink: '/profile' }
+            { label: 'Credit cards', routerLink: '/profile' }
         ]
         this._menuService.setRouteSteps(routeSteps);
      }

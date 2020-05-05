@@ -4,7 +4,7 @@ import { SharedModule } from '../../../../shared/shared.module';
 import { UserAddressesRoutingModule } from './user-addresses.routing.module';
 import { AddressListItemComponent } from './components';
 import { UserAddressesService } from './user-addresses.service';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
 @NgModule({
     declarations: [
         UserAddressesView,
@@ -12,6 +12,7 @@ import { UserAddressesService } from './user-addresses.service';
     ],
     imports: [
         UserAddressesRoutingModule,
+        MatCheckboxModule,
         SharedModule
     ],
     providers: [UserAddressesService]

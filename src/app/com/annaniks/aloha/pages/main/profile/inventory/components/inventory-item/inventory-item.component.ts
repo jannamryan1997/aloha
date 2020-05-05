@@ -3,7 +3,6 @@ import { Order, OrderData } from 'src/app/com/annaniks/aloha/core/models/order';
 import { InventoryService } from '../../inventory.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { MessageModal, SellOutModal } from 'src/app/com/annaniks/aloha/core/modals';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
@@ -21,7 +20,6 @@ export class InventoryItemComponent implements OnInit, OnDestroy {
 
     constructor(
         private _inventoryService: InventoryService,
-        private _toastr: ToastrService,
         private _dialog: MatDialog) { }
 
     ngOnInit() { }
@@ -41,7 +39,6 @@ export class InventoryItemComponent implements OnInit, OnDestroy {
                 })
             },
                 err => {
-                    this._toastr.success("Can't find the object.");
                 }
             )
     }

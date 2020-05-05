@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { GoodsResponse } from '../../core/models/goods';
 import { OrderData } from '../../core/models/order';
 import { takeUntil, finalize } from 'rxjs/operators';
-import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { InventoryService } from '../../pages/main/profile/inventory/inventory.service';
 import { SuccessfullyModal } from '../../core/modals';

@@ -36,3 +36,21 @@
     margin-top: 25px;
   }
 }
+
+::ng-deep {
+  .mat-checkbox-inner-container {
+    height: 25px !important;
+    width: 25px !important;
+    border-radius: .25rem !important;
+    margin-left: 10px !important;
+  }
+
+  .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+  .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #f1412e !important;
+  }
+
+  .mat-checkbox .mat-checkbox-frame {
+    border-color: #ced4da !important;
+  }
+}

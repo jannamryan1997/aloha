@@ -8,7 +8,7 @@ const supportRoutes: Routes = [
             { path: "", redirectTo: "terms", pathMatch: "full" },
             { path: "privacy", data: { title: 'Privacy' }, loadChildren: () => import('./privacy/privacy.module').then(m => m.PrivacyModule) },
             { path: "terms", data: { title: 'Terms' }, loadChildren: () => import('./terms/terms.module').then(m => m.TermsModule) },
-            { path: "limit", data: { title: "Limit" }, loadChildren: () => import('./limit/limit.module').then(m => m.LimitModule) },
+            { path: "credit", data: { title: "Credit Cards" }, loadChildren: () => import('./limit/limit.module').then(m => m.LimitModule) },
             { path: "contact", data: { title: "Contact" }, loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule) }
         ]
     }

@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { GoodsResponse } from '../../../../core/models/goods';
 import { OrderData } from '../../../../core/models/order';
-import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
     selector: "purchase-beehives-view",
@@ -29,7 +29,6 @@ export class PurchaseBeehivesView implements OnInit {
         private _fb: FormBuilder, 
         private _purchaseService: PurchaseService, 
         private _rouiter: Router,
-        private _toastr: ToastrService
         ) { }
 
     ngOnInit() {
@@ -89,7 +88,6 @@ export class PurchaseBeehivesView implements OnInit {
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data) => {
                 console.log(data);
-                this._toastr.success('Your request has been successfully delivered.');
                 this._rouiter.navigate(['purchase/sent'])
             })
     }

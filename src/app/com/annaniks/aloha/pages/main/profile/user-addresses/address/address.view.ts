@@ -94,13 +94,13 @@ export class AddressView implements OnInit, OnDestroy {
     }
 
     private _getUserAddresById(): void {
-        let countryCode:Country;
+        let countryCode: Country;
         this._userAddressesService.getAddressById(this.addressId)
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data: UserAddress) => {
-                for(var i=0;i<this.countryData.length;i++){
-                    if(this.countryData[i].code===data.country){
-                        countryCode= this.countryData[i]
+                for (var i = 0; i < this.countryData.length; i++) {
+                    if (this.countryData[i].code === data.country) {
+                        countryCode = this.countryData[i]
                     }
                 }
                 this.addressForm.patchValue({
@@ -110,7 +110,7 @@ export class AddressView implements OnInit, OnDestroy {
                     zip: data.zip,
                     main: data.main,
                 })
-                
+
             },
             )
     }
@@ -199,15 +199,16 @@ export class AddressView implements OnInit, OnDestroy {
         }
     }
     public onClickDelete(): void {
-        const dialogRef = this._dialog.open(RequestModal, {
-            width: "600px"
-        })
-        dialogRef.afterClosed().subscribe((data) => {
-            if (data == "yes") {
-                this._deleteAddresses();
-
-            }
-        })
+        this._router.navigate(['/profile/user-addresses'])
+        // const dialogRef = this._dialog.open(RequestModal, {
+        //     width: "600px"
+        // })
+        // dialogRef.afterClosed().subscribe((data) => {
+        //     if (data == "yes") {
+        //         //  this._deleteAddresses();   
+         
+        //     }
+        // })
     }
 
     public checkIsValid(controlName): boolean {
