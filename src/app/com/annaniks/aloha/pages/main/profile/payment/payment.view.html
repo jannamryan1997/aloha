@@ -1,4 +1,6 @@
 <div class="d-flex" *ngIf="paymentResponseData?.length==0">
     <p class="result-text m-auto">No deals.</p>
 </div>
-<payment-list-item *ngFor="let item of paymentResponseData" [paymentData]="item"></payment-list-item>
+<div class="payment-main">
+        <payment-list-item *ngFor="let item of paymentResponseData" [paymentData]="item"></payment-list-item>
+</div>

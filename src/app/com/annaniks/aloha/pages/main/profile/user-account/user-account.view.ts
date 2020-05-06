@@ -163,8 +163,7 @@ export class UserAccountView implements OnInit {
     }
 
     public cancle(): void {
-        this.userAccountGroup.patchValue({
-            details: "",
-        })
+        this._setProfileValues();
+        this._getCountries();
     }
 }

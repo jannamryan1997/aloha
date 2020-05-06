@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from "@angular/core";
 import { MatDialog } from '@angular/material/dialog';
 import { PayBillView } from 'src/app/com/annaniks/aloha/core/modals';
 import { Payment } from 'src/app/com/annaniks/aloha/core/models/payment';
-import { InventoryService } from '../../../inventory/inventory.service';
 import { GoodsResponse } from 'src/app/com/annaniks/aloha/core/models/goods';
 import { Subject } from 'rxjs';
 import { takeUntil, first } from 'rxjs/operators';
@@ -19,12 +18,28 @@ export class PaymentListItemComponent implements OnInit {
     private _unsubscribe$: Subject<void> = new Subject<void>();
     public goodData: GoodsResponse[] = [];
     public goodDataName: string;
-    public goodPrice:number;
+    public goodPrice: number;
     public hive: boolean = false;
-    constructor(private _dialog: MatDialog, private _purchaseService: PurchaseService) { }
+    public section: string;
+    constructor(private _dialog: MatDialog, private _purchaseService: PurchaseService) {
+
+
+    }
 
     ngOnInit() {
         this._getGood();
+        if (this.paymentData.cancel) {
+            this.section = "cancel";
+        }
+        else if (this.paymentData.cancel == null && this.paymentData.paid) {
+            this.section = "paid";
+        }
+        else if (this.paymentData.paid == null && this.paymentData.accepted) {
+            this.section = "accepted";
+        }
+        else if (this.paymentData.cancel == null && this.paymentData.paid == null && this.paymentData.accepted == null) {
+            this.section = "wait";
+        }
     }
 
     private _openPayBillModal(): void {
@@ -44,8 +59,8 @@ export class PaymentListItemComponent implements OnInit {
                 this.goodData = data;
                 for (var i = 0; i < this.goodData.length; i++) {
                     if (this.paymentData.goods == parseInt(this.goodData[i].id)) {
-                        this.goodDataName=this.goodData[i].name;
-                        this.goodPrice=this.goodData[i].price;
+                        this.goodDataName = this.goodData[i].name;
+                        this.goodPrice = this.goodData[i].price;
                     }
                 }
 
