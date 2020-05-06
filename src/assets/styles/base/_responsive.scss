@@ -28,6 +28,12 @@
             }
         }
     }
+    .main-nav-menu-items{
+        margin-left: 170px !important;
+    }
+    .main-container{
+        flex-direction: column !important;
+    }
 }
 
 @media only screen and (max-width:900px) {
