@@ -2,7 +2,7 @@
     font-size: $fontSize;
     color: $color;
     line-height: $lineHeight;
-    margin-top: 30px;
+    margin-top: 20px;
     word-break: break-all;
 }
 //general
@@ -14,10 +14,15 @@
         max-width: 500px;
     }
     .title {
-        @include text-style(50px, #17344F, 67px)
+        margin-top:0px !important;
+        @include text-style(50px, #17344F, 50px);
     }
     .text {
         margin-top: 15px !important;
-        @include text-style(15px, #17344F, 30px)
+        @include text-style(15px, #17344F, 30px);
+    }
+    .title-name {
+        @include text-style(20px, #17344F, 27px);
+    font-weight: 900;
     }
 }

@@ -14,7 +14,7 @@ import { Order } from '../../../../core/models/order';
 
 export class InventoryComponent implements OnInit, OnDestroy {
     private _unsubscribe$: Subject<void> = new Subject<void>();
-    public orderResponseData: Order[];
+    public orderResponseData: Order[] = [];
     public loading: boolean = false;
     constructor(
         private _menuService: MenuService,
@@ -39,9 +39,9 @@ export class InventoryComponent implements OnInit, OnDestroy {
                 finalize(() => this.loading = false)
             )
             .subscribe((data: Order[]) => {
-                this.orderResponseData = data;
-            console.log(this.orderResponseData,"order");
-                        })
+
+                // this.orderResponseData = data;
+            })
     }
 
     ngOnDestroy() {

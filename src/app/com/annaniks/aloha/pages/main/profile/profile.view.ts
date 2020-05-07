@@ -63,8 +63,6 @@ export class ProfileView implements OnInit, OnDestroy {
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data: GoodsResponse) => {
                 this.goodData = data;
-                console.log(this.goodData,"goods");
-                
             },
                 err => {
                     this.messageError = err.error.msg;

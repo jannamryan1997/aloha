@@ -3,6 +3,7 @@
   
     .form-group {
       margin-bottom: 20px;
+      align-items: center;
   
       .label {
         color: #17344f;
@@ -16,11 +17,6 @@
       }
     }
   }
-  
-  .save-btn {
-    margin-left: 140px;
-  }
-  
   .ng-autocomplete {
     border: 1px solid #B4B4B4;
   }

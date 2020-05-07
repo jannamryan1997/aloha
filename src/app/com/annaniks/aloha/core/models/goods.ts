@@ -6,4 +6,5 @@ export interface GoodsResponse{
     minorder:number;
     stock: number;
     descr: string;
+    shop:string;
 }

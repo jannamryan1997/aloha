@@ -1,13 +1,13 @@
 <div class="payment-list-item">
     <div class="payment-list-item-content d-flex justify-content-between align-items-center">
         <div class="payment-list-item-details">
-            <p class="text">Type: {{item?.type}}</p>
+            <p class="text">Type: {{type}}</p>
             <div class="d-flex align-items-center">
                     <p class="text">Pay:</p>
                     <mat-checkbox [checked]="item?.pay" disabled class="ml-2"></mat-checkbox>
             </div>
             <div class="d-flex align-items-center">
-                    <p class="text">Recv:</p>
+                    <p class="text">Receive:</p>
                     <mat-checkbox [checked]="item?.recv" disabled ></mat-checkbox>
             </div>
             <div class="d-flex align-items-center">

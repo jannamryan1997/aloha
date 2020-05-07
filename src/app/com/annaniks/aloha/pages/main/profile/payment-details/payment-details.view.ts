@@ -37,7 +37,6 @@ export class PaymentDetailsView implements OnInit {
             )
             .subscribe((data: Billingdetails[]) => {
                 this.paymentData = data;
-                console.log(this.paymentData,"patment-details");
                 
             })
     }

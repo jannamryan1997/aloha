@@ -21,19 +21,17 @@ export class BeehivesComponent implements OnInit {
     public loading: boolean = false;
     public messageError: string;
     public totalPrice: number;
-    public comment:string;
+    public comment: string;
 
     constructor(private _inventoryService: InventoryService,
-        private _dialog:MatDialog ) {
+        private _dialog: MatDialog) {
     }
 
-    ngOnInit() { 
-        this.totalPrice =  this.count * this.item.price;   
+    ngOnInit() {
+        this.totalPrice = this.count * this.item.price;
     }
 
     public addOrder(goodId): void {
-        console.log(typeof(goodId));
-        
         this.loading = true;
         let orderData: OrderData = {
             goods: goodId,
@@ -51,6 +49,9 @@ export class BeehivesComponent implements OnInit {
                 this._dialog.open(SuccessfullyModal, {
                     width: "666px",
                     height: "360px",
+                    data: {
+                        msg: "ordered"
+                    }
                 })
             },
                 err => {
@@ -60,21 +61,18 @@ export class BeehivesComponent implements OnInit {
     }
 
     public changedOrderCount(message): void {
-
         if (message == "add") {
             this.count = this.count + 1;
-            this.totalPrice =  this.count * this.item.price;
-
+            this.totalPrice = this.count * this.item.price;
         }
         else if (message == "remove" && this.count > 0) {
             this.count = this.count - 1;
-            this.totalPrice =  this.count * this.item.price;
+            this.totalPrice = this.count * this.item.price;
         }
-
     }
-    public countChange(event){
-        this.totalPrice =  event * this.item.price;
-     
+    public countChange(event) {
+        this.totalPrice = event * this.item.price;
+
 
     }
 }

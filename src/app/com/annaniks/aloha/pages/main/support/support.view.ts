@@ -4,9 +4,6 @@ import { Subject } from 'rxjs';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { MenuService } from '../../../core/services/menu.service';
 import { takeUntil, filter } from 'rxjs/operators';
-import { MatDialog } from '@angular/material/dialog';
-import { SupportMessageModal } from '../../../core/modals/support-message/support-message.modal';
-
 
 @Component({
     selector: "support-view",
@@ -25,7 +22,6 @@ export class SupportView implements OnInit, OnDestroy {
         private _router: Router,
         private _activatedRoute: ActivatedRoute,
         private _menuService: MenuService,
-        private _matDialog: MatDialog,
     ) { }
 
     ngOnInit() {
@@ -33,7 +29,6 @@ export class SupportView implements OnInit, OnDestroy {
         this._setTitle();
         this._handleRouteEvents();
         this._handleRouteStepsEvent();
-        this._openSupportMessagesModal();
     }
 
     private _handleRouteEvents(): void {
@@ -59,15 +54,6 @@ export class SupportView implements OnInit, OnDestroy {
         const title: string = this._activatedRoute.firstChild.snapshot.data.title || '';
         this.title = title;
     }
-
-    private _openSupportMessagesModal(): void {
-        const dialogRef = this._matDialog.open(SupportMessageModal, {
-            width: "700px",
-            height:"400px"
-        })
-    }
-
-
 
     ngOnDestroy() {
         this._unsubscribe$.next();

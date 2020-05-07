@@ -7,7 +7,6 @@ import { takeUntil, finalize } from 'rxjs/operators';
 import { SuccessfullyModal } from '../successfully/successfully.modal';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
-
 @Component({
     selector: "app-support-message",
     templateUrl: "support-message.modal.html",
@@ -22,8 +21,8 @@ export class SupportMessageModal implements OnInit {
     constructor(
         private _fb: FormBuilder,
         private _supportService: SupportService,
-        private _dialog:MatDialog,
-        private _dialogRef:MatDialogRef<SupportMessageModal>,
+        private _dialog: MatDialog,
+        private _dialogRef: MatDialogRef<SupportMessageModal>,
     ) { }
 
     ngOnInit() {
@@ -53,17 +52,18 @@ export class SupportMessageModal implements OnInit {
             )
 
             .subscribe((data) => {
-                console.log(data);
                 this._dialogRef.close();
                 this._dialog.open(SuccessfullyModal, {
                     width: "666px",
                     height: "360px",
+                    data: {
+                        msg: 'add-msg',
+                    }
                 })
             },
                 err => {
                     this.messageError = err.error.msg;
-                }
-            )
+                })
     }
 
     public onClickcreateMsg(): void {

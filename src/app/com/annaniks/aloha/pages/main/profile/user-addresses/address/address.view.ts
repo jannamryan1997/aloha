@@ -88,8 +88,6 @@ export class AddressView implements OnInit, OnDestroy {
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data: Country[]) => {
                 this.countryData = data;
-                console.log(this.countryData);
-
             })
     }
 
@@ -97,7 +95,7 @@ export class AddressView implements OnInit, OnDestroy {
         let countryCode: Country;
         this._userAddressesService.getAddressById(this.addressId)
             .pipe(takeUntil(this._unsubscribe$))
-            .subscribe((data: UserAddress) => {
+            .subscribe((data:UserAddress) => {
                 for (var i = 0; i < this.countryData.length; i++) {
                     if (this.countryData[i].code === data.country) {
                         countryCode = this.countryData[i]
@@ -106,7 +104,8 @@ export class AddressView implements OnInit, OnDestroy {
                 this.addressForm.patchValue({
                     address: data.address,
                     billing: data.billing,
-                    country: countryCode.name,
+                    // country:data.country,
+                     country: countryCode.code,
                     zip: data.zip,
                     main: data.main,
                 })
@@ -137,6 +136,9 @@ export class AddressView implements OnInit, OnDestroy {
                 this._dialog.open(SuccessfullyModal, {
                     width: "666px",
                     height: "360px",
+                    data: {
+                        msg: "add-address"
+                    }
                 })
                 this._router.navigate(['/profile/user-addresses']);
             },
@@ -170,6 +172,9 @@ export class AddressView implements OnInit, OnDestroy {
                 this._dialog.open(SuccessfullyModal, {
                     width: "666px",
                     height: "360px",
+                    data: {
+                        msg: "update-address"
+                    }
                 })
                 this._router.navigate(['/profile/user-addresses']);
             },
@@ -206,7 +211,7 @@ export class AddressView implements OnInit, OnDestroy {
         // dialogRef.afterClosed().subscribe((data) => {
         //     if (data == "yes") {
         //         //  this._deleteAddresses();   
-         
+
         //     }
         // })
     }
@@ -216,8 +221,6 @@ export class AddressView implements OnInit, OnDestroy {
     }
 
     public onChangeSearch(val: string) {
-        // fetch remote data from here
-        // And reassign the 'data' which is binded to 'data' property.
     }
     public selectEvent(country: Country): void {
         this.selectedCountry = country;

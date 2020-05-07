@@ -17,13 +17,12 @@ export class PaymentListItemComponent implements OnInit {
     @Input() paymentData: Payment;
     private _unsubscribe$: Subject<void> = new Subject<void>();
     public goodData: GoodsResponse[] = [];
+    public shop:string;
     public goodDataName: string;
     public goodPrice: number;
     public hive: boolean = false;
     public section: string;
     constructor(private _dialog: MatDialog, private _purchaseService: PurchaseService) {
-
-
     }
 
     ngOnInit() {
@@ -41,13 +40,6 @@ export class PaymentListItemComponent implements OnInit {
             this.section = "wait";
         }
     }
-
-    private _openPayBillModal(): void {
-        const dialogRef = this._dialog.open(PayBillView, {
-            width: "100vw",
-            maxWidth: "770px"
-        })
-    }
     private _openStandartHive(): void {
         this.hive = !this.hive;
     }
@@ -61,15 +53,10 @@ export class PaymentListItemComponent implements OnInit {
                     if (this.paymentData.goods == parseInt(this.goodData[i].id)) {
                         this.goodDataName = this.goodData[i].name;
                         this.goodPrice = this.goodData[i].price;
+                        this.shop=this.goodData[i].shop;
                     }
                 }
-
-
             })
-    }
-
-    public onSbmit(): void {
-        this._openPayBillModal();
     }
 
     public onclick(): void {

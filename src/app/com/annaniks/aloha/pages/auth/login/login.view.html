@@ -21,7 +21,7 @@
             <button class="btn save-btn cursor-pointer d-flex align-items-center" type="submit"
                 [disabled]="logIn.invalid" (click)="onclickLogin()">Log in <app-loading *ngIf="loading"
                     class="loading ml-3"></app-loading></button>
-            <p class="title"> I don’t have an account.<b class="title-danger"
+            <p class="title form-title"> I don’t have an account.<b class="title-danger"
                     routerLink="/auth/registration">Registration</b></p>
         </div>
     </div>

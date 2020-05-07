@@ -28,11 +28,23 @@
             }
         }
     }
-    .main-nav-menu-items{
+
+    .main-nav-menu-items {
         margin-left: 170px !important;
     }
-    .main-container{
+
+    .main-container {
         flex-direction: column !important;
+    }
+
+    //sooport 
+    .router-content {
+        margin-left: 0px !important;
+        width: 100% !important;
+    }
+
+    ///purchase
+    .purchase{
     }
 }
 
@@ -52,11 +64,6 @@
     .d-block-w-900 {
         display: block !important;
     }
-
-    .header-content {
-        padding: 0 20px !important;
-    }
-
     .main-nav-menu-content {
         flex-direction: column-reverse !important;
 
@@ -64,18 +71,19 @@
             margin-left: 0 !important;
         }
 
-        .main-nav-menu-content {
-            .coupon-card {
-                width: 100% !important;
-                max-width: 500px !important;
-            }
+        .coupon-card {
+            width: 100% !important;
+            max-width: 500px !important;
+        }
+
+        .icon-wrapper {
+            padding: 34px 310px;
         }
     }
 
     //profile
     .profile-main {
         .menu-content {
-            // max-width: 100% !important;
             margin-bottom: 30px !important;
         }
 
@@ -116,6 +124,16 @@
     .right-content {
         max-width: 300px !important;
     }
+    .support-main{
+        .router-content{
+        .text,.terms-text{
+            font-size: 15px !important;
+        }
+        .title{
+            font-size: 22px !important;
+        }
+    }
+}
 }
 
 @media only screen and (max-width:480px) {
@@ -249,5 +267,22 @@
 
     .laft-content {
         padding: 35px 20px !important;
+    }
+
+    .form-title {
+        margin: 10px 0 !important;
+    }
+
+    //////sublects
+    .support-form-group {
+
+        .form-group {
+            flex-direction: column !important;
+            align-items: start !important;
+
+            .label {
+                margin-bottom: 10px !important;
+            }
+        }
     }
 }

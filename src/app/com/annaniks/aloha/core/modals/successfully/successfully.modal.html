@@ -4,11 +4,11 @@
         </div>
         <div class="successfully_conteiner m-auto align-items-center d-flex flex-column">
             <div class="d-flex align-items-center">
-                    <p class="text " *ngIf="!showProfileMgg">Request sent successfully</p>
+                    <!-- <p class="text ">Request sent successfully</p> -->
                     <img src="assets/icons/request.png" class="rounded d-block  main-icon ml-3" alt="...">
             </div>
-            <p class="title" *ngIf="!showProfileMgg">The company will soon make a decition and will send a notification by-email</p>
-            <p class="title" *ngIf="showProfileMgg">Profile updated</p>
+            <!-- <p class="title" *ngIf="!showProfileMgg">The company will soon make a decition and will send a notification by-email</p> -->
+            <p class="title">{{message}}</p>
         </div>
     
     </div>

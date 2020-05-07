@@ -24,7 +24,6 @@ export class PurchaseBeehivesView implements OnInit {
     public goodData: GoodsResponse[] = [];
     private _unsubscribe$: Subject<void> = new Subject<void>();
 
-
     constructor(
         private _fb: FormBuilder, 
         private _purchaseService: PurchaseService, 
@@ -34,7 +33,6 @@ export class PurchaseBeehivesView implements OnInit {
     ngOnInit() {
         this._getGood();
         this._formBuilder();
-        // this.price=this.totalPrice*this.purchaseForm.value.count
     }
 
     private _formBuilder(): void {
@@ -64,15 +62,11 @@ export class PurchaseBeehivesView implements OnInit {
     }
 
     public onControlChange(event) {
-
         this.goodId = event;
-        console.log(this.goodId);
         for (var i = 0; i < this.goodData.length; i++) {
             if (this.goodData[i].id == event) {
-
                 this.totalPrice = this.goodData[i].price;
                 this.price = this.totalPrice * this.purchaseForm.value.count;
-                console.log(this.totalPrice);
             }
         }
 
@@ -87,7 +81,6 @@ export class PurchaseBeehivesView implements OnInit {
         this._purchaseService.createdOrder(orderData)
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data) => {
-                console.log(data);
                 this._rouiter.navigate(['purchase/sent'])
             })
     }
@@ -96,8 +89,6 @@ export class PurchaseBeehivesView implements OnInit {
 
     }
     public countChange(event) {
-        console.log(event);
-
         this.price = event * this.totalPrice;
     }
 }

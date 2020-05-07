@@ -14,8 +14,5 @@ export class PurchaseView implements OnInit {
     
     }
 
-    ngOnInit() {
-        console.log(this.router);
-
-    }
+    ngOnInit() {}
 }

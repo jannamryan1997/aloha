@@ -2,7 +2,7 @@
     font-size: $fontSize;
     color: $color;
     line-height: $lineHeight;
-    margin-top: 30px;
+    margin-top: 20px;
     word-break: break-all;
 }
 //general
@@ -14,10 +14,11 @@
         max-width: 500px;
     }
     .title {
-        @include text-style(50px, #17344F, 67px)
+        margin-top: 0 !important;
+        @include text-style(50px, #17344F, 50px)
     }
     .text {
-        @include text-style(30px, #17344F, 40px)
+        @include text-style(30px, #17344F, 35px)
     }
     .data {
         @include text-style(14px, #17344F, 19px)
@@ -71,7 +72,7 @@
             opacity: 1;
         }
         .quote-main-content {
-            margin-left: 70px;
+            margin-left: 50px;
         }
     }
     //table-page

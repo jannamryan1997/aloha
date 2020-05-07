@@ -63,8 +63,6 @@ export class UserAccountView implements OnInit {
             details: [null]
         })
         this.userAccountGroup.get('phonenumber').patchValue((data)=>{
-            console.log(data);
-            
         })
     }
     private _setProfileValues(): void {

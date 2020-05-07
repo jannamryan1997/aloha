@@ -6,16 +6,16 @@
             <div class="form-group-item">
                 <mat-form-field>
                     <mat-label class="label"> Type</mat-label>
-                    <mat-select formControlName="type">
-                        <mat-option value="Paypal">Paypal</mat-option>
-                        <mat-option value="Bank">Bank</mat-option>
-                        <mat-option value="Check">Check</mat-option>
+                    <mat-select formControlName="type"    (ngModelChange)="onCountryChange($event)">
+                        <mat-option *ngFor="let item of typeOption" [value]="item.value">{{item?.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
+
+
             </div>
             <div class="form-group-item d-flex align-items-center">
                 <div class="label-wrapper">
-                    <label class="label">Reqv</label>
+                    <label class="label">Receive</label>
                 </div>
                 <mat-checkbox formControlName="reqv"></mat-checkbox>
             </div>

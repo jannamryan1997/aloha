@@ -3,8 +3,7 @@
 
         <div class="registration-form-header form-header d-flex">
             <div class="registration-form-header-container">
-                <p class="text">Welcome to the personal account of American Raw Honey partners. To log
-                    in to your account you need to register.</p>
+                <p class="text">Registration</p>
             </div>
         </div>
 
@@ -48,7 +47,7 @@
             <button class="btn save-btn cursor-pointer d-flex align-items-center" type="submit"
                 [disabled]="registrationForm.invalid" (click)="onclickRegistration()">Save <app-loading class="ml-3"
                     *ngIf="loading"></app-loading></button>
-            <p class="title">I have an account.<b class="title-danger" routerLink="/auth/login">Login</b></p>
+            <p class="title form-title">I have an account.<b class="title-danger" routerLink="/auth/login">Login</b></p>
         </div>
     </div>
 </form>
