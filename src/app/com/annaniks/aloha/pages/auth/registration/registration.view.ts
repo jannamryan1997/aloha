@@ -4,6 +4,7 @@ import { takeUntil, finalize } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { RegistrationData, RegistrationResponse } from '../../../core/models/registration';
+import { CookieService } from 'ngx-cookie';
 
 @Component({
     selector: "app-registration",
@@ -19,7 +20,7 @@ export class RegistrationView implements OnInit {
     public email: string;
     public loading: boolean = false;
     public dialCode:number;
-    constructor(private _fb: FormBuilder, private _authService: AuthService) { }
+    constructor(private _fb: FormBuilder, private _authService: AuthService,private _cookieService:CookieService) { }
 
     ngOnInit() {
         this._formBuilder();
@@ -49,6 +50,7 @@ export class RegistrationView implements OnInit {
             ).subscribe((data: RegistrationResponse) => {
                 this.email = data.email;
                 this.closeRegistrationMain = false;
+                this._cookieService.put('registration','true');
             },
                 err => {
                     this.closeRegistrationMain = true;

@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="auth-content m-auto">
-            <div class="auth-text-content d-flex flex-column">
+            <div class="auth-text-content" [ngClass]="{'d-none':!showAuth}">
                 <p class="title m-auto">Welcome to the personal account of American Raw Honey partners.</p>
                 <p class="title m-auto" [ngStyle]="{'font-size':'18px'}"> To log in to your account you need to
                     register.</p>

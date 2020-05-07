@@ -4,6 +4,7 @@ import { AuthService } from '../auth.service';
 import { Subject } from 'rxjs';
 import { takeUntil, finalize } from 'rxjs/operators';
 import { LoginResponse } from '../../../core/models/login';
+import { CookieService } from 'ngx-cookie';
 
 
 @Component({
@@ -19,11 +20,15 @@ export class LoginView implements OnInit {
     public loading: boolean = false;
     public email: string;
     public closeLoginMain: boolean = true;
+   
 
-    constructor(private _fb: FormBuilder, private _authService: AuthService) { }
+    constructor(private _fb: FormBuilder, private _authService: AuthService, private _cookieService:CookieService) {
+     
+     }
 
     ngOnInit() {
         this._formBuilder();
+     
     }
 
     private _formBuilder(): void {
@@ -32,6 +37,7 @@ export class LoginView implements OnInit {
         })
     }
     private _login(email): void {
+    
         this.loading = true;
         this.logIn.disable();
         this._authService.login(email)
@@ -44,6 +50,8 @@ export class LoginView implements OnInit {
             ).subscribe((data: LoginResponse) => {
                 this.email = email;
                 this.closeLoginMain = false;
+                this._cookieService.put('login','true');
+           
             },
                 err => {
                     
