@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { CookieService } from 'ngx-cookie';
 
 @Component({
     selector: "sent-view",
@@ -8,7 +9,7 @@ import { Component, OnInit } from "@angular/core";
 
 export class SentView implements OnInit {
 
-    constructor() { }
+    constructor() {}
 
     ngOnInit() { }
 }

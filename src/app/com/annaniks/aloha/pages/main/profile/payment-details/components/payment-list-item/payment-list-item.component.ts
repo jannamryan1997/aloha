@@ -18,11 +18,17 @@ export class PaymentListItemComponent implements OnInit, OnDestroy {
     constructor() { }
 
     ngOnInit() {
-        for (var i = 0; i < this.typeOption.length; i++) {
-            if (this.typeOption[i].value === this.item.type) {
-                this.type = this.typeOption[i].name;
+        this.typeOption.map((element,index) => {
+            if (this.typeOption[index].value === this.item.type) {
+                this.type = this.typeOption[index].name;
             }
-        }
+        });
+        
+        // for (var i = 0; i < this.typeOption.length; i++) {
+        //     if (this.typeOption[i].value === this.item.type) {
+        //         this.type = this.typeOption[i].name;
+        //     }
+        // }
     }
 
     ngOnDestroy() { }

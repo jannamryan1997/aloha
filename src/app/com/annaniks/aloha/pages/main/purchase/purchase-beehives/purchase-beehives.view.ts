@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { GoodsResponse } from '../../../../core/models/goods';
 import { OrderData } from '../../../../core/models/order';
+import { CookieService } from 'ngx-cookie';
 
 
 @Component({
@@ -25,10 +26,11 @@ export class PurchaseBeehivesView implements OnInit {
     private _unsubscribe$: Subject<void> = new Subject<void>();
 
     constructor(
-        private _fb: FormBuilder, 
-        private _purchaseService: PurchaseService, 
+        private _fb: FormBuilder,
+        private _purchaseService: PurchaseService,
         private _rouiter: Router,
-        ) { }
+        private _cookieService: CookieService,
+    ) { }
 
     ngOnInit() {
         this._getGood();
@@ -63,12 +65,13 @@ export class PurchaseBeehivesView implements OnInit {
 
     public onControlChange(event) {
         this.goodId = event;
-        for (var i = 0; i < this.goodData.length; i++) {
-            if (this.goodData[i].id == event) {
-                this.totalPrice = this.goodData[i].price;
+        this.goodData.map((element,index)=>{////for i carch dzeve 
+            if(this.goodData[index].id===event){
+                this.totalPrice=this.goodData[index].price;
                 this.price = this.totalPrice * this.purchaseForm.value.count;
             }
-        }
+            
+        })
 
     }
     private _createdOrder(): void {
@@ -81,7 +84,9 @@ export class PurchaseBeehivesView implements OnInit {
         this._purchaseService.createdOrder(orderData)
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data) => {
-                this._rouiter.navigate(['purchase/sent'])
+                this._cookieService.put('sacsessfully', 'send');
+                this._rouiter.navigate(['purchase/sent']);
+
             })
     }
     public onClickBuyOrder(): void {

@@ -39,8 +39,7 @@ export class InventoryComponent implements OnInit, OnDestroy {
                 finalize(() => this.loading = false)
             )
             .subscribe((data: Order[]) => {
-
-                // this.orderResponseData = data;
+             this.orderResponseData = data;
             })
     }
 

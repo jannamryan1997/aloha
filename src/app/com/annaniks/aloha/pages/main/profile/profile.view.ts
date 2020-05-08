@@ -6,6 +6,7 @@ import { MenuService } from '../../../core/services/menu.service';
 import { RouteStep } from '../../../core/models/route-step';
 import { GoodsResponse } from '../../../core/models/goods';
 import { InventoryService } from './inventory/inventory.service';
+import { CookieService } from 'ngx-cookie';
 
 @Component({
     selector: "profile-view",
@@ -27,8 +28,12 @@ export class ProfileView implements OnInit, OnDestroy {
         private _activatedRoute: ActivatedRoute,
         private _menuService: MenuService,
         private _inventoryService: InventoryService,
+        private _cookieService:CookieService
 
-    ) { }
+    ) { 
+        this._cookieService.remove('sacsessfully');
+        this._cookieService.remove('purchase');
+    }
 
     ngOnInit() {
         this.url = this._router.url;
@@ -63,6 +68,8 @@ export class ProfileView implements OnInit, OnDestroy {
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data: GoodsResponse) => {
                 this.goodData = data;
+                console.log(this.goodData,"goods");
+                
             },
                 err => {
                     this.messageError = err.error.msg;

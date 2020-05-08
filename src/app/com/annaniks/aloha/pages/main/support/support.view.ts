@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { MenuService } from '../../../core/services/menu.service';
 import { takeUntil, filter } from 'rxjs/operators';
+import { CookieService } from 'ngx-cookie';
 
 @Component({
     selector: "support-view",
@@ -22,7 +23,11 @@ export class SupportView implements OnInit, OnDestroy {
         private _router: Router,
         private _activatedRoute: ActivatedRoute,
         private _menuService: MenuService,
-    ) { }
+        private _cookieService:CookieService,
+    ) { 
+        this._cookieService.remove('sacsessfully');
+        this._cookieService.remove('purchase');
+    }
 
     ngOnInit() {
         this.url = this._router.url;

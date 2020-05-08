@@ -1,6 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { PurchaseView } from './purchase.view';
+import { PurchaseGuard } from '../../../core/guards/purchase.guard';
+import { SentGuard } from '../../../core/guards/send.guard';
 
 const purchaseRoutes: Routes = [
     {
@@ -13,11 +15,13 @@ const purchaseRoutes: Routes = [
                 },
                 {
                     path: "purchaseBeehives",
-                    loadChildren: () => import('./purchase-beehives/purchase-beehives.module').then(m => m.PurchaseBeehivesModule)
+                    loadChildren: () => import('./purchase-beehives/purchase-beehives.module').then(m => m.PurchaseBeehivesModule),
+                    canActivate:[PurchaseGuard]
                 },
                 {
                     path: "sent",
-                    loadChildren: () => import('./sent/sent.module').then(m => m.SentModule)
+                    loadChildren: () => import('./sent/sent.module').then(m => m.SentModule),
+                    canActivate:[SentGuard]
                 }
 
             ]
