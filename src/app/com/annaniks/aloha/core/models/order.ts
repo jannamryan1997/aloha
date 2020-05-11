@@ -8,6 +8,7 @@ export interface Order {
     price: number;
     descr: string;
     goods: string;
+    purchase_date:string;
 }
 
 export interface OrderData {
