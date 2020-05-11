@@ -10,7 +10,7 @@
             <p class="done-text ml-2"
                 [ngClass]="{'color-red':section=='cancel','col-green':section=='wait'|| section=='paid' || section=='accepted'}">
                 {{section}}</p>
-            <p class="title m-auto">{{goodDataName}} ${{goodPrice}}</p>
+            <p class="title m-auto">{{goodDataName}} {{paymentData?.quantity}} × ${{goodPrice}}</p>
             <p class="title d-none" [ngClass]="{'d-block':paymentData.action=='buy'}">$ -{{paymentData?.amount}}</p>
             <p class="title d-none" [ngClass]="{'d-block':paymentData.action=='sell'}">$ +{{paymentData?.amount}}</p>
         </div>
@@ -38,7 +38,7 @@
                     <td class="mat-td w-50 right-td"> {{paymentData?. quantity}} pcs</td>
                 </tr>
                 <tr class="mat-tr">
-                    <td class="mat-td w-50">Data of purchase</td>
+                    <td class="mat-td w-50">Date of purchase</td>
                     <td class="mat-td w-50 right-td">{{paymentData?.purchase_date}}</td>
                 </tr>
                 <tr class="mat-tr">

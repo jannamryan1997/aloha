@@ -21,7 +21,7 @@ export class InventoryItemComponent implements OnInit, OnDestroy {
         private _inventoryService: InventoryService,
         private _dialog: MatDialog) { }
 
-    ngOnInit() { }
+    ngOnInit() {}
 
     private _createdsellOrder(id: string, quantity): void {
         let orderData: OrderData = {

@@ -52,6 +52,7 @@ export class UserAccountView implements OnInit {
     ngOnInit() {
         this._formBuilder();
         this._setProfileValues();
+
     }
 
     private _formBuilder(): void {
@@ -62,8 +63,10 @@ export class UserAccountView implements OnInit {
             email: [null, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
             details: [null]
         })
-        this.userAccountGroup.get('phonenumber').patchValue((data)=>{
+        this.userAccountGroup.get('phonenumber').valueChanges.subscribe((data) => {
+            this.dialCode = data;
         })
+
     }
     private _setProfileValues(): void {
         const user: User = this._authService.user;
@@ -73,7 +76,7 @@ export class UserAccountView implements OnInit {
         this._contact = user.contract;
         this.userAccountGroup.patchValue({
             name: user.name,
-            phonenumber: '+'+user.phone,
+            phonenumber: user.phone,
             email: user.email,
             details: user.details,
         })
@@ -163,5 +166,10 @@ export class UserAccountView implements OnInit {
     public cancle(): void {
         this._setProfileValues();
         this._getCountries();
+    }
+    public onCountryChange(event): void {
+        this.dialCode = event.dialCode;
+        console.log(this.dialCode);
+
     }
 }
