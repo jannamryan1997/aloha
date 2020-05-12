@@ -92,24 +92,22 @@ export class AddressView implements OnInit, OnDestroy {
     }
 
     private _getUserAddresById(): void {
-        let countryCode: Country;
+        let countryName: string;
         this._userAddressesService.getAddressById(this.addressId)
             .pipe(takeUntil(this._unsubscribe$))
-            .subscribe((data:UserAddress) => {
-                for (var i = 0; i < this.countryData.length; i++) {
-                    if (this.countryData[i].code === data.country) {
-                        countryCode = this.countryData[i]
+            .subscribe((data: UserAddress) => {
+                this.countryData.map((element, index) => {
+                    if (element.code === data.country) {
+                        countryName = element.name;
+                        this.addressForm.patchValue({
+                            address: data.address,
+                            billing: data.billing,
+                            country: countryName,
+                            zip: data.zip,
+                            main: data.main,
+                        })
                     }
-                }
-                this.addressForm.patchValue({
-                    address: data.address,
-                    billing: data.billing,
-                    // country:data.country,
-                     country: countryCode.code,
-                    zip: data.zip,
-                    main: data.main,
                 })
-
             },
             )
     }

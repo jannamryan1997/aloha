@@ -50,7 +50,6 @@ export class RegistrationView implements OnInit {
             ).subscribe((data: RegistrationResponse) => {
                 this.email = data.email;
                 this.closeRegistrationMain = false;
-                this._cookieService.put('registration','true');
             },
                 err => {
                     this.closeRegistrationMain = true;

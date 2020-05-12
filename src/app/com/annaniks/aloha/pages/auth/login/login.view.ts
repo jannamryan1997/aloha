@@ -50,7 +50,6 @@ export class LoginView implements OnInit {
             ).subscribe((data: LoginResponse) => {
                 this.email = email;
                 this.closeLoginMain = false;
-                this._cookieService.put('login','true');
            
             },
                 err => {

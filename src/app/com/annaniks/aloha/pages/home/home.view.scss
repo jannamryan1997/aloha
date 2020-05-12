@@ -67,3 +67,30 @@
   .registr-btn{
     background: #da961a !important;
   }
+  
+  a{
+    text-decoration: none;
+    color: #17344f;
+  }
+
+  .home-text-content {
+    display: block;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 60%!important;
+    margin: 30px auto;
+    .title {
+      color: #17344f;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 30px;
+      line-break: auto;
+    }
+    .text{
+      color: #17344f;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      line-break: auto;
+    }
+  }
