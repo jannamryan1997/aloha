@@ -25,37 +25,41 @@
             </div>
         </div>
         <div class="main-nav-menu" *ngIf="menuOpened">
-            <div class="main-nav-menu-content pg-container d-flex">
-                <div class="coupon-card">
-                    <div class="card-description m-auto">
-                        <p class="title">Your coupon</p>
-                        <p class="text">25% off entire purchase at<br> https://rawhoneyfromutah.com/</p>
-                        <div class="coupon-value d-flex justify-content-between">
-                            <input type="text" class="coupon-input" [value]="promoCode" #userinput disabled >
-                            <button class="btn copy-btn cursor-pointer d-flex align-items-center" type="submit"
-                                (click)="copyInputMessage(userinput)">
-                                <p>copy </p>
-                                <i class="material-icons ml-2">
-                                    file_copy
-                                </i>
-                            </button>
+            <form [formGroup]="promoCodeGroup">
+                <div class="main-nav-menu-content pg-container d-flex">
+                    <div class="coupon-card">
+                        <div class="card-description m-auto">
+                            <p class="title">Your coupon</p>
+                            <p class="text">25% off entire purchase at<br> https://rawhoneyfromutah.com/</p>
+                            <div class="coupon-value d-flex justify-content-between">
+                                <input type="text" class="coupon-input" formControlName="promoCode" #userinput disabled>
+                                <button class="btn copy-btn cursor-pointer d-flex align-items-center" type="submit"
+                                    (click)="copyInputMessage(userinput)">
+                                    <p>copy </p>
+                                    <i class="material-icons ml-2">
+                                        file_copy
+                                    </i>
+                                </button>
+                            </div>
                         </div>
                     </div>
+                    <div class="main-nav-menu-items d-flex flex-column">
+                        <a class="items" (click)="router('/profile/user-account')"
+                            [routerLinkActive]="'activeTab'">Profile</a>
+                        <a class="items" (click)="router('/profile/user-addresses')"
+                            [routerLinkActive]="'activeTab'">Addresses</a>
+                        <a class="items" (click)="router('/profile/payment-details')"
+                            [routerLinkActive]="'activeTab'">Payment
+                            details</a>
+                        <a class="items" (click)="router('/profile/inventory')"
+                            [routerLinkActive]="'activeTab'">Inventory</a>
+                        <a class="items" (click)="router('/profile/payments')"
+                            [routerLinkActive]="'activeTab'">Payments</a>
+                        <a class="items" (click)="router('/support')" [routerLinkActive]="'activeTab'">Support</a>
+                        <a class="items" [routerLinkActive]="'activeTab'" (click)="onclickSignOff()">Log Out</a>
+                    </div>
                 </div>
-                <div class="main-nav-menu-items d-flex flex-column">
-                    <a class="items" (click)="router('/profile/user-account')"
-                        [routerLinkActive]="'activeTab'">Profile</a>
-                    <a class="items" (click)="router('/profile/user-addresses')"
-                        [routerLinkActive]="'activeTab'">Addresses</a>
-                    <a class="items" (click)="router('/profile/payment-details')" [routerLinkActive]="'activeTab'">Payment
-                        details</a>
-                    <a class="items" (click)="router('/profile/inventory')" [routerLinkActive]="'activeTab'">Inventory</a>
-                    <a class="items" (click)="router('/profile/payments')" [routerLinkActive]="'activeTab'">Payments</a>
-                    <a class="items" (click)="router('/support')" [routerLinkActive]="'activeTab'">Support</a>
-                    <a class="items" [routerLinkActive]="'activeTab'"
-                        (click)="onclickSignOff()">Log Out</a>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </header>

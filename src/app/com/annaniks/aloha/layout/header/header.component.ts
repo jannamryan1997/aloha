@@ -1,8 +1,9 @@
-import { Component, OnInit, OnChanges, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie';
 import { AuthService } from '../../core/services/auth.services';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
     selector: "app-header",
@@ -13,24 +14,42 @@ import { AuthService } from '../../core/services/auth.services';
 export class HeaderComponent implements OnInit, AfterViewChecked {
     public menuOpened: boolean = false;
     public userName: string;
-    public promoCode:string;
+    public promoCodeGroup: FormGroup;
     public fa: string;
     constructor(
         private _appService: AppService,
         private _router: Router,
         private _cookieService: CookieService,
         private _authService: AuthService,
+        private _fb: FormBuilder,
+
 
     ) {
         this.userName = this._authService.user.name;
+   
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this._formBuilder();
+         this._setPatchValue();
+    }
 
-    ngAfterViewChecked():void {
+    ngAfterViewChecked(): void {
         this.userName = this._authService.user.name;
-        this.promoCode=this._authService.user.promocode;
+
     }
+
+    private _formBuilder(): void {
+        this.promoCodeGroup = this._fb.group({
+            promoCode: [null]
+        })
+       }
+
+       private _setPatchValue():void{
+        this.promoCodeGroup.patchValue({
+            promoCode:this._authService.user.promocode,
+        })
+       }
 
     private _signOff(): void {
         this._appService.signOff()
@@ -52,9 +71,11 @@ export class HeaderComponent implements OnInit, AfterViewChecked {
         this.menuOpened = false;
     }
 
-    public copyInputMessage(userinput): void {
-        userinput.select();
+    public copyInputMessage(inputElement): void {
+        this.promoCodeGroup.enable();
+        inputElement.select();
         document.execCommand('copy');
-        userinput.setSelectionRange(0, 0);
+        inputElement.setSelectionRange(0, 0);
+        this.promoCodeGroup.disable();
     }
 }
