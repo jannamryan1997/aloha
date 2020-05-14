@@ -100,13 +100,17 @@ export class AddressView implements OnInit, OnDestroy {
                     if (element.code === data.country) {
                         countryName = element.name;
                         this.addressForm.patchValue({
-                            address: data.address,
-                            billing: data.billing,
                             country: countryName,
-                            zip: data.zip,
-                            main: data.main,
                         })
+                        this.selectedCountry = element;
                     }
+                })
+                this.addressForm.patchValue({
+                    address: data.address,
+                    billing: data.billing,
+                    // country: countryName,
+                    zip: data.zip,
+                    main: data.main,
                 })
             },
             )
