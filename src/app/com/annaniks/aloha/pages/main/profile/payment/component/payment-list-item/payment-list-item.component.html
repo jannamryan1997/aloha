@@ -48,5 +48,5 @@
             </table>
         </div>
     </div>
-    <button class="btn  cursor-pointer save-btn" type="submit" [ngClass]="{'d-block':paymentData.paid==null && paymentData.accepted}"><a target="blank" [href]="shop">Pay</a></button>
+    <button class="btn  cursor-pointer save-btn" type="submit" [ngClass]="{'d-block':paymentData.paid==null && paymentData.accepted}" (click)="redirecToShopPage()" ><a>Pay</a></button>
 </div>

@@ -49,11 +49,14 @@ export class PaymentListItemComponent implements OnInit {
             .pipe(takeUntil(this._unsubscribe$))
             .subscribe((data) => {
                 this.goodData = data;
+                console.log(this.goodData,"goods");
+                
                 for (var i = 0; i < this.goodData.length; i++) {
                     if (this.paymentData.goods == parseInt(this.goodData[i].id)) {
                         this.goodDataName = this.goodData[i].name;
                         this.goodPrice = this.goodData[i].price;
                         this.shop=this.goodData[i].shop;
+                        
                     }
                 }
             })
@@ -61,5 +64,9 @@ export class PaymentListItemComponent implements OnInit {
 
     public onclick(): void {
         this._openStandartHive();
+    }
+
+   public  redirecToShopPage():void {
+        window.open(  this.shop, '_blank');
     }
 }
