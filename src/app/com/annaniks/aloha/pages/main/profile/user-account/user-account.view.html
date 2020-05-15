@@ -27,7 +27,7 @@
                 <label for="Phonenumber" class="label">Phone number</label>
                 <div class="input-content">
                     <input type="text" class="form-control input phone-form" ng2TelInput  (countryChange)="onCountryChange($event)"
-                   formControlName="phonenumber" placeholder=" " maxlength="12" OnlyNumber="true"/>
+                   formControlName="phonenumber"  maxlength="12" OnlyNumber="true" />
                 </div>
             </div>
             <p class="tex-center error text-danger error-message d-none"
@@ -56,3 +56,21 @@
         <button class="btn save-btn cursor-pointer ml-5 d-flex align-items-center" type="submit" (click)="cancle()">Cancel</button>
     </div>
     </form>
+
+
+
+    <select name="countryCode" id="" [(ngModel)]="countryNumber">
+        <option data-countryCode="GB" value="44" Selected>UK (+44)</option>
+        <option data-countryCode="US" value="1">USA (+1)</option>
+        <optgroup label="Other countries">
+            <option data-countryCode="DZ" value="213">Algeria (+213)</option>
+            <option data-countryCode="AD" value="376">Andorra (+376)</option>
+            <option data-countryCode="AO" value="244">Angola (+244)</option>
+            <option data-countryCode="AI" value="1264">Anguilla (+1264)</option>
+            <option data-countryCode="AG" value="1268">Antigua &amp; Barbuda (+1268)</option>
+            <option data-countryCode="AR" value="54">Argentina (+54)</option>
+            <option data-countryCode="AM" value="374">Armenia (+374)</option>
+            <option data-countryCode="AW" value="297">Aruba (+297)</option>
+            <option data-countryCode="AU" value="61">Australia (+61)</option>
+            <option data-countryCode="AT" value="43">Austria (+43)</option>
+        </select>

@@ -31,6 +31,7 @@ export class UserAccountView implements OnInit {
     public messageError: string;
     public dialCode: string;
     public countryData: Country[] = [];
+    public countryNumber: string;
     constructor(
         private _fb: FormBuilder,
         private _menuService: MenuService,
@@ -52,7 +53,6 @@ export class UserAccountView implements OnInit {
     ngOnInit() {
         this._formBuilder();
         this._setProfileValues();
-
     }
 
     private _formBuilder(): void {
@@ -64,9 +64,13 @@ export class UserAccountView implements OnInit {
             details: [null]
         })
         this.userAccountGroup.get('phonenumber').valueChanges.subscribe((data) => {
-            this.dialCode = data;
-        })
+            let str: string = data.toString();
+            this.countryNumber = str.substring(0, 3);
+            console.log(this.countryNumber);
 
+
+
+        })
     }
     private _setProfileValues(): void {
         const user: User = this._authService.user;
@@ -169,7 +173,8 @@ export class UserAccountView implements OnInit {
     }
     public onCountryChange(event): void {
         this.dialCode = event.dialCode;
-        console.log(this.dialCode);
-
+        this.userAccountGroup.patchValue({
+            phonenumber: this.dialCode
+        })
     }
 }

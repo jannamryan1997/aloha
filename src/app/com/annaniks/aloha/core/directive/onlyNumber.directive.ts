@@ -11,7 +11,6 @@ export class OnlyNumberDirective {
 
     @HostListener('keydown', ['$event']) onKeyDown(event) {
         let e = <KeyboardEvent>event;
-        
         if (this.OnlyNumber) {
             if ([46, 8, 9, 27, 13, 110, 190].indexOf(e.keyCode) !== -1 ||
                 // Allow: Ctrl+A
@@ -23,7 +22,7 @@ export class OnlyNumberDirective {
                 // Allow: Ctrl+X
                 (e.keyCode === 88 && (e.ctrlKey || e.metaKey)) ||
                 // Allow: home, end, left, right
-                (e.keyCode >= 35 && e.keyCode <= 39 || e.keyCode===189 || e.keyCode===187 || e.keyCode===107)) {
+                (e.keyCode >= 35 && e.keyCode <= 39 || e.keyCode===189 || e.keyCode===187 || e.keyCode===107 || e.keyCode===109)) {
                 // let it happen, don't do anything
                 return;
             }
